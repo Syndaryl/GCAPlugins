@@ -476,7 +476,7 @@
 
         void ExportBiography(GCACharacter CurChar, StreamWriter fw)
         {
-            Write(fw, "Name:", CurChar.Name);
+            fw.WriteLine(Write("Name:", CurChar.Name));
             fw.WriteLine("Name:" + CurChar.Name);
             fw.WriteLine("Player:" + CurChar.Player);
             fw.WriteLine("Race:" + CurChar.Race);
@@ -495,7 +495,7 @@
             fw.WriteLine("");
         }
 
-        void Write(StreamWriter fw, string Label, string Value)
+        string Write(string Label, string Value)
         {
 
             try
@@ -504,22 +504,19 @@
                 switch ((NameStyle)MyOptions.get_Value("NameStyle"))
                 {
                     case NameStyle.DoNothing:
-                        fw.WriteLine(String.Format("{0} {1}<br/>", Label, Value));
-                        break;
+                         return String.Format("{0} {1}<br/>", Label, Value);
                     case NameStyle.MakeBold:
-                        fw.WriteLine(String.Format("'''{0}''' {1}<br/>", Label, Value));
-                        break;
+                        return String.Format("'''{0}''' {1}<br/>", Label, Value);
                     case NameStyle.MakeItalic:
-                        fw.WriteLine(String.Format("''{0}'' {1}<br/>", Label, Value));
-                        break;
+                        return String.Format("''{0}'' {1}<br/>", Label, Value);
                     default:
-                        fw.WriteLine(String.Format("{0} {1}<br/>", Label, Value));
-                        break;
+                        return String.Format("{0} {1}<br/>", Label, Value);
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show( String.Format("Write({0} {1} {2})\nMessage: {3}\nStacktrace: {4}", fw.ToString(), Label, Value, e.Message , e.StackTrace), "Error in Write()");
+                MessageBox.Show( String.Format("Write({0}, {1})\nMessage: {2}\nStacktrace: {3}\nInner: {4}", Label, Value, e.Message , e.StackTrace, e.InnerException), "Error in Write()");
+                return String.Format("Write({0}, {1}) error", Label, Value);
             }
         }
 
