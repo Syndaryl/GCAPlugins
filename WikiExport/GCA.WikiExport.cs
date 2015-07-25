@@ -10,6 +10,7 @@
     using GCA5.Interfaces;
     using GCA5Engine;
     using System.Windows.Forms;
+    using System.Text;
 
     public sealed class WikiExporter : GCA5.Interfaces.IExportSheet
     {
@@ -65,6 +66,7 @@
         }
 
         public SheetOptionsManager MyOptions { get; private set; }
+        public List<GCATrait> Traits { get; private set; }
         #endregion InterfaceProperties
 
         /// <summary>
@@ -359,6 +361,9 @@
             return true;
         }
 
+        #endregion InterfaceImplementation
+
+
         void DoCharacterSeparator(int separatorOptionChoice, GCAWriter fw)
         {
             string separator = " ";
@@ -393,6 +398,12 @@
         #region Exporters
         void ExportCharacter(GCACharacter pc, GCAWriter fw)
         {
+            this.Traits = new List<GCATrait>();
+            foreach (GCATrait item in pc.Items)
+            {
+                this.Traits.Add(item);
+            }
+
             ExportBiography(pc, fw);
             ExportAttributes(pc, fw);
             ExportCultural(pc, fw);
@@ -410,68 +421,260 @@
 
         void ExportLoadout(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteLine();
         }
 
         void ExportCombat(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteLine();
         }
 
         void ExportEquiment(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteLine();
         }
 
         void ExportPointsSummary(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteLine();
         }
 
         void ExportMeta(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Metatraits [" + pc.get_Cost(modConstants.Templates) + "]");
+            fw.WriteLine();
         }
 
         void ExportSpells(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Spells [" + pc.get_Cost(modConstants.Spells) + "]");
+            fw.WriteLine();
         }
 
         void ExportSkills(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Skills [" + pc.get_Cost(modConstants.Skills) + "]");
+            fw.WriteLine();
         }
 
         void ExportDisadvantages(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Disadvantages [" + pc.get_Cost(modConstants.Disadvantages) + "]");
+            foreach (var item in ComplexListAdsDisads(TraitTypes.Disadvantages, fw))
+            {
+                fw.WriteLine(item);
+            }
+            fw.WriteLine();
         }
 
         void ExportAdvantages(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Advantages [" + pc.get_Cost(modConstants.Advantages) + "]");
+            foreach (var item in ComplexListAdsDisads(TraitTypes.Advantages, fw))
+            {
+                fw.WriteLine(item);
+            }
+            fw.WriteLine();
         }
 
         void ExportReaction(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Reaction Modifiers");
+            fw.WriteLine();
         }
 
         void ExportCultural(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Cultural Background");
-            fw.Write("TL: ");
+            var label = "TL:";
             var curItem = pc.ItemByNameAndExt("Tech Level", modConstants.Stats);
-            if (curItem != null )
+            if (curItem != null)
             {
                 var buffer = curItem.DisplayScore;
                 if (curItem.Points != 0)
                 {
                     buffer = string.Format("{0} [{1}]", buffer, curItem.Points);
                 }
-                fw.WriteLine(buffer);
+                fw.WriteTrait(label, buffer);
             }
+            fw.WriteLine();
+
+            if (pc.get_Count(modConstants.Cultures) > 0)
+            {
+                label = "Cultures:";
+                var buffer = SimpleStringTrait(TraitTypes.Cultures);
+                fw.WriteTrait(label, buffer);
+            }
+            if (pc.get_Count(modConstants.Languages) > 0)
+            {
+                label = "Languages:";
+                var buffer = SimpleStringTrait(TraitTypes.Languages);
+                fw.WriteTrait(label, buffer);
+            }
+
+        }
+
+        /// <summary>
+        /// Generates a string listing of the specified trait type, visible only, by name and cost only. 0 cost traits do not have a cost listed.
+        /// </summary>
+        /// <param name="traitType">Type of trait to harvest.</param>
+        /// <returns>A comma separated, period-terminated list.</returns>
+        string SimpleStringTrait(TraitTypes traitType)
+        {
+            var result = from trait in Traits
+                         where trait.ItemType == traitType
+                         where trait.get_TagItem("hide").Equals("")
+                         select trait.Points != 0 ? String.Format("{0} [{1}]", trait.Name, trait.Points) : trait.Name;
+
+            return String.Join(", ", result) + ".";
+        }
+
+        /// <summary>
+        /// Generates a SJG-formatted list of the specified trait type, visible traits only.
+        /// This includes level, name extensions, and modifiers, but not "effective skill".
+        /// </summary>
+        /// <param name="traitType">Type of trait to harvest.</param>
+        /// <returns>A semicolon separated, period-terminated list.</returns>
+        string ComplexStringAdsDisads(TraitTypes traitType, GCAWriter fw)
+        {
+            var result = from trait in Traits
+                         where trait.ItemType == traitType
+                         where trait.get_TagItem("hide").Equals("")
+                         select trait;
+
+            return String.Join("; ", result.Select( x => AdvantageFormatter(x, fw ))) + ".";
+        }
+
+        IEnumerable<string> ComplexListAdsDisads(TraitTypes traitType, GCAWriter fw)
+        {
+            var result = from trait in Traits
+                         where trait.ItemType == traitType
+                         where trait.get_TagItem("hide").Equals("")
+                         select AdvantageFormatter(trait, fw);
+            return result;
+        }
+
+        delegate string TraitFormatter(GCATrait trait, GCAWriter fw);
+
+        string FormatTrait(GCATrait trait, GCAWriter fw)
+        {
+            TraitFormatter formatter = null;
+            switch (trait.ItemType)
+            {
+                case TraitTypes.Attributes:
+                    formatter = AdvantageFormatter;
+                    break;
+                case TraitTypes.Languages:
+                    formatter = AdvantageFormatter;
+                    break;
+                case TraitTypes.Cultures:
+                    formatter = AdvantageFormatter;
+                    break;
+                case TraitTypes.Advantages:
+                    formatter = AdvantageFormatter;
+                    break;
+                case TraitTypes.Perks:
+                    formatter = AdvantageFormatter;
+                    break;
+                case TraitTypes.Disadvantages:
+                    formatter = AdvantageFormatter;
+                    break;
+                case TraitTypes.Quirks:
+                    formatter = AdvantageFormatter;
+                    break;
+                case TraitTypes.Skills:
+                    formatter = SkillFormatter;
+                    break;
+                case TraitTypes.Spells:
+                    formatter = SkillFormatter;
+                    break;
+                case TraitTypes.Equipment:
+                    break;
+                case TraitTypes.Templates:
+                    break;
+            }
+            return formatter != null ? formatter(trait, fw) : "";
+        }
+
+        string AdvantageFormatter(GCATrait trait, GCAWriter fw)
+        {
+            var builder = new StringBuilder();
+            builder.Append(trait.Name);
+            if (!trait.get_TagItem("level").Equals("1") || !trait.get_TagItem("upto").Equals("") || !trait.LevelName.Equals("")) // has more than one level
+            {
+                builder.AppendFormat(" {0}", trait.LevelName.Equals("") ? trait.get_TagItem("level") : trait.LevelName);
+            }
+
+            var label = builder.ToString();
+
+            builder.Clear();
+            if (!trait.NameExt.Equals("") || trait.Mods.Count() > 0)
+                builder.Append(" (");
+            if (!trait.NameExt.Equals(""))
+                builder.Append(trait.NameExt);
+            if (!trait.NameExt.Equals("") && trait.Mods.Count() > 0)
+                builder.Append("; ");
+            if (trait.Mods.Count() > 0)
+            {
+                var mods = new List<GCAModifier>();
+                foreach (GCAModifier item in trait.Mods)
+                {
+                    mods.Add(item);
+                }
+                builder.Append(String.Join("; ", mods.Select(x => ModifierFormatter(x, fw))));
+            }
+            if (!trait.NameExt.Equals("") || trait.Mods.Count() > 0)
+                builder.Append(")");
+
+            builder.AppendFormat(" [{0}]", trait.Points);
+
+            return fw.FormatTrait(label, builder.ToString());
+        }
+
+        string ModifierFormatter(GCAModifier trait, GCAWriter fw)
+        {
+            var builder = new StringBuilder();
+            builder.Append(trait.DisplayName.Trim());
+            if (!trait.get_TagItem("level").Equals("1") || !trait.get_TagItem("upto").Equals("") || !trait.LevelName().Equals("")) // has more than one level or has named levels
+            {
+                builder.AppendFormat(" {0}", trait.LevelName().Equals("")? trait.get_TagItem("level"): trait.LevelName());
+            }
+            builder.AppendFormat(", {0}", trait.get_TagItem("cost"));
+            return builder.ToString();
+        }
+
+        /// <summary>
+        /// Generates a SJG-formatted list of the specified trait type, visible traits only.
+        /// This includes "effective skill", name extensions, but not modifiers or "level" in the advantage sense.
+        /// </summary>
+        /// <param name="traitType">Type of trait to harvest.</param>
+        /// <returns>A comma separated, period-terminated list.</returns>
+        string ComplexStringSkillsSpells(TraitTypes traitType)
+        {
+            var result = from trait in Traits
+                         where trait.ItemType == traitType
+                         where trait.get_TagItem("hide").Equals("")
+                         select trait;
+
+            return String.Join(", ", result) + ".";
+        }
+
+        string SkillFormatter(GCATrait trait, GCAWriter fw)
+        {
+            var builder = new StringBuilder();
+            builder.Append(trait.Name);
+            if (!trait.get_TagItem("level").Equals("1") || !trait.get_TagItem("upto").Equals("") || !trait.LevelName.Equals("")) // has more than one level
+            {
+                builder.AppendFormat(" {0}", trait.LevelName.Equals("") ? trait.get_TagItem("level") : trait.LevelName);
+            }
+
+            var label = builder.ToString();
+
+            builder.Clear();
+            
+            builder.AppendFormat(" [{0}]", trait.Points);
+
+            return fw.FormatTrait(label, builder.ToString());
         }
 
         void ExportAttributes(GCACharacter pc, GCAWriter fw)
@@ -499,8 +702,6 @@
             fw.WriteLine("");
         }
         #endregion Exporters
-
-        #endregion InterfaceImplementation
     }
 
     class GCAWriter : StreamWriter
@@ -537,7 +738,7 @@
             WriteLine(FormatHeader(Header));
         }
 
-        string FormatHeader(string Header)
+        internal string FormatHeader(string Header)
         {
             try
             {
@@ -546,7 +747,7 @@
                     case HeaderStyles.DoNothing:
                         return string.Format("{0}<br/>", Header);
                     case HeaderStyles.MinorWikiHeader:
-                        return string.Format("==={0}===<br/>", Header);
+                        return string.Format("==={0}===", Header);
                     case HeaderStyles.Bold:
                         return string.Format("'''{0}'''<br/>", Header);
                     default:
@@ -559,7 +760,7 @@
             }
         }
 
-        string FormatTrait(string label, string value)
+        internal string FormatTrait(string label, string value)
         {
             try
             {
