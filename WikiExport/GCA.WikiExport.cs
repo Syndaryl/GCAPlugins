@@ -511,13 +511,13 @@
                 var buffer = SimpleStringTrait(TraitTypes.Languages);
                 fw.WriteTrait(label, buffer);
             }
-
+            fw.WriteLine();
         }
 
         void ExportAttributes(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Attributes [" + pc.get_Cost(modConstants.Stats) + "]");
-            foreach (var item in ComplexListTrait(TraitTypes.Attributes, fw))
+            foreach (var item in ComplexListAttributes(TraitTypes.Attributes, fw))
             {
                 fw.WriteLine(item);
             }
@@ -586,6 +586,18 @@
             return result;
         }
 
+
+        IEnumerable<string> ComplexListAttributes(TraitTypes traitType, GCAWriter fw)
+        {
+            var result = from trait in Traits
+                         where trait.ItemType == traitType
+                         where !trait.get_TagItem("mainwin").Equals("")
+                         where !trait.get_TagItem("display").Equals("no")
+                         //where trait.get_TagItem("hide").Equals("")
+                         orderby trait.get_TagItem("mainwin")
+                         select FormatTrait(trait, fw);
+            return result;
+        }
         delegate string TraitFormatter(GCATrait trait, GCAWriter fw);
 
         string FormatTrait(GCATrait trait, GCAWriter fw)
