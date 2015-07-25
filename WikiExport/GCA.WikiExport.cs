@@ -32,13 +32,6 @@
             PrintHyphens,
             PrintHTMLHR
         }
-
-        enum NameStyle
-        {
-            DoNothing,
-            MakeBold,
-            MakeItalic
-        }
         #endregion
 
         #region fields
@@ -346,7 +339,7 @@
             bool printMults = (int)MyOptions.get_Value("OutputCharacters") == 1;
             try
             {
-                using (var fw = new StreamWriter(TargetFilename, true))
+                using (var fw = new GCAWriter(TargetFilename, false, MyOptions))
                 {
                     if (Party.Characters.Count > 1 && printMults)
                         foreach (GCACharacter pc in Party.Characters)
@@ -366,7 +359,7 @@
             return true;
         }
 
-        void DoCharacterSeparator(int separatorOptionChoice, StreamWriter fw)
+        void DoCharacterSeparator(int separatorOptionChoice, GCAWriter fw)
         {
             string separator = " ";
             switch ((CharacterSeparators)separatorOptionChoice)
@@ -397,7 +390,8 @@
             fw.WriteLine();
         }
 
-        void ExportCharacter(GCACharacter pc, StreamWriter fw)
+        #region Exporters
+        void ExportCharacter(GCACharacter pc, GCAWriter fw)
         {
             ExportBiography(pc, fw);
             ExportAttributes(pc, fw);
@@ -414,114 +408,180 @@
             ExportLoadout(pc, fw);
         }
 
-        void ExportLoadout(GCACharacter pc, StreamWriter fw)
+        void ExportLoadout(GCACharacter pc, GCAWriter fw)
         {
 
         }
 
-        void ExportCombat(GCACharacter pc, StreamWriter fw)
+        void ExportCombat(GCACharacter pc, GCAWriter fw)
         {
 
         }
 
-        void ExportEquiment(GCACharacter pc, StreamWriter fw)
+        void ExportEquiment(GCACharacter pc, GCAWriter fw)
         {
 
         }
 
-        void ExportPointsSummary(GCACharacter pc, StreamWriter fw)
+        void ExportPointsSummary(GCACharacter pc, GCAWriter fw)
         {
 
         }
 
-        void ExportMeta(GCACharacter pc, StreamWriter fw)
+        void ExportMeta(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteHeader("Metatraits [" + pc.get_Cost(modConstants.Templates) + "]");
         }
 
-        void ExportSpells(GCACharacter pc, StreamWriter fw)
+        void ExportSpells(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteHeader("Spells [" + pc.get_Cost(modConstants.Spells) + "]");
         }
 
-        void ExportSkills(GCACharacter pc, StreamWriter fw)
+        void ExportSkills(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteHeader("Skills [" + pc.get_Cost(modConstants.Skills) + "]");
         }
 
-        void ExportDisadvantages(GCACharacter pc, StreamWriter fw)
+        void ExportDisadvantages(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteHeader("Disadvantages [" + pc.get_Cost(modConstants.Disadvantages) + "]");
         }
 
-        void ExportAdvantages(GCACharacter pc, StreamWriter fw)
+        void ExportAdvantages(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteHeader("Advantages [" + pc.get_Cost(modConstants.Advantages) + "]");
         }
 
-        void ExportReaction(GCACharacter pc, StreamWriter fw)
+        void ExportReaction(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteHeader("Reaction Modifiers");
         }
 
-        void ExportCultural(GCACharacter pc, StreamWriter fw)
+        void ExportCultural(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteHeader("Cultural Background");
+            fw.Write("TL: ");
+            var curItem = pc.ItemByNameAndExt("Tech Level", modConstants.Stats);
+            if (curItem != null )
+            {
+                var buffer = curItem.DisplayScore;
+                if (curItem.Points != 0)
+                {
+                    buffer = string.Format("{0} [{1}]", buffer, curItem.Points);
+                }
+                fw.WriteLine(buffer);
+            }
         }
 
-        void ExportAttributes(GCACharacter pc, StreamWriter fw)
+        void ExportAttributes(GCACharacter pc, GCAWriter fw)
         {
-
+            fw.WriteHeader("Attributes [" + pc.get_Cost(modConstants.Stats) + "]");
         }
 
-        void ExportBiography(GCACharacter CurChar, StreamWriter fw)
+        void ExportBiography(GCACharacter CurChar, GCAWriter fw)
         {
-            fw.WriteLine(Write("Name:", CurChar.Name));
-            fw.WriteLine("Name:" + CurChar.Name);
-            fw.WriteLine("Player:" + CurChar.Player);
-            fw.WriteLine("Race:" + CurChar.Race);
+            fw.WriteTrait("Name:", CurChar.Name);
+            fw.WriteTrait("Player:", CurChar.Player);
+            fw.WriteTrait("Race:", CurChar.Race);
             if (CurChar.Appearance != "")
-                fw.WriteLine("Appearance: " + CurChar.Appearance);
+                fw.WriteTrait("Appearance: ", CurChar.Appearance);
 
             if (CurChar.Height != "")
-                fw.WriteLine("Height:" + CurChar.Height);
+                fw.WriteTrait("Height:", CurChar.Height);
 
             if (CurChar.Weight != "")
-                fw.WriteLine("Weight:" + CurChar.Weight);
+                fw.WriteTrait("Weight:", CurChar.Weight);
 
             if (CurChar.Age != "")
-                fw.WriteLine("Age:" + CurChar.Age);
+                fw.WriteTrait("Age:", CurChar.Age);
 
             fw.WriteLine("");
         }
-
-        string Write(string Label, string Value)
-        {
-
-            try
-            {
-
-                switch ((NameStyle)MyOptions.get_Value("NameStyle"))
-                {
-                    case NameStyle.DoNothing:
-                         return String.Format("{0} {1}<br/>", Label, Value);
-                    case NameStyle.MakeBold:
-                        return String.Format("'''{0}''' {1}<br/>", Label, Value);
-                    case NameStyle.MakeItalic:
-                        return String.Format("''{0}'' {1}<br/>", Label, Value);
-                    default:
-                        return String.Format("{0} {1}<br/>", Label, Value);
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show( String.Format("Write({0}, {1})\nMessage: {2}\nStacktrace: {3}\nInner: {4}", Label, Value, e.Message , e.StackTrace, e.InnerException), "Error in Write()");
-                return String.Format("Write({0}, {1}) error", Label, Value);
-            }
-        }
-
+        #endregion Exporters
 
         #endregion InterfaceImplementation
     }
 
+    class GCAWriter : StreamWriter
+    {
+
+        enum GeneralStyles
+        {
+            DoNothing,
+            MakeBold,
+            MakeItalic,
+            MakeBoldItalic
+        }
+
+        enum HeaderStyles
+        {
+            DoNothing,
+            MinorWikiHeader,
+            Bold
+        }
+
+        public GCAWriter(string path, bool append, SheetOptionsManager options) : base(path, append)
+        {
+            MyOptions = options;
+        }
+
+        public SheetOptionsManager MyOptions { get; private set; }
+
+        public void WriteTrait(string label, string value)
+        {
+            WriteLine(FormatTrait(label, value));
+        }
+        public void WriteHeader(string Header)
+        {
+            WriteLine(FormatHeader(Header));
+        }
+
+        string FormatHeader(string Header)
+        {
+            try
+            {
+                switch ((HeaderStyles)MyOptions.get_Value("HeadingStyle"))
+                {
+                    case HeaderStyles.DoNothing:
+                        return string.Format("{0}<br/>", Header);
+                    case HeaderStyles.MinorWikiHeader:
+                        return string.Format("==={0}===<br/>", Header);
+                    case HeaderStyles.Bold:
+                        return string.Format("'''{0}'''<br/>", Header);
+                    default:
+                        return string.Format("{0}<br/>", Header);
+                }
+            }
+            catch (Exception)
+            {
+                return string.Format("{0}<br/>", Header);
+            }
+        }
+
+        string FormatTrait(string label, string value)
+        {
+            try
+            {
+                switch ((GeneralStyles)MyOptions.get_Value("TraitNameStyle"))
+                {
+                    case GeneralStyles.DoNothing:
+                        return String.Format("{0} {1}<br/>", label, value);
+                    case GeneralStyles.MakeBold:
+                        return String.Format("'''{0}''' {1}<br/>", label, value);
+                    case GeneralStyles.MakeItalic:
+                        return String.Format("''{0}'' {1}<br/>", label, value);
+                    case GeneralStyles.MakeBoldItalic:
+                        return String.Format("'''''{0}''''' {1}<br/>", label, value);
+                    default:
+                        return String.Format("{0} {1}<br/>", label, value);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(String.Format("FormatTrait({0}, {1})\nMessage: {2}\nStacktrace: {3}\nInner: {4}", label, value, e.Message, e.StackTrace, e.InnerException), "Error in FormatTrait()");
+                return String.Format("FormatTrait({0}, {1}) error", label, value);
+            }
+        }
+    }
 }
