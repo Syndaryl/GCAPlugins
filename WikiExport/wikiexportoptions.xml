@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<ArrayOfSheetOption xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SheetOption>
+    <Name>Header_Description</Name>
+    <Type>Header</Type>
+    <List>
+      <string xsi:nil="true" />
+    </List>
+    <DefaultValue />
+    <Value />
+    <UserPrompt>$Name - $Version</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>Description</Name>
+    <Type>Caption</Type>
+    <List>
+      <string xsi:nil="true" />
+    </List>
+    <DefaultValue />
+    <Value />
+    <UserPrompt>Exports a text file suitable for pasting into the source of a MediaWiki page</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>Header_Characters</Name>
+    <Type>Header</Type>
+    <List>
+      <string xsi:nil="true" />
+    </List>
+    <DefaultValue />
+    <Value />
+    <UserPrompt>Printing Characters</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>OutputCharacters</Name>
+    <Type>ListNumber</Type>
+    <List>
+      <string>Export just the current character</string>
+      <string>Export all the loaded characters to the file</string>
+      <string>Always ask me what to do</string>
+    </List>
+    <DefaultValue xsi:type="xsd:int">0</DefaultValue>
+    <Value />
+    <UserPrompt>When exporting, how do you want to handle exporting when multiple characters are loaded?</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>CharacterSeparator</Name>
+    <Type>ListNumber</Type>
+    <List>
+      <string>Do nothing</string>
+      <string>Print a line of *</string>
+      <string>Print a line of =</string>
+      <string>Print a line of -</string>
+      <string>Use HTML to indicate a horizontal rule</string>
+    </List>
+    <DefaultValue xsi:type="xsd:int">1</DefaultValue>
+    <Value />
+    <UserPrompt>Please select how you'd like to mark the break between characters when printing multiple characters to the file.</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>Header_TextBlocks</Name>
+    <Type>Header</Type>
+    <List>
+      <string xsi:nil="true" />
+    </List>
+    <DefaultValue />
+    <Value />
+    <UserPrompt>Sections to Include</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>ShowMovementBlock</Name>
+    <Type>YesNo</Type>
+    <List>
+      <string xsi:nil="true" />
+    </List>
+    <DefaultValue xsi:type="xsd:boolean">true</DefaultValue>
+    <Value />
+    <UserPrompt>Include a block showing all the Environment Move rates?</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>ShowMovementZero</Name>
+    <Type>YesNo</Type>
+    <List>
+      <string xsi:nil="true" />
+    </List>
+    <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
+    <Value />
+    <UserPrompt>When printing the block above, include movement rates even when they're at zero?</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>ShowAllAdditionalStats</Name>
+    <Type>YesNo</Type>
+    <List>
+      <string xsi:nil="true" />
+    </List>
+    <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
+    <Value />
+    <UserPrompt>Include a block showing all additional attributes that aren't hidden?</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>ShowAdditionalStatsAtZero</Name>
+    <Type>YesNo</Type>
+    <List>
+      <string xsi:nil="true" />
+    </List>
+    <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
+    <Value />
+    <UserPrompt>When printing the block above, include attributes even when they're at zero?</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>Header_Other</Name>
+    <Type>Header</Type>
+    <List>
+      <string xsi:nil="true" />
+    </List>
+    <DefaultValue />
+    <Value />
+    <UserPrompt>Other Options</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>HeadingStyle</Name>
+    <Type>ListNumber</Type>
+    <List>
+      <string>Do nothing</string>
+      <string>Make it a minor wiki header</string>
+      <string>Make it bold</string>
+    </List>
+    <DefaultValue xsi:type="xsd:int">1</DefaultValue>
+    <Value />
+    <UserPrompt>Please select the way you'd like to differentiate section headers from their various items.</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>BonusLineStyle</Name>
+    <Type>ListNumber</Type>
+    <List>
+      <string>Do nothing</string>
+      <string>Mark them in bold</string>
+      <string>Mark them in italic</string>
+      <string>Mark them in bold and italic</string>
+    </List>
+    <DefaultValue xsi:type="xsd:int">1</DefaultValue>
+    <Value />
+    <UserPrompt>Please select the way you'd like to differentiate bonus lines ('Includes: +X from Z') from their related items.</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>TraitNameStyle</Name>
+    <Type>ListNumber</Type>
+    <List>
+      <string>Do nothing</string>
+      <string>Mark them in bold</string>
+      <string>Mark them in italic</string>
+      <string>Mark them in bold and italic</string>
+    </List>
+    <DefaultValue xsi:type="xsd:int">2</DefaultValue>
+    <Value />
+    <UserPrompt>Please select the way you'd like to differentiate trait names from their related items.</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
+    <Name>PointsLineStyle</Name>
+    <Type>ListNumber</Type>
+    <List>
+      <string>Do nothing</string>
+      <string>Print it as multiple lines with a header</string>
+      <string>Single line, mark them in bold</string>
+      <string>Single line, mark them in italic</string>
+      <string>Single line, mark them in bold and italic</string>
+    </List>
+    <DefaultValue xsi:type="xsd:int">1</DefaultValue>
+    <Value />
+    <UserPrompt>Please select the way you'd like to differentiate the Point Summary line from the surrounding text.</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+</ArrayOfSheetOption>

@@ -54,6 +54,9 @@
     <Compile Include="GCA.WikiExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="wikiexportoptions.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "D:\Documents\GURPS Character Assistant 5\plugins\test\" /y</PostBuildEvent>
