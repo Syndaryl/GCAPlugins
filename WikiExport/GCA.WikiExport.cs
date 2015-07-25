@@ -460,7 +460,7 @@
         void ExportDisadvantages(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Disadvantages [" + pc.get_Cost(modConstants.Disadvantages) + "]");
-            foreach (var item in ComplexListAdsDisads(TraitTypes.Disadvantages, fw))
+            foreach (var item in ComplexListTrait(TraitTypes.Disadvantages, fw))
             {
                 fw.WriteLine(item);
             }
@@ -470,7 +470,7 @@
         void ExportAdvantages(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Advantages [" + pc.get_Cost(modConstants.Advantages) + "]");
-            foreach (var item in ComplexListAdsDisads(TraitTypes.Advantages, fw))
+            foreach (var item in ComplexListTrait(TraitTypes.Advantages, fw))
             {
                 fw.WriteLine(item);
             }
@@ -514,6 +514,38 @@
 
         }
 
+        void ExportAttributes(GCACharacter pc, GCAWriter fw)
+        {
+            fw.WriteHeader("Attributes [" + pc.get_Cost(modConstants.Stats) + "]");
+            foreach (var item in ComplexListTrait(TraitTypes.Attributes, fw))
+            {
+                fw.WriteLine(item);
+            }
+            fw.WriteLine();
+        }
+
+        void ExportBiography(GCACharacter CurChar, GCAWriter fw)
+        {
+            fw.WriteTrait("Name:", CurChar.Name);
+            fw.WriteTrait("Player:", CurChar.Player);
+            fw.WriteTrait("Race:", CurChar.Race);
+            if (CurChar.Appearance != "")
+                fw.WriteTrait("Appearance: ", CurChar.Appearance);
+
+            if (CurChar.Height != "")
+                fw.WriteTrait("Height:", CurChar.Height);
+
+            if (CurChar.Weight != "")
+                fw.WriteTrait("Weight:", CurChar.Weight);
+
+            if (CurChar.Age != "")
+                fw.WriteTrait("Age:", CurChar.Age);
+
+            fw.WriteLine("");
+        }
+        #endregion Exporters
+
+        #region Formatters
         /// <summary>
         /// Generates a string listing of the specified trait type, visible only, by name and cost only. 0 cost traits do not have a cost listed.
         /// </summary>
@@ -542,15 +574,15 @@
                          where trait.get_TagItem("hide").Equals("")
                          select trait;
 
-            return String.Join("; ", result.Select( x => AdvantageFormatter(x, fw ))) + ".";
+            return String.Join("; ", result.Select(x => AdvantageFormatter(x, fw))) + ".";
         }
 
-        IEnumerable<string> ComplexListAdsDisads(TraitTypes traitType, GCAWriter fw)
+        IEnumerable<string> ComplexListTrait(TraitTypes traitType, GCAWriter fw)
         {
             var result = from trait in Traits
                          where trait.ItemType == traitType
                          where trait.get_TagItem("hide").Equals("")
-                         select AdvantageFormatter(trait, fw);
+                         select FormatTrait(trait, fw);
             return result;
         }
 
@@ -562,7 +594,7 @@
             switch (trait.ItemType)
             {
                 case TraitTypes.Attributes:
-                    formatter = AdvantageFormatter;
+                    formatter = AttributeFormatter;
                     break;
                 case TraitTypes.Languages:
                     formatter = AdvantageFormatter;
@@ -594,6 +626,20 @@
                     break;
             }
             return formatter != null ? formatter(trait, fw) : "";
+        }
+
+        string AttributeFormatter(GCATrait trait, GCAWriter fw)
+        {
+            var builder = new StringBuilder();
+            builder.Append(trait.DisplayName);
+
+            var label = builder.ToString();
+
+            builder.Clear();
+            builder.Append(trait.DisplayScore);
+
+            builder.AppendFormat(" [{0}]", trait.Points);
+            return fw.FormatTrait(label, builder.ToString());
         }
 
         string AdvantageFormatter(GCATrait trait, GCAWriter fw)
@@ -637,9 +683,9 @@
             builder.Append(trait.DisplayName.Trim());
             if (!trait.get_TagItem("level").Equals("1") || !trait.get_TagItem("upto").Equals("") || !trait.LevelName().Equals("")) // has more than one level or has named levels
             {
-                builder.AppendFormat(" {0}", trait.LevelName().Equals("")? trait.get_TagItem("level"): trait.LevelName());
+                builder.AppendFormat(" {0}", trait.LevelName().Equals("") ? trait.get_TagItem("level") : trait.LevelName());
             }
-            builder.AppendFormat(", {0}", trait.get_TagItem("cost"));
+            builder.AppendFormat(", {0}", trait.get_TagItem("value"));
             return builder.ToString();
         }
 
@@ -671,37 +717,12 @@
             var label = builder.ToString();
 
             builder.Clear();
-            
+
             builder.AppendFormat(" [{0}]", trait.Points);
 
             return fw.FormatTrait(label, builder.ToString());
         }
-
-        void ExportAttributes(GCACharacter pc, GCAWriter fw)
-        {
-            fw.WriteHeader("Attributes [" + pc.get_Cost(modConstants.Stats) + "]");
-        }
-
-        void ExportBiography(GCACharacter CurChar, GCAWriter fw)
-        {
-            fw.WriteTrait("Name:", CurChar.Name);
-            fw.WriteTrait("Player:", CurChar.Player);
-            fw.WriteTrait("Race:", CurChar.Race);
-            if (CurChar.Appearance != "")
-                fw.WriteTrait("Appearance: ", CurChar.Appearance);
-
-            if (CurChar.Height != "")
-                fw.WriteTrait("Height:", CurChar.Height);
-
-            if (CurChar.Weight != "")
-                fw.WriteTrait("Weight:", CurChar.Weight);
-
-            if (CurChar.Age != "")
-                fw.WriteTrait("Age:", CurChar.Age);
-
-            fw.WriteLine("");
-        }
-        #endregion Exporters
+        #endregion Formatters
     }
 
     class GCAWriter : StreamWriter
