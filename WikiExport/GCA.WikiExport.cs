@@ -719,13 +719,17 @@ namespace GCA.TextExport
             if (!string.IsNullOrEmpty(trait.get_ChildKeyList()) )
             {
                 var keys = trait.get_ChildKeyList().Split(',');
-                fw.WriteLine("DEBUG TRAIT {0} CHILDREN {1}", trait.Name, keys);
+                fw.WriteLine("DEBUG TRAIT {0} CHILDREN {1}", trait.Name, string.Join(",", keys));
                 foreach (var key in keys)
                 {
-                    var child = Traits.FirstOrDefault(x => x.IDKey.Equals(key.Trim()));
-                    fw.WriteLine("DEBUG TRAIT {0} KEY {1} CHILD {2}", trait.Name, key, child);
-                    if ( child != null)
-                        builder.Append( FormatTrait(child, fw, childDepth+1) );
+                    var cleanKey = key.Trim().Substring(1);
+                    var child = Traits.FirstOrDefault(x => x.IDKey.Equals(cleanKey));
+                    fw.WriteLine("DEBUG TRAIT {0} KEY {1} CHILD {2}", trait.Name, cleanKey, child);
+                    if (child != null)
+                    {
+                        fw.WriteLine("DEBUG FORMATTING CHILD {2}", trait.Name, cleanKey, child);
+                        builder.Append(FormatTrait(child, fw, childDepth + 1));
+                    }
                 }
             }
             return builder.ToString();
