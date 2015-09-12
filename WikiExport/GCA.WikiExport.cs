@@ -55,6 +55,14 @@ namespace GCA.TextExport
             PrintHyphens,
             PrintHTMLHR
         }
+
+        enum SkillType
+        {
+            Skill,
+            Technique,
+            Combo
+        }
+
         #endregion
 
         #region fields
@@ -383,39 +391,18 @@ namespace GCA.TextExport
             return true;
         }
 
+
+        public int PreferredFilterIndex()
+        {
+            return 0;
+        }
+
+        public bool PreviewOptions(SheetOptionsManager Options)
+        {
+            return true;
+        }
         #endregion InterfaceImplementation
 
-
-        void DoCharacterSeparator(int separatorOptionChoice, GCAWriter fw)
-        {
-            string separator = " ";
-            switch ((CharacterSeparators)separatorOptionChoice)
-            {
-                case CharacterSeparators.DoNothing:
-                    break;
-                case CharacterSeparators.PrintStars:
-                    separator = "*";
-                    break;
-                case CharacterSeparators.PrintEquals:
-                    separator = "=";
-                    break;
-                case CharacterSeparators.PrintHyphens:
-                    separator = "-";
-                    break;
-                case CharacterSeparators.PrintHTMLHR:
-                    separator = "<hr/>";
-                    break;
-            }
-            if (!Equals(separator, " ") && !Equals(separator, "<hr/>"))
-            {
-                fw.WriteLine(new String(separator.ToCharArray()[0], 60));
-            }
-            else if (Equals(separator, "<hr/>"))
-            {
-                fw.WriteLine(separator);
-            }
-            fw.WriteLine();
-        }
 
         #region Exporters
         void ExportCharacter(GCACharacter pc, GCAWriter fw)
@@ -476,6 +463,10 @@ namespace GCA.TextExport
         void ExportSkills(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Skills [" + pc.get_Cost(modConstants.Skills) + "]");
+            foreach (var item in ComplexListTrait(TraitTypes.Skills, fw))
+            {
+                fw.WriteLine(item);
+            }
             fw.WriteLine();
         }
 
@@ -587,6 +578,38 @@ namespace GCA.TextExport
         #endregion Exporters
 
         #region Formatters
+        void DoCharacterSeparator(int separatorOptionChoice, GCAWriter fw)
+        {
+            string separator = " ";
+            switch ((CharacterSeparators)separatorOptionChoice)
+            {
+                case CharacterSeparators.DoNothing:
+                    break;
+                case CharacterSeparators.PrintStars:
+                    separator = "*";
+                    break;
+                case CharacterSeparators.PrintEquals:
+                    separator = "=";
+                    break;
+                case CharacterSeparators.PrintHyphens:
+                    separator = "-";
+                    break;
+                case CharacterSeparators.PrintHTMLHR:
+                    separator = "<hr/>";
+                    break;
+            }
+            if (!Equals(separator, " ") && !Equals(separator, "<hr/>"))
+            {
+                fw.WriteLine(new String(separator.ToCharArray()[0], 60));
+            }
+            else if (Equals(separator, "<hr/>"))
+            {
+                fw.WriteLine(separator);
+            }
+            fw.WriteLine();
+        }
+
+
         /// <summary>
         /// Generates a string listing of the specified trait type, visible only, by name and cost only. 0 cost traits do not have a cost listed.
         /// </summary>
@@ -761,16 +784,38 @@ namespace GCA.TextExport
         string SkillFormatter(GCATrait trait, GCAWriter fw)
         {
             var builder = new StringBuilder();
-            builder.Append(trait.Name);
-            if (!trait.get_TagItem("level").Equals("1") || !trait.get_TagItem("upto").Equals("") || !trait.LevelName.Equals("")) // has more than one level
-            {
-                builder.AppendFormat(" {0}", trait.LevelName.Equals("") ? trait.get_TagItem("level") : trait.LevelName);
-            }
-
+            builder.AppendFormat("{0} {1}:", trait.DisplayName, trait.get_TagItem("type"));
             var label = builder.ToString();
 
             builder.Clear();
-
+            switch ((SkillType)int.Parse(trait.get_TagItem("sd")))
+            {
+                case SkillType.Skill:
+                    string stepOff = trait.get_TagItem("stepoff");
+                    if (!stepOff.Equals(string.Empty))
+                    {
+                        builder.Append(stepOff);
+                        string step = trait.get_TagItem("step");
+                        if (!step.Equals(string.Empty))
+                            builder.Append(step);
+                        else
+                            builder.Append("?");
+                    }
+                    else
+                    {
+                        builder.Append("?+?");
+                    }
+                    builder.AppendFormat(" - {0}", trait.get_TagItem("level"));
+                    break;
+                case SkillType.Technique:
+                    builder.AppendFormat(" - {0}", trait.get_TagItem("level"));
+                    break;
+                case SkillType.Combo:
+                    builder.AppendFormat(" - {0}", trait.get_TagItem("combolevel"));
+                    break;
+                default:
+                    break;
+            }
             builder.AppendFormat(" [{0}]", trait.Points);
 
             return fw.FormatTrait(label, builder.ToString());
