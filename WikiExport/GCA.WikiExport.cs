@@ -739,7 +739,7 @@ namespace GCA.TextExport
             builder.Clear();
             if (!string.IsNullOrEmpty(trait.NameExt) || trait.Mods.Count() > 0)
                 builder.Append(" (");
-            if (!string.IsNullOrEmpty(trait))
+            if (!string.IsNullOrEmpty(trait.NameExt))
                 builder.Append(trait.NameExt);
             if (!string.IsNullOrEmpty(trait.NameExt) && trait.Mods.Count() > 0)
                 builder.Append("; ");
