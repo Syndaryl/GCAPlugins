@@ -458,30 +458,27 @@ namespace GCA.TextExport
         void ExportSpells(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Spells [" + pc.get_Cost(modConstants.Spells) + "]");
-            foreach (var parent in ComplexListTrait(TraitTypes.Spells, fw))
-                foreach (var item in parent.Where(x => string.IsNullOrEmpty(x) != true))
-                {
-                    fw.WriteLine(item);
-                }
+            foreach (var item in ComplexListTrait(TraitTypes.Spells, fw).Where(x => string.IsNullOrEmpty(x) != true))
+            {
+                fw.WriteLine(item);
+            }
             fw.WriteLine();
         }
 
         void ExportSkills(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Skills [" + pc.get_Cost(modConstants.Skills) + "]");
-            foreach (var parent in ComplexListTrait(TraitTypes.Skills, fw))
-                foreach (var item in parent.Where(x => string.IsNullOrEmpty(x) != true))
-                {
-                    fw.WriteLine(item);
-                }
+            foreach (var item in ComplexListTrait(TraitTypes.Skills, fw).Where(x => string.IsNullOrEmpty(x) != true))
+            {
+                fw.WriteLine(item);
+            }
             fw.WriteLine();
         }
 
         void ExportDisadvantages(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Disadvantages [" + pc.get_Cost(modConstants.Disadvantages) + "]");
-            foreach (var parent in ComplexListTrait(TraitTypes.Disadvantages, fw))
-                foreach (var item in parent.Where(x => string.IsNullOrEmpty(x) != true))
+            foreach (var item in ComplexListTrait(TraitTypes.Disadvantages, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
                 fw.WriteLine(item);
             }
@@ -491,11 +488,10 @@ namespace GCA.TextExport
         void ExportAdvantages(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Advantages [" + pc.get_Cost(modConstants.Advantages) + "]");
-            foreach (var parent in ComplexListTrait(TraitTypes.Advantages, fw))
-                foreach (var item in parent.Where(x => string.IsNullOrEmpty(x) != true))
-                {
-                    fw.WriteLine(item);
-                }
+            foreach (var item in ComplexListTrait(TraitTypes.Advantages, fw).Where(x => string.IsNullOrEmpty(x) != true))
+            {
+                fw.WriteLine(item);
+            }
             fw.WriteLine();
         }
 
@@ -640,17 +636,17 @@ namespace GCA.TextExport
         /// </summary>
         /// <param name="traitType">Type of trait to harvest.</param>
         /// <returns>A semicolon separated, period-terminated list.</returns>
-        List<string> ComplexStringAdsDisads(TraitTypes traitType, GCAWriter fw)
+        string ComplexStringAdsDisads(TraitTypes traitType, GCAWriter fw)
         {
             var result = from trait in Traits
                          where trait.ItemType == traitType
                          where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          select trait;
 
-            return new List<string> { String.Join("; ", result.Select(x => AdvantageFormatter(x, fw))) + "." };
+            return String.Join("; ", result.Select(x => AdvantageFormatter(x, fw))) + ".";
         }
 
-        IEnumerable<List<string>> ComplexListTrait(TraitTypes traitType, GCAWriter fw)
+        IEnumerable<string> ComplexListTrait(TraitTypes traitType, GCAWriter fw)
         {
             var result = from trait in Traits
                          where trait.ItemType == traitType
@@ -660,7 +656,7 @@ namespace GCA.TextExport
         }
 
 
-        IEnumerable<List<string>> ComplexListAttributes(List<string> attributeList, GCAWriter fw)
+        IEnumerable<string> ComplexListAttributes(List<string> attributeList, GCAWriter fw)
         {
             var result = from trait in Traits
                          where trait.ItemType == TraitTypes.Attributes
@@ -671,9 +667,9 @@ namespace GCA.TextExport
                          select FormatTrait(trait, fw);
             return result;
         }
-        delegate List<string> TraitFormatter(GCATrait trait, GCAWriter fw);
+        delegate string TraitFormatter(GCATrait trait, GCAWriter fw);
 
-        List<string> FormatTrait(GCATrait trait, GCAWriter fw)
+        string FormatTrait(GCATrait trait, GCAWriter fw)
         {
             TraitFormatter formatter = null;
             switch (trait.ItemType)
@@ -711,11 +707,11 @@ namespace GCA.TextExport
                     break;
             }
             if (string.IsNullOrEmpty( trait.get_TagItem("parentkey")) )
-                return formatter != null ? formatter(trait, fw) : new List<string> { };
-            return new List<string> { };
+                return formatter != null ? formatter(trait, fw) : string.Empty;
+            return string.Empty;
         }
 
-        List<string> AttributeFormatter(GCATrait trait, GCAWriter fw)
+        string AttributeFormatter(GCATrait trait, GCAWriter fw)
         {
             var builder = new StringBuilder();
             builder.Append(trait.DisplayName);
@@ -726,10 +722,10 @@ namespace GCA.TextExport
             builder.Append(trait.DisplayScore);
 
             builder.AppendFormat(" [{0}]", trait.Points);
-            return new List<string> { fw.FormatTrait(label, builder.ToString()) };
+            return fw.FormatTrait(label, builder.ToString());
         }
 
-        List<string> AdvantageFormatter(GCATrait trait, GCAWriter fw)
+        string AdvantageFormatter(GCATrait trait, GCAWriter fw)
         {
             var builder = new StringBuilder();
             builder.Append(trait.Name);
@@ -761,10 +757,10 @@ namespace GCA.TextExport
 
             builder.AppendFormat(" [{0}]", trait.Points);
 
-            return new List<string> { fw.FormatTrait(label, builder.ToString()) };
+            return fw.FormatTrait(label, builder.ToString());
         }
 
-        List<string> ModifierFormatter(GCAModifier trait, GCAWriter fw)
+        string ModifierFormatter(GCAModifier trait, GCAWriter fw)
         {
             var builder = new StringBuilder();
             builder.Append(trait.DisplayName.Trim());
@@ -773,7 +769,7 @@ namespace GCA.TextExport
                 builder.AppendFormat(" {0}", string.IsNullOrEmpty(trait.LevelName()) ? trait.get_TagItem("level") : trait.LevelName());
             }
             builder.AppendFormat(", {0}", trait.get_TagItem("value"));
-            return new List<string> { builder.ToString() };
+            return builder.ToString();
         }
 
         /// <summary>
@@ -782,17 +778,17 @@ namespace GCA.TextExport
         /// </summary>
         /// <param name="traitType">Type of trait to harvest.</param>
         /// <returns>A comma separated, period-terminated list.</returns>
-        List<string> ComplexStringSkillsSpells(TraitTypes traitType)
+        string ComplexStringSkillsSpells(TraitTypes traitType)
         {
             var result = from trait in Traits
                          where trait.ItemType == traitType
                          where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          select trait;
 
-            return new List<string> { String.Join(", ", result) + "." };
+            return String.Join(", ", result) + ".";
         }
 
-        List<string> SkillFormatter(GCATrait trait, GCAWriter fw)
+        string SkillFormatter(GCATrait trait, GCAWriter fw)
         {
             var builder = new StringBuilder();
             builder.AppendFormat("{0} {1}:", trait.DisplayName, trait.get_TagItem("type"));
@@ -829,7 +825,7 @@ namespace GCA.TextExport
             }
             builder.AppendFormat(" [{0}]", trait.Points);
 
-            return new List<string> { fw.FormatTrait(label, builder.ToString()) };
+            return fw.FormatTrait(label, builder.ToString());
         }
         #endregion Formatters
     }
