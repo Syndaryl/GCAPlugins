@@ -460,7 +460,7 @@ namespace GCA.TextExport
             fw.WriteHeader("Spells [" + pc.get_Cost(modConstants.Spells) + "]");
             foreach (var item in ComplexListTrait(TraitTypes.Spells, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
-                fw.WriteLine(item);
+                fw.Write(item);
             }
             fw.WriteLine();
         }
@@ -470,7 +470,7 @@ namespace GCA.TextExport
             fw.WriteHeader("Skills [" + pc.get_Cost(modConstants.Skills) + "]");
             foreach (var item in ComplexListTrait(TraitTypes.Skills, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
-                fw.WriteLine(item);
+                fw.Write(item);
             }
             fw.WriteLine();
         }
@@ -480,7 +480,7 @@ namespace GCA.TextExport
             fw.WriteHeader("Disadvantages [" + pc.get_Cost(modConstants.Disadvantages) + "]");
             foreach (var item in ComplexListTrait(TraitTypes.Disadvantages, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
-                fw.WriteLine(item);
+                fw.Write(item);
             }
             fw.WriteLine();
         }
@@ -490,7 +490,7 @@ namespace GCA.TextExport
             fw.WriteHeader("Advantages [" + pc.get_Cost(modConstants.Advantages) + "]");
             foreach (var item in ComplexListTrait(TraitTypes.Advantages, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
-                fw.WriteLine(item);
+                fw.Write(item);
             }
             fw.WriteLine();
         }
@@ -543,7 +543,7 @@ namespace GCA.TextExport
                 "HT"};
             foreach (var item in ComplexListAttributes(StatNames, fw))
             {
-                fw.WriteLine(item);
+                fw.Write(item);
             }
             fw.WriteLine();
             StatNames.Clear();
@@ -556,7 +556,7 @@ namespace GCA.TextExport
             );
             foreach (var item in ComplexListAttributes(StatNames, fw))
             {
-                fw.WriteLine(item);
+                fw.Write(item);
             }
             fw.WriteLine();
         }
@@ -660,17 +660,19 @@ namespace GCA.TextExport
         {
             var result = from trait in Traits
                          where trait.ItemType == TraitTypes.Attributes
-                         where !string.IsNullOrEmpty(trait.get_TagItem("mainwin"))
-                         where string.IsNullOrEmpty(trait.get_TagItem("display"))
-                         where string.IsNullOrEmpty(trait.get_TagItem("hide"))
+                         where attributeList.Contains( trait.Name )
+                         //where !string.IsNullOrEmpty(trait.get_TagItem("mainwin"))
+                         //where !string.IsNullOrEmpty(trait.get_TagItem("display"))
+                         //where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          orderby trait.get_TagItem("mainwin")
                          select FormatTrait(trait, fw);
             return result;
         }
         delegate string TraitFormatter(GCATrait trait, GCAWriter fw);
 
-        string FormatTrait(GCATrait trait, GCAWriter fw)
+        string FormatTrait(GCATrait trait, GCAWriter fw, int childDepth = 0)
         {
+            fw.WriteLine("DEBUG TRAIT {0} DEPTH {1}", trait.Name, childDepth);
             TraitFormatter formatter = null;
             switch (trait.ItemType)
             {
@@ -706,9 +708,27 @@ namespace GCA.TextExport
                 case TraitTypes.Templates:
                     break;
             }
-            if (string.IsNullOrEmpty( trait.get_TagItem("parentkey")) )
-                return formatter != null ? formatter(trait, fw) : string.Empty;
-            return string.Empty;
+            var builder = new StringBuilder();
+            //if (! string.IsNullOrEmpty( trait.get_TagItem("parentkey")) )
+            for (int i = 0; i < childDepth; i++)
+            {
+                builder.Append(":");
+            }
+            builder.Append( formatter != null ? formatter(trait, fw) : string.Empty);
+            builder.Append(Environment.NewLine);
+            if (!string.IsNullOrEmpty(trait.get_ChildKeyList()) )
+            {
+                var keys = trait.get_ChildKeyList().Split(',');
+                fw.WriteLine("DEBUG TRAIT {0} CHILDREN {1}", trait.Name, keys);
+                foreach (var key in keys)
+                {
+                    var child = Traits.FirstOrDefault(x => x.IDKey.Equals(key.Trim()));
+                    fw.WriteLine("DEBUG TRAIT {0} KEY {1} CHILD {2}", trait.Name, key, child);
+                    if ( child != null)
+                        builder.Append( FormatTrait(child, fw, childDepth+1) );
+                }
+            }
+            return builder.ToString();
         }
 
         string AttributeFormatter(GCATrait trait, GCAWriter fw)
