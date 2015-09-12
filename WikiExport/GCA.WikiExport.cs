@@ -440,6 +440,7 @@ namespace GCA.TextExport
 
         void ExportEquiment(GCACharacter pc, GCAWriter fw)
         {
+            fw.WriteHeader("Equipment [$" + pc.get_Cost(modConstants.Equipment) + "]");
             fw.WriteLine();
         }
 
@@ -457,13 +458,17 @@ namespace GCA.TextExport
         void ExportSpells(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Spells [" + pc.get_Cost(modConstants.Spells) + "]");
+            foreach (var item in ComplexListTrait(TraitTypes.Spells, fw).Where(x => string.IsNullOrEmpty(x) != true))
+            {
+                fw.WriteLine(item);
+            }
             fw.WriteLine();
         }
 
         void ExportSkills(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Skills [" + pc.get_Cost(modConstants.Skills) + "]");
-            foreach (var item in ComplexListTrait(TraitTypes.Skills, fw))
+            foreach (var item in ComplexListTrait(TraitTypes.Skills, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
                 fw.WriteLine(item);
             }
@@ -473,7 +478,7 @@ namespace GCA.TextExport
         void ExportDisadvantages(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Disadvantages [" + pc.get_Cost(modConstants.Disadvantages) + "]");
-            foreach (var item in ComplexListTrait(TraitTypes.Disadvantages, fw))
+            foreach (var item in ComplexListTrait(TraitTypes.Disadvantages, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
                 fw.WriteLine(item);
             }
@@ -483,7 +488,7 @@ namespace GCA.TextExport
         void ExportAdvantages(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Advantages [" + pc.get_Cost(modConstants.Advantages) + "]");
-            foreach (var item in ComplexListTrait(TraitTypes.Advantages, fw))
+            foreach (var item in ComplexListTrait(TraitTypes.Advantages, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
                 fw.WriteLine(item);
             }
@@ -561,16 +566,16 @@ namespace GCA.TextExport
             fw.WriteTrait("Name:", CurChar.Name);
             fw.WriteTrait("Player:", CurChar.Player);
             fw.WriteTrait("Race:", CurChar.Race);
-            if (CurChar.Appearance != "")
+            if (! string.IsNullOrEmpty( CurChar.Appearance))
                 fw.WriteTrait("Appearance: ", CurChar.Appearance);
 
-            if (CurChar.Height != "")
+            if (!string.IsNullOrEmpty(CurChar.Height))
                 fw.WriteTrait("Height:", CurChar.Height);
 
-            if (CurChar.Weight != "")
+            if (!string.IsNullOrEmpty(CurChar.Weight))
                 fw.WriteTrait("Weight:", CurChar.Weight);
 
-            if (CurChar.Age != "")
+            if (!string.IsNullOrEmpty(CurChar.Age))
                 fw.WriteTrait("Age:", CurChar.Age);
 
             fw.WriteLine("");
@@ -619,7 +624,7 @@ namespace GCA.TextExport
         {
             var result = from trait in Traits
                          where trait.ItemType == traitType
-                         where trait.get_TagItem("hide").Equals("")
+                         where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          select trait.Points != 0 ? String.Format("{0} [{1}]", trait.Name, trait.Points) : trait.Name;
 
             return String.Join(", ", result) + ".";
@@ -635,7 +640,7 @@ namespace GCA.TextExport
         {
             var result = from trait in Traits
                          where trait.ItemType == traitType
-                         where trait.get_TagItem("hide").Equals("")
+                         where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          select trait;
 
             return String.Join("; ", result.Select(x => AdvantageFormatter(x, fw))) + ".";
@@ -645,7 +650,7 @@ namespace GCA.TextExport
         {
             var result = from trait in Traits
                          where trait.ItemType == traitType
-                         where trait.get_TagItem("hide").Equals("")
+                         where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          select FormatTrait(trait, fw);
             return result;
         }
@@ -655,9 +660,9 @@ namespace GCA.TextExport
         {
             var result = from trait in Traits
                          where trait.ItemType == TraitTypes.Attributes
-                         where !trait.get_TagItem("mainwin").Equals("")
-                         where trait.get_TagItem("display").Equals("")
-                         where trait.get_TagItem("hide").Equals("")
+                         where !string.IsNullOrEmpty(trait.get_TagItem("mainwin"))
+                         where string.IsNullOrEmpty(trait.get_TagItem("display"))
+                         where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          orderby trait.get_TagItem("mainwin")
                          select FormatTrait(trait, fw);
             return result;
@@ -701,7 +706,9 @@ namespace GCA.TextExport
                 case TraitTypes.Templates:
                     break;
             }
-            return formatter != null ? formatter(trait, fw) : "";
+            if (string.IsNullOrEmpty( trait.get_TagItem("parentkey")) )
+                return formatter != null ? formatter(trait, fw) : string.Empty;
+            return string.Empty;
         }
 
         string AttributeFormatter(GCATrait trait, GCAWriter fw)

@@ -32,10 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GCA5.Interfaces">
+    <Reference Include="GCA5.Interfaces, Version=1.0.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\GCA5\GCA5.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="GCA5Engine">
+    <Reference Include="GCA5Engine, Version=5.0.0.62, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\GCA5\GCA5Engine.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
