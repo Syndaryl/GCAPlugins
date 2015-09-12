@@ -729,19 +729,19 @@ namespace GCA.TextExport
         {
             var builder = new StringBuilder();
             builder.Append(trait.Name);
-            if (!trait.get_TagItem("level").Equals("1") || !trait.get_TagItem("upto").Equals("") || !trait.LevelName.Equals("")) // has more than one level
+            if (!trait.get_TagItem("level").Equals("1") || !string.IsNullOrEmpty(trait.get_TagItem("upto")) || !string.IsNullOrEmpty(trait.LevelName)) // has more than one level
             {
-                builder.AppendFormat(" {0}", trait.LevelName.Equals("") ? trait.get_TagItem("level") : trait.LevelName);
+                builder.AppendFormat(" {0}", string.IsNullOrEmpty(trait.LevelName) ? trait.get_TagItem("level") : trait.LevelName);
             }
 
             var label = builder.ToString();
 
             builder.Clear();
-            if (!trait.NameExt.Equals("") || trait.Mods.Count() > 0)
+            if (!string.IsNullOrEmpty(trait.NameExt) || trait.Mods.Count() > 0)
                 builder.Append(" (");
-            if (!trait.NameExt.Equals(""))
+            if (!string.IsNullOrEmpty(trait))
                 builder.Append(trait.NameExt);
-            if (!trait.NameExt.Equals("") && trait.Mods.Count() > 0)
+            if (!string.IsNullOrEmpty(trait.NameExt) && trait.Mods.Count() > 0)
                 builder.Append("; ");
             if (trait.Mods.Count() > 0)
             {
@@ -752,7 +752,7 @@ namespace GCA.TextExport
                 }
                 builder.Append(String.Join("; ", mods.Select(x => ModifierFormatter(x, fw))));
             }
-            if (!trait.NameExt.Equals("") || trait.Mods.Count() > 0)
+            if (!string.IsNullOrEmpty(trait.NameExt) || trait.Mods.Count() > 0)
                 builder.Append(")");
 
             builder.AppendFormat(" [{0}]", trait.Points);
@@ -764,9 +764,9 @@ namespace GCA.TextExport
         {
             var builder = new StringBuilder();
             builder.Append(trait.DisplayName.Trim());
-            if (!trait.get_TagItem("level").Equals("1") || !trait.get_TagItem("upto").Equals("") || !trait.LevelName().Equals("")) // has more than one level or has named levels
+            if (!trait.get_TagItem("level").Equals("1") || !string.IsNullOrEmpty(trait.get_TagItem("upto")) || !string.IsNullOrEmpty(trait.LevelName())) // has more than one level or has named levels
             {
-                builder.AppendFormat(" {0}", trait.LevelName().Equals("") ? trait.get_TagItem("level") : trait.LevelName());
+                builder.AppendFormat(" {0}", string.IsNullOrEmpty(trait.LevelName()) ? trait.get_TagItem("level") : trait.LevelName());
             }
             builder.AppendFormat(", {0}", trait.get_TagItem("value"));
             return builder.ToString();
@@ -782,7 +782,7 @@ namespace GCA.TextExport
         {
             var result = from trait in Traits
                          where trait.ItemType == traitType
-                         where trait.get_TagItem("hide").Equals("")
+                         where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          select trait;
 
             return String.Join(", ", result) + ".";
