@@ -418,7 +418,9 @@ namespace GCA.TextExport
             ExportCultural(pc, fw);
             ExportReaction(pc, fw);
             ExportAdvantages(pc, fw);
+            ExportPerks(pc, fw);
             ExportDisadvantages(pc, fw);
+            ExportQuirks(pc, fw);
             ExportSkills(pc, fw);
             ExportSpells(pc, fw);
             ExportMeta(pc, fw);
@@ -441,6 +443,10 @@ namespace GCA.TextExport
         void ExportEquiment(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Equipment [$" + pc.get_Cost(modConstants.Equipment) + "]");
+            foreach (var item in ComplexListTrait(TraitTypes.Equipment, fw).Where(x => string.IsNullOrEmpty(x) != true))
+            {
+                fw.Write(item);
+            }
             fw.WriteLine();
         }
 
@@ -452,6 +458,10 @@ namespace GCA.TextExport
         void ExportMeta(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Metatraits [" + pc.get_Cost(modConstants.Templates) + "]");
+            foreach (var item in ComplexListTrait(TraitTypes.Templates, fw).Where(x => string.IsNullOrEmpty(x) != true))
+            {
+                fw.Write(item);
+            }
             fw.WriteLine();
         }
 
@@ -475,10 +485,30 @@ namespace GCA.TextExport
             fw.WriteLine();
         }
 
+        void ExportQuirks(GCACharacter pc, GCAWriter fw)
+        {
+            fw.WriteHeader("Quirks [" + pc.get_Cost(modConstants.Quirks) + "]");
+            foreach (var item in ComplexListTrait(TraitTypes.Quirks, fw).Where(x => string.IsNullOrEmpty(x) != true))
+            {
+                fw.Write(item);
+            }
+            fw.WriteLine();
+        }
+
         void ExportDisadvantages(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Disadvantages [" + pc.get_Cost(modConstants.Disadvantages) + "]");
             foreach (var item in ComplexListTrait(TraitTypes.Disadvantages, fw).Where(x => string.IsNullOrEmpty(x) != true))
+            {
+                fw.Write(item);
+            }
+            fw.WriteLine();
+        }
+
+        void ExportPerks(GCACharacter pc, GCAWriter fw)
+        {
+            fw.WriteHeader("Perks [" + pc.get_Cost(modConstants.Perks) + "]");
+            foreach (var item in ComplexListTrait(TraitTypes.Perks, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
                 fw.Write(item);
             }
@@ -672,7 +702,7 @@ namespace GCA.TextExport
 
         string FormatTrait(GCATrait trait, GCAWriter fw, int childDepth = 0)
         {
-            fw.WriteLine("DEBUG TRAIT {0} DEPTH {1}", trait.Name, childDepth);
+            //fw.WriteLine("DEBUG TRAIT {0} DEPTH {1}", trait.Name, childDepth);
             TraitFormatter formatter = null;
             switch (trait.ItemType)
             {
@@ -704,35 +734,81 @@ namespace GCA.TextExport
                     formatter = SkillFormatter;
                     break;
                 case TraitTypes.Equipment:
+                    formatter = EquipmentFormatter;
                     break;
                 case TraitTypes.Templates:
+                    formatter = TemplateFormatter;
                     break;
             }
             var builder = new StringBuilder();
-            //if (! string.IsNullOrEmpty( trait.get_TagItem("parentkey")) )
-            for (int i = 0; i < childDepth; i++)
+            if ( string.IsNullOrEmpty(trait.get_TagItem("parentkey")) || childDepth > 0)
             {
-                builder.Append(":");
-            }
-            builder.Append( formatter != null ? formatter(trait, fw) : string.Empty);
-            builder.Append(Environment.NewLine);
-            if (!string.IsNullOrEmpty(trait.get_ChildKeyList()) )
-            {
-                var keys = trait.get_ChildKeyList().Split(',');
-                fw.WriteLine("DEBUG TRAIT {0} CHILDREN {1}", trait.Name, string.Join(",", keys));
-                foreach (var key in keys)
+                for (int i = 0; i < childDepth; i++)
                 {
-                    var cleanKey = key.Trim().Substring(1);
-                    var child = Traits.FirstOrDefault(x => x.IDKey.Equals(cleanKey));
-                    fw.WriteLine("DEBUG TRAIT {0} KEY {1} CHILD {2}", trait.Name, cleanKey, child);
-                    if (child != null)
+                    builder.Append(":");
+                }
+                builder.Append(formatter != null ? formatter(trait, fw) : string.Empty);
+                builder.Append(Environment.NewLine);
+                if (!string.IsNullOrEmpty(trait.get_ChildKeyList()))
+                {
+                    var keys = trait.get_ChildKeyList().Split(',');
+                    //fw.WriteLine("DEBUG TRAIT '{0}' CHILDREN '{1}'", trait.Name, string.Join(",", keys));
+                    foreach (var key in keys)
                     {
-                        fw.WriteLine("DEBUG FORMATTING CHILD {2}", trait.Name, cleanKey, child);
-                        builder.Append(FormatTrait(child, fw, childDepth + 1));
+                        var cleanKey = key.Trim().Substring(1);
+                        var child = Traits.FirstOrDefault(x => x.IDKey.Equals(Convert.ToInt32( cleanKey)));
+                        //fw.WriteLine("DEBUG TRAIT '{0}' KEY '{1}' CHILD '{2}'", trait.Name, cleanKey, child);
+                        if (child != null)
+                        {
+                            //fw.WriteLine("DEBUG FORMATTING CHILD '{2}'", trait.Name, cleanKey, child);
+                            builder.Append(FormatTrait(child, fw, childDepth + 1));
+                        }
                     }
                 }
             }
             return builder.ToString();
+        }
+
+        string TemplateFormatter(GCATrait trait, GCAWriter fw)
+        {
+            return AdvantageFormatter(trait, fw);
+        }
+
+        string EquipmentFormatter(GCATrait trait, GCAWriter fw)
+        {
+            var builder = new StringBuilder();
+            builder.Append(trait.DisplayName);
+
+            var label = builder.ToString();
+
+            builder.Clear();
+            if (!string.IsNullOrEmpty(trait.NameExt) || trait.Mods.Count() > 0)
+                builder.Append("(");
+            if (!string.IsNullOrEmpty(trait.NameExt))
+                builder.Append(trait.NameExt);
+            if (!string.IsNullOrEmpty(trait.NameExt) && trait.Mods.Count() > 0)
+                builder.Append("; ");
+            if (trait.Mods.Count() > 0)
+            {
+                var mods = new List<GCAModifier>();
+                foreach (GCAModifier item in trait.Mods)
+                {
+                    mods.Add(item);
+                }
+                builder.Append(String.Join("; ", mods.Select(x => ModifierFormatter(x, fw))));
+            }
+            if (!string.IsNullOrEmpty(trait.NameExt) || trait.Mods.Count() > 0)
+                builder.Append(")");
+
+            if ( Convert.ToInt32( trait.get_TagItem("count")) > 1 )
+            {
+                builder.AppendFormat(" {0} lbs, ${1} ×{2} = {3} lbs ${4}", trait.get_TagItem("precountweight"), trait.get_TagItem("precountcost"), trait.get_TagItem("count"), trait.get_TagItem("weight"), trait.get_TagItem("cost"));
+            }
+            else
+            {
+                builder.AppendFormat(" {0} lbs ${1}", trait.get_TagItem("weight"), trait.get_TagItem("cost"));
+            }
+            return fw.FormatTrait(label, builder.ToString());
         }
 
         string AttributeFormatter(GCATrait trait, GCAWriter fw)
