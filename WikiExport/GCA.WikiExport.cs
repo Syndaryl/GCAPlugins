@@ -432,8 +432,8 @@ namespace GCA.TextExport
 
         void ExportLoadout(GCACharacter pc, GCAWriter fw)
         {
-            fw.WriteHeader("Current Loadout");
             LoadOut curLoadout = pc.LoadOuts[pc.CurrentLoadout];
+            fw.WriteHeader(string.Format("Current Loadout: {0}", curLoadout.Name));
             foreach (GCATrait item in curLoadout.Items)
             {
                 fw.WriteLine(EquipmentFormatter(item, fw));
