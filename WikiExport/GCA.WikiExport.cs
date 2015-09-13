@@ -432,6 +432,14 @@ namespace GCA.TextExport
 
         void ExportLoadout(GCACharacter pc, GCAWriter fw)
         {
+            fw.WriteHeader("Current Loadout");
+            LoadOut curLoadout = pc.LoadOuts[pc.CurrentLoadout];
+            foreach (GCATrait item in curLoadout.Items)
+            {
+                fw.WriteLine(EquipmentFormatter(item, fw));
+            }
+            fw.WriteLine();
+            fw.WriteLine("Total Weight: {0} lbs.", GetLoadoutWeight(curLoadout.Items));
             fw.WriteLine();
         }
 
@@ -442,11 +450,13 @@ namespace GCA.TextExport
 
         void ExportEquiment(GCACharacter pc, GCAWriter fw)
         {
-            fw.WriteHeader("Equipment [$" + pc.get_Cost(modConstants.Equipment) + "]");
+            fw.WriteHeader(string.Format("Equipment [{0:C}]", pc.get_Cost(modConstants.Equipment)));
             foreach (var item in ComplexListTrait(TraitTypes.Equipment, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
                 fw.Write(item);
             }
+            fw.WriteLine();
+            fw.WriteLine("Total Weight: {0} lbs.", GetEquipmentWeight());
             fw.WriteLine();
         }
 
@@ -611,6 +621,25 @@ namespace GCA.TextExport
             fw.WriteLine("");
         }
         #endregion Exporters
+
+        double GetLoadoutWeight(SortedTraitCollection LoadoutItems)
+        {
+            double sum = 0;
+            foreach (GCATrait trait in LoadoutItems)
+            {
+                sum += Convert.ToDouble(trait.get_TagItem("weight"));
+            }
+            return sum;
+        }
+
+        double GetEquipmentWeight()
+        {
+            var result = from trait in Traits
+                         where trait.ItemType == TraitTypes.Equipment
+                         where string.IsNullOrEmpty(trait.get_TagItem("hide"))
+                         select Convert.ToDouble( trait.get_TagItem("weight"));
+            return result.Sum();
+        }
 
         #region Formatters
         void DoCharacterSeparator(int separatorOptionChoice, GCAWriter fw)
@@ -777,7 +806,7 @@ namespace GCA.TextExport
         string EquipmentFormatter(GCATrait trait, GCAWriter fw)
         {
             var builder = new StringBuilder();
-            builder.Append(trait.DisplayName);
+            builder.Append(trait.Name);
 
             var label = builder.ToString();
 
@@ -802,11 +831,17 @@ namespace GCA.TextExport
 
             if ( Convert.ToInt32( trait.get_TagItem("count")) > 1 )
             {
-                builder.AppendFormat(" {0} lbs, ${1} ×{2} = {3} lbs ${4}", trait.get_TagItem("precountweight"), trait.get_TagItem("precountcost"), trait.get_TagItem("count"), trait.get_TagItem("weight"), trait.get_TagItem("cost"));
+                builder.AppendFormat(" {0} lbs, {1:C} ×{2} = {3} lbs {4:C}", 
+                    Convert.ToDouble( trait.get_TagItem("precountweight")), 
+                    Convert.ToDouble(trait.get_TagItem("precountcost")), 
+                    Convert.ToDouble(trait.get_TagItem("count")), 
+                    Convert.ToDouble(trait.get_TagItem("weight")), 
+                    Convert.ToDouble(trait.get_TagItem("cost"))
+                    );
             }
             else
             {
-                builder.AppendFormat(" {0} lbs ${1}", trait.get_TagItem("weight"), trait.get_TagItem("cost"));
+                builder.AppendFormat(" {0} lbs {1:C}", Convert.ToDouble(trait.get_TagItem("weight")), Convert.ToDouble(trait.get_TagItem("cost")));
             }
             return fw.FormatTrait(label, builder.ToString());
         }
