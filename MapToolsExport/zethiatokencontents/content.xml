@@ -1,0 +1,2217 @@
+<net.rptools.maptool.model.Token>
+  <id>
+    <baGUID>AAAAALfwlOyWEwAAAAAAAA==</baGUID>
+  </id>
+  <beingImpersonated>false</beingImpersonated>
+  <exposedAreaGUID>
+    <baGUID>AAAAAB8ofuxIIwAAAAAAAA==</baGUID>
+  </exposedAreaGUID>
+  <imageAssetMap>
+    <entry>
+      <null/>
+      <net.rptools.lib.MD5Key>
+        <id>3d8fcaa62f2213c8854a14e1e2c917d8</id>
+      </net.rptools.lib.MD5Key>
+    </entry>
+  </imageAssetMap>
+  <x>277</x>
+  <y>615</y>
+  <z>18</z>
+  <anchorX>0</anchorX>
+  <anchorY>0</anchorY>
+  <sizeScale>1.0</sizeScale>
+  <lastX>0</lastX>
+  <lastY>0</lastY>
+  <snapToScale>true</snapToScale>
+  <width>512</width>
+  <height>512</height>
+  <scaleX>1.0</scaleX>
+  <scaleY>1.0</scaleY>
+  <sizeMap>
+    <entry>
+      <java-class>net.rptools.maptool.model.HexGridHorizontal</java-class>
+      <net.rptools.maptool.model.GUID>
+        <baGUID>fwABAQllXDgBAAAAOAABAQ==</baGUID>
+      </net.rptools.maptool.model.GUID>
+    </entry>
+    <entry>
+      <java-class>net.rptools.maptool.model.SquareGrid</java-class>
+      <net.rptools.maptool.model.GUID>
+        <baGUID>fwABAc9lFSoFAAAAKgABAQ==</baGUID>
+      </net.rptools.maptool.model.GUID>
+    </entry>
+    <entry>
+      <java-class>net.rptools.maptool.model.HexGridVertical</java-class>
+      <net.rptools.maptool.model.GUID>
+        <baGUID>fwABAQllXDgBAAAAOAABAQ==</baGUID>
+      </net.rptools.maptool.model.GUID>
+    </entry>
+  </sizeMap>
+  <snapToGrid>true</snapToGrid>
+  <isVisible>true</isVisible>
+  <visibleOnlyToOwner>false</visibleOnlyToOwner>
+  <name>Zitheia</name>
+  <ownerList>
+    <string>Emily</string>
+  </ownerList>
+  <ownerType>0</ownerType>
+  <tokenShape>CIRCLE</tokenShape>
+  <tokenType>PC</tokenType>
+  <layer>TOKEN</layer>
+  <propertyType>Basic</propertyType>
+  <facing>-30</facing>
+  <isFlippedX>false</isFlippedX>
+  <isFlippedY>false</isFlippedY>
+  <portraitImage>
+    <id>670129e5246368d3c3ea389540a6a5ac</id>
+  </portraitImage>
+  <sightType>Normal</sightType>
+  <hasSight>true</hasSight>
+  <gmNotes></gmNotes>
+  <gmName>Emily</gmName>
+  <state>
+    <entry>
+      <string>Solid Ghost</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Neutral</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>-1 Penalty</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Friendly</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Crouching</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Pinned</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Sitting</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>In the Air</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Stunned</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Slowed</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Face Down</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Berserk</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>-4 Penalty</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Burning Alive</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Semi-Solid Ghosts</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Enemy</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>-3 Penalty</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Kneeling</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Prone</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Hidden</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Unconscious</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Disabled</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>-2 Penalty</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Clothing Aflame</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Other2</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Blind</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Other3</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Fleeing</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Dead</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Face Up</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Other4</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Cover</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Incapacitated</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Max Speed</string>
+      <boolean>false</boolean>
+    </entry>
+    <entry>
+      <string>Other</string>
+      <boolean>false</boolean>
+    </entry>
+  </state>
+  <propertyMapCI>
+    <store>
+      <entry>
+        <string>quirks</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Quirks</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>maxfp</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MaxFP</key>
+          <value class="string">13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>strength</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Strength</key>
+          <value class="string">13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>demon lore</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Demon Lore</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>currentdb</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>CurrentDB</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>basic move</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Basic Move</key>
+          <value class="string">7</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>hp</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>HP</key>
+          <value class="string">11</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>noencweight</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>NoEncWeight</key>
+          <value class="string">34</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myblock2level</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyBlock2Level</key>
+          <value class="string">0</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>thaumotology</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Thaumotology</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>perception</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Perception</key>
+          <value class="string">14</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>skills</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Skills</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myblock2index</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyBlock2Index</key>
+          <value class="string"> </value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>naturalist</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Naturalist</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myblock2name</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyBlock2Name</key>
+          <value class="string">none</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>layeredarmor</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>LayeredArmor</key>
+          <value class="string">0</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>disadvantages</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Disadvantages</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>fp </string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>FP </key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myblock1level</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyBlock1Level</key>
+          <value class="string">8</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>spelllevels</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>SpellLevels</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>hp </string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>HP </key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>block</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Block</key>
+          <value class="string">8</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry1level</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry1Level</key>
+          <value class="string">13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>perks</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Perks</key>
+          <value class="string"></value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>fear</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Fear</key>
+          <value class="string">13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>parry3</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Parry3</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>parry2</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Parry2</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>parry1</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Parry1</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>curfp</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>CurFP</key>
+          <value class="string">13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>mediumencweight</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MediumEncWeight</key>
+          <value class="string">102</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>faerie lore</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Faerie Lore</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myblock1name</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyBlock1Name</key>
+          <value class="string">Block</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>block1</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Block1</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>block2</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Block2</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry2level</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry2Level</key>
+          <value class="string">10</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>parry4</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Parry4</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>iq</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>IQ</key>
+          <value class="string">11</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>combatreflexes</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>CombatReflexes</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>equipment</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Equipment</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>er</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>ER</key>
+          <value class="string">0</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>intelligence</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Intelligence</key>
+          <value class="string">11</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>skilllevels</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>SkillLevels</key>
+          <value class="string">14,10,18,15,13,12,13,15,11,12,12,14,14,12,12,12,14,13,7,16,14,15,12,11,16,12,13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>vision</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Vision</key>
+          <value class="string">14</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry1name</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry1Name</key>
+          <value class="string">Staff</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>maxer</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MaxER</key>
+          <value class="string">0</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>heavyencweight</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>HeavyEncWeight</key>
+          <value class="string">204</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>maxencweight</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MaxEncWeight</key>
+          <value class="string">340</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myblock1index</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyBlock1Index</key>
+          <value class="string"> </value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>blessing</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Blessing</key>
+          <value class="string">0</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>spelllist</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>SpellList</key>
+          <value class="string">{&quot;arrows-fine-barbed&quot;:18,&quot;look-for-arrows-fine-barbed&quot;:0,&quot;arrows-fine-bodkin&quot;:20,&quot;look-for-arrows-fine-bodkin&quot;:0,&quot;arrows-fine-cutting&quot;:10,&quot;look-for-arrows-fine-cutting&quot;:0,&quot;arrows-fine-silver&quot;:10,&quot;arrows-fire&quot;:5,&quot;look-for-arrows-fine-silver&quot;:0,&quot;look-for-arrows-fire&quot;:0,&quot;arrows-fine-meteoric&quot;:4,&quot;look-for-arrows-fine-meteoric&quot;:0,&quot;arrowtypes&quot;:&quot;fine-barbed,fine-bodkin,fine-cutting,fine-meteoric,fine-silver,fire,barbed,bodkin,cutting&quot;}</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>maxhp</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MaxHP</key>
+          <value class="string">13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>undead lore</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Undead Lore</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry2name</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry2Name</key>
+          <value class="string">Brawling</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>fp</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>FP</key>
+          <value class="string">11</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>heraldry</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Heraldry</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry3index</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry3Index</key>
+          <value class="string"> </value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>encumbrance</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Encumbrance</key>
+          <value class="string">1</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>weaponmaster</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>WeaponMaster</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry3name</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry3Name</key>
+          <value class="string">Knife</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>skilllist</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>SkillList</key>
+          <value class="string">Acrobatics (14),Armoury (10),Bow (18),Brawling (15),Camouflage (13),Cartography (12),Climbing (13),Fast (15),First (11),Gesture (12),Hiking (12),Jumping (14),Knife (14),Mimicry (12),Naturalist (12),Navigation (12),Observation (14),Search (13),Shadowing (7),Staff (16),Stealth (14),Survival (15),Swimming (12),Teaching (11),Tracking (16),Traps (12),Wrestling (13)</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>hearing</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Hearing</key>
+          <value class="string">14</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>spells</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Spells</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry2index</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry2Index</key>
+          <value class="string"> </value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry4level</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry4Level</key>
+          <value class="string">0</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry4name</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry4Name</key>
+          <value class="string">none</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>st</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>ST</key>
+          <value class="string">13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>curhp</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>CurHP</key>
+          <value class="string">13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>spellpoints</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>SpellPoints</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>dodge</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Dodge</key>
+          <value class="string">10</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>will</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Will</key>
+          <value class="string">11</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>health</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Health</key>
+          <value class="string">12</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>spellmaint</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>SpellMaint</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>occultism</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Occultism</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>elder lore</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Elder Lore</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>lightencweight</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>LightEncWeight</key>
+          <value class="string">68</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>dexterity</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Dexterity</key>
+          <value class="string">14</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>parry</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Parry</key>
+          <value class="string">13</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry3level</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry3Level</key>
+          <value class="string">9</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry1index</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry1Index</key>
+          <value class="string"> </value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>myparry4index</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>MyParry4Index</key>
+          <value class="string"> </value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>advantages</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Advantages</key>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+      <entry>
+        <string>basic speed</string>
+        <net.rptools.CaseInsensitiveHashMap_-KeyValue>
+          <key>Basic Speed</key>
+          <value class="string">7</value>
+          <outer-class reference="../../../.."/>
+        </net.rptools.CaseInsensitiveHashMap_-KeyValue>
+      </entry>
+    </store>
+  </propertyMapCI>
+  <macroPropertiesMap>
+    <entry>
+      <int>1</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>1</index>
+        <colorKey>pink</colorKey>
+        <hotKey>None</hotKey>
+        <command>&lt;!-- Gets answers from the user asking what the effective skill level is, and for any modifiers --&gt;
+[H: Success = input(&quot;Skill | 10 | Skill Level&quot;, &quot;Mods | 0 | Any modifiers to skill&quot;,&quot;Cap | 0 | Maximum skill cap (leave zero if not applicable)&quot;)]
+&lt;!-- aborts the macro if the user canceled (UNLIKE OPENRPG WHICH JUST KEEPS GOING AAAARG --&gt;
+[H: abort(Success)]
+&lt;!-- calls the GURPS dieroller to find out the results of the skill test --&gt;
+[R,IF(Cap==0),CODE:{
+[R:skill(Skill,Mods)]
+};{
+[R:skill(Skill,Mods,Cap)]
+}]</command>
+        <label>Skill Check</label>
+        <group></group>
+        <sortby>s</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>2</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>2</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h: Success=input(&quot;curSkill|&quot;+SkillList+&quot;|Skill:|LIST&quot;,&quot;Mods | 0 | Modifiers to skill&quot;,&quot;Cap | 0 | Skill cap (0 for none)&quot;)]
+[h: abort(Success)]
+[h: curLevel=listGet(SkillLevels,curSkill)]
+[r: listGet(SkillList,curSkill)]
+[r,IF(Cap==0),CODE:{
+[r:skill(curLevel,Mods)]
+};{
+[r:skill(curLevel,Mods,Cap)]
+}]</command>
+        <label>Pick skill</label>
+        <group></group>
+        <sortby>s</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>true</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>3</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>3</index>
+        <colorKey>white</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:Block1 = 0]
+[h:Block2 = 0]
+[h:Parry1 = 0]
+[h:Parry2 = 0]
+[h:Parry3 = 0]
+[h:Parry4 = 0]
+[h: setProperty(&quot;MyBlock1Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyBlock2Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyParry1Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyParry2Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyParry3Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyParry4Index&quot;, &quot; &quot;)]
+[h,foreach(macro,getMacros()), code: {
+  [h,foreach(index, getMacroIndexes(macro)), code: {
+    [h: props = getMacroProps(index)]
+    [sortLabel = getStrProp(props, &quot;sortBy&quot;)]
+    [r: &quot;Sort on &quot;+sortLabel]
+    [if(matches(sortLabel,&quot;.*Defense1.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyBlock1Name&quot;)+&quot; (&quot;+Block1+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense2.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyBlock2Name&quot;)+&quot; (&quot;+Block2+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense3.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyParry1Name&quot;)+&quot; (&quot;+Parry1+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense4.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyParry2Name&quot;)+&quot; (&quot;+Parry2+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense5.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyParry3Name&quot;)+&quot; (&quot;+Parry3+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense6.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyParry4Name&quot;)+&quot; (&quot;+Parry4+&quot;)&quot;)]
+  }]
+}]
+[h: setMacroProps(getMacroButtonIndex(), &quot;label=Start turn;color=white;fontColor=black&quot;)]</command>
+        <label>Start turn</label>
+        <group></group>
+        <sortby>xStartTurnx</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>80</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Reset Block and Parry counters. Roll to stay conscious if at or below 0 HP.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>4</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>4</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:statList=&quot;ST,Dexterity,IQ,Health,Will,Fear,Perception,Vision,Hearing&quot;]
+[h:statListNiceNames=&quot;ST,DX,IQ,HT,Will,Fear,Perception,Vision,Hearing&quot;]
+[h: Success=input(&quot;curStat|&quot;+statListNiceNames+&quot;|Stat:|LIST&quot;,&quot;Mods | 0 | Modifiers to stat roll&quot;,&quot;Cap| 0 | Roll cap (0 for none)&quot;)]
+[h: abort(Success)]
+[r: listGet(statList,curStat)] check 
+[h: curLevel = getProperty(listget(statList,curStat))]
+[R,IF(Cap==0),CODE:{
+[R:skill(curLevel,Mods)]
+};{
+[R:skill(curLevel,Mods,Cap)]
+}]</command>
+        <label>Pick Stat</label>
+        <group></group>
+        <sortby>s</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>true</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>5</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>5</index>
+        <colorKey>red</colorKey>
+        <hotKey>None</hotKey>
+        <command>[H:AccBase=4]
+[H:SkillBase=19]
+[h:status = input(
+                &quot;FastDrawMods|0|Fast Draw Modifiers?&quot;,
+                &quot;FastReadyMods|0|Fast Ready Modifiers (beyond -3)&quot;,
+                &quot;junk| &amp;nbsp; | Actual Shooting |LABEL | TEXT=FALSE &quot;,
+                &quot;AccApply|1|Does ACC apply?|CHECK&quot;,
+                &quot;DistancePenalty|2 yd,3 yd,5 yd,7 yd,10 yd,15 yd,20 yd,30 yd,50 yd,70 yd,100 yd|Distance Penalty|RADIO&quot;,
+                &quot;MiscMods|0|Miscelaneous shooting modifiers&quot;,
+                &quot;damType|imp,(2) pi,cut|Damage Type|RADIO|VALUE=STRING&quot;
+                )]
+[h:abort(status)]
+[h:Acc = if(AccApply == 1, if(damType == &quot;cut&quot;,AccBase-1,AccBase), 0)]
+
+&lt;B&gt;Fast Draw: Bow ({SkillBase-2})&lt;/B&gt; [sk(SkillBase-2,FastDrawMods)]&lt;br /&gt;
+&lt;B&gt;Fast Ready Bow ({SkillBase-3})&lt;/B&gt; [sk(SkillBase,-3+FastReadyMods)]&lt;br /&gt;
+&lt;B&gt;Fast Shoot Bow ({SkillBase})&lt;/B&gt; @ range penalty -{DistancePenalty}&lt;/B&gt; [t:attk(SkillBase,-3+Acc-DistancePenalty+MiscMods)]&lt;br /&gt;
+Damage is [t:1d6+4] {damType} if successful.</command>
+        <label>Bow Rapid Strike</label>
+        <group>Combat</group>
+        <sortby>A1</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>yellow</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Fast Draw Rapid Load Rapid Fire in a nice bundle with range penalties.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>6</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>6</index>
+        <colorKey>red</colorKey>
+        <hotKey>None</hotKey>
+        <command>&lt;!-- Attack with the base skill from the pick list and any specified mods and cap --!&gt;
+&lt;!-- You can replace the full skill list with a shorter one by changing both the SkillList and SkillLevels below --!&gt;
+&lt;!-- They must be comma delimited lists of skill names and skill levels. --!&gt;
+[h:AttackSkillList = &quot;Bow (18),Brawling (14),Broadsword (13),Horse Archery (Bow) (18),Knife (13),Shield (14),Shortsword (15),Throwing (10),Thrown Weapon (Knife) (9)&quot;]
+[h:AttackSkillLevels = &quot;18,14,13,18,13,14,15,10,9&quot;]
+[h:RangeListYards = &quot;2,3,5,7,10,15,20,30,50&quot;]
+[h:RangeListPenalties = &quot;0,-1,-2,-3,-4,-5,-6,-7,-8&quot;]
+[h: Success=input(&quot;curSkill|&quot;+AttackSkillList+&quot;|Skill:|LIST&quot;,&quot;Mods | 0 | Modifiers to skill&quot;,&quot;Range | 0 | Range (0 for not applicable)&quot;, &quot;Cap | 0 | Skill cap (0 for none)&quot;)]
+[h: abort(Success)]
+[h: curLevel=listGet(AttackSkillLevels,curSkill)]
+[r: &quot;Attack with &quot;+listGet(AttackSkillList,curSkill)]
+[R,IF(Cap==0),CODE:{
+[R:attack(curLevel,Mods)]
+};{
+[R:attack(curLevel,Mods,Cap)]
+}]</command>
+        <label>Pick attack skill</label>
+        <group>Combat</group>
+        <sortby>A4</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>true</applyToTokens>
+        <fontColorKey>yellow</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Pick a skill by name, plus mods and cap, to do an attack with auto DA.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>7</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>7</index>
+        <colorKey>lime</colorKey>
+        <hotKey>None</hotKey>
+        <command>&lt;!-- Change the Parry1Level to your parry without DB for this weapon or use the set macro --!&gt;
+[h: Parry1Level = 11]
+[h: Parry1Name = &quot;Parry&quot;]
+[h,if(getProperty(&quot;MyParry1Name&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyParry1Name&quot;, Parry1Name)] } ; {[h: Parry1Name = getProperty(&quot;MyParry1Name&quot;)]} ]
+[h,if(getProperty(&quot;MyParry1Level&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyParry1Level&quot;, Parry1Level)] } ; {[h: Parry1Level = getProperty(&quot;MyParry1Level&quot;)]} ]
+[h: Success=input(&quot;Mods&quot;)]
+[h: abort(Success)]
+[h: curLevel = Parry1Level +CurrentDB - ((4*Parry1)/(1+WeaponMaster))]
+[r: Parry1Name+&quot; (&quot;+(curLevel+Mods)]) [r:skill(curLevel,Mods)]
+[h: Parry1 = Parry1 + 1]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=&quot;+Parry1Name+&quot; (&quot;+Parry1+&quot;)&quot;)]
+[h: setProperty(&quot;MyParry1Name&quot;,Parry1Name)]
+[h,foreach(macro,getMacros()), code: {
+  [h,foreach(index, getMacroIndexes(macro)), code: {
+    [h: props = getMacroProps(index)]
+    [sortLabel = getStrProp(props, &quot;sortBy&quot;)]
+    [if(matches(sortLabel,&quot;.*StartTurn.*&quot;)): setMacroProps(index, &quot;label=**Start turn**;color=red;fontColor=yellow&quot;)]
+  }]
+}]</command>
+        <label>Staff (0)</label>
+        <group>Combat</group>
+        <sortby>Defense3</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Parry1</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>8</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>8</index>
+        <colorKey>lime</colorKey>
+        <hotKey>None</hotKey>
+        <command>&lt;!-- Change the Block1Level to your parry without DB for this weapon or use the set macro --!&gt;
+[h: Block1Level = 11]
+[h: Block1Name = &quot;Block&quot;]
+[h,if(getProperty(&quot;MyBlock1Name&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyBlock1Name&quot;, Block1Name)] } ; {[h: Block1Name = getProperty(&quot;MyBlock1Name&quot;)]} ]
+[h,if(getProperty(&quot;MyBlock1Level&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyBlock1Level&quot;, Block1Level)] } ; {[h: Block1Level = getProperty(&quot;MyBlock1Level&quot;)]} ]
+[h: Success=input(&quot;Mods&quot;)]
+[h: abort(Success)]
+[h: curLevel = Block1Level +CurrentDB - round((5*Block1)/(1+WeaponMaster))]
+[r: Block1Name+&quot; (&quot;+(curLevel+Mods)]) [r:skill(curLevel,Mods)]
+[h: Block1 = Block1 + 1]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=&quot;+Block1Name+&quot; (&quot;+Block1+&quot;)&quot;)]
+[h: setProperty(&quot;MyBlock1Name&quot;,Block1Name)]
+[h,foreach(macro,getMacros()), code: {
+  [h,foreach(index, getMacroIndexes(macro)), code: {
+    [h: props = getMacroProps(index)]
+    [sortLabel = getStrProp(props, &quot;sortBy&quot;)]
+    [if(matches(sortLabel,&quot;.*StartTurn.*&quot;)): setMacroProps(index, &quot;label=**Start turn**;color=red;fontColor=yellow&quot;)]
+  }]
+}]</command>
+        <label>Block (0)</label>
+        <group>Combat</group>
+        <sortby>Defense1</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Block1</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>9</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>9</index>
+        <colorKey>yellow</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h: Success=input(&quot;Change&quot;)]
+[h: abort(Success)]
+[h: FP=FP+Change]
+[h: FP=if(FP&gt;MaxFP,MaxFP,FP)]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=FP (&quot;+FP+&quot;)&quot;)]</command>
+        <label>FP (11)</label>
+        <group></group>
+        <sortby>BFatiguePoints</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>60</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Current Fatigue Points. Click to change.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>10</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>10</index>
+        <colorKey>lime</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h: Success=input(&quot;Mods&quot;)]
+[h: abort(Success)]
+[h,if((HP/MaxHP &lt; 1/3) || (FP/MaxFP &lt; 1/3)):
+       curLevel = round((floor(getProperty(&quot;Basic Speed&quot;))+3)/2)+CombatReflexes+CurrentDB-Encumbrance;
+       curLevel = (floor(getProperty(&quot;Basic Speed&quot;))+3)+CombatReflexes+CurrentDB-Encumbrance;]
+Dodge([r:curLevel+mods]) [r:skill(curLevel,Mods)]</command>
+        <label>Dodge</label>
+        <group>Combat</group>
+        <sortby>DD</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>11</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>11</index>
+        <colorKey>red</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h: Success=input(&quot;Change&quot;)]
+[h: abort(Success)]
+[h: HP=HP+Change]
+[h: HP=if(HP&gt;MaxHP,MaxHP,HP)]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=HP (&quot;+HP+&quot;)&quot;)]</command>
+        <label>HP (11)</label>
+        <group></group>
+        <sortby>AHitPoints</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>yellow</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>60</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Current Hit Points. Click to change.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>12</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>12</index>
+        <colorKey>lime</colorKey>
+        <hotKey>None</hotKey>
+        <command>&lt;!-- Change the Parry2Level to your parry without DB for this weapon or use the set macro --!&gt;
+[h: Parry2Level = 11]
+[h: Parry2Name = &quot;Parry2&quot;]
+[h,if(getProperty(&quot;MyParry2Name&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyParry2Name&quot;, Parry2Name)] } ; {[h: Parry2Name = getProperty(&quot;MyParry2Name&quot;)]} ]
+[h,if(getProperty(&quot;MyParry2Level&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyParry2Level&quot;, Parry2Level)] } ; {[h: Parry2Level = getProperty(&quot;MyParry2Level&quot;)]} ]
+[h: Success=input(&quot;Mods&quot;)]
+[h: abort(Success)]
+[h: curLevel = Parry2Level +CurrentDB - ((4*Parry2)/(1+WeaponMaster))]
+[r: Parry2Name+&quot; (&quot;+(curLevel+Mods)]) [r:skill(curLevel,Mods)]
+[h: Parry2 = Parry2 + 1]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=&quot;+Parry2Name+&quot; (&quot;+Parry2+&quot;)&quot;)]
+[h: setProperty(&quot;MyParry2Name&quot;,Parry2Name)]
+[h,foreach(macro,getMacros()), code: {
+  [h,foreach(index, getMacroIndexes(macro)), code: {
+    [h: props = getMacroProps(index)]
+    [sortLabel = getStrProp(props, &quot;sortBy&quot;)]
+    [if(matches(sortLabel,&quot;.*StartTurn.*&quot;)): setMacroProps(index, &quot;label=**Start turn**;color=red;fontColor=yellow&quot;)]
+  }]
+}]</command>
+        <label>Brawling (0)</label>
+        <group>Combat</group>
+        <sortby>Defense4</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Parry2</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>13</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>13</index>
+        <colorKey>green</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h: eLevels = &quot;None,Light,Medium,Heavy,Extra Heavy&quot;]
+[h: Success=input(&quot;Mods| &quot;+eLevels+&quot; | New Encumbrance level |LIST| SELECT=&quot;+Encumbrance)]
+[h: abort(Success)]
+[h,if(Mods &lt;= 4 &amp;&amp; Mods &gt;= 0):Encumbrance = Mods; Encumbrance = 0]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=Encumbrance (&quot;+listGet(eLevels,Encumbrance)+&quot;)&quot;)]</command>
+        <label>Encumbrance (Light)</label>
+        <group></group>
+        <sortby>statsEncumbrance</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>150</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Current Encumbrance Level. Click to change.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>14</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>14</index>
+        <colorKey>green</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:CurrentDB = getProperty(&quot;CurrentDB&quot;)]
+[h: Success=input(&quot;Mods | &quot;+CurrentDB+&quot; | New effective DB&quot;)]
+[h: abort(Success)]
+[h:CurrentDB = Mods]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=DB (&quot;+CurrentDB+&quot;)&quot;)]
+[h:setProperty(&quot;CurrentDB&quot;,CurrentDB )]</command>
+        <label>DB (0)</label>
+        <group></group>
+        <sortby>statsDB</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>50</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Current Defense Bonus. Click to change.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>15</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>15</index>
+        <colorKey>green</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:CombatReflexes = getProperty(&quot;CombatReflexes&quot;)]
+[h:WeaponMaster = getProperty(&quot;WeaponMaster&quot;)]
+[h: Success=input(&quot;CombatReflexes | &quot;+CombatReflexes+&quot;| Combat Reflexes | CHECK&quot;,&quot;WeaponMaster |&quot;+WeaponMaster+&quot;| Weapon Master | CHECK&quot;)]
+[h: abort(Success)]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=CR: &quot;+listGet(&quot;No,Yes&quot;,CombatReflexes)+&quot; WM: &quot;+listGet(&quot;No,Yes&quot;,WeaponMaster))]
+[h:setProperty(&quot;CombatReflexes&quot;,CombatReflexes)]
+[h:setProperty(&quot;WeaponMaster&quot;,WeaponMaster)]</command>
+        <label>CR: No WM: No</label>
+        <group></group>
+        <sortby>statsCRWM</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth>100</minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Current Encumbrance Level. Click to change.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>16</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>16</index>
+        <colorKey>lime</colorKey>
+        <hotKey>None</hotKey>
+        <command>&lt;!-- Change the Parry3Level to your parry without DB for this weapon or use the set macro --!&gt;
+[h: Parry3Level = 11]
+[h: Parry3Name = &quot;Parry3&quot;]
+[h,if(getProperty(&quot;MyParry3Name&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyParry3Name&quot;, Parry3Name)] } ; {[h: Parry3Name = getProperty(&quot;MyParry3Name&quot;)]} ]
+[h,if(getProperty(&quot;MyParry3Level&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyParry3Level&quot;, Parry3Level)] } ; {[h: Parry3Level = getProperty(&quot;MyParry3Level&quot;)]} ]
+[h: Success=input(&quot;Mods&quot;)]
+[h: abort(Success)]
+[h: curLevel = Parry3Level +CurrentDB - ((4*Parry3)/(1+WeaponMaster))]
+[r: Parry3Name+&quot; (&quot;+(curLevel+Mods)]) [r:skill(curLevel,Mods)]
+[h: Parry3 = Parry3 + 1]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=&quot;+Parry3Name+&quot; (&quot;+Parry3+&quot;)&quot;)]
+[h: setProperty(&quot;MyParry3Name&quot;,Parry3Name)]
+[h,foreach(macro,getMacros()), code: {
+  [h,foreach(index, getMacroIndexes(macro)), code: {
+    [h: props = getMacroProps(index)]
+    [sortLabel = getStrProp(props, &quot;sortBy&quot;)]
+    [if(matches(sortLabel,&quot;.*StartTurn.*&quot;)): setMacroProps(index, &quot;label=**Start turn**;color=red;fontColor=yellow&quot;)]
+  }]
+}]</command>
+        <label>Knife (0)</label>
+        <group>Combat</group>
+        <sortby>Defense5</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Parry3</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>17</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>17</index>
+        <colorKey>green</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h,if(getProperty(&quot;MyBlock1Name&quot;) == &quot; &quot;), CODE: {[h: Block1Name = &quot;Block&quot;] } ; { [h: Block1Name = getProperty(&quot;MyBlock1Name&quot;)]}]
+[h,if(getProperty(&quot;MyBlock2Name&quot;) == &quot; &quot;), CODE: {[h: Block2Name = &quot;Block2&quot;] } ; { [h: Block2Name = getProperty(&quot;MyBlock2Name&quot;)]}]
+[h,if(getProperty(&quot;MyParry1Name&quot;) == &quot; &quot;), CODE: {[h: Parry1Name = &quot;Parry&quot;] } ; { [h: Parry1Name = getProperty(&quot;MyParry1Name&quot;)]}]
+[h,if(getProperty(&quot;MyParry2Name&quot;) == &quot; &quot;), CODE: {[h: Parry2Name = &quot;Parry2&quot;] } ; { [h: Parry2Name = getProperty(&quot;MyParry2Name&quot;)]}]
+[h,if(getProperty(&quot;MyParry3Name&quot;) == &quot; &quot;), CODE: {[h: Parry3Name = &quot;Parry3&quot;] } ; { [h: Parry3Name = getProperty(&quot;MyParry3Name&quot;)]}]
+[h,if(getProperty(&quot;MyParry4Name&quot;) == &quot; &quot;), CODE: {[h: Parry4Name = &quot;Parry4&quot;] } ; { [h: Parry4Name = getProperty(&quot;MyParry4Name&quot;)]}]
+[h,if(getProperty(&quot;MyBlock1Level&quot;) == &quot; &quot;), CODE: {[h: Block1Level = &quot;8&quot;] } ; { [h: Block1Level = getProperty(&quot;MyBlock1Level&quot;)]}]
+[h,if(getProperty(&quot;MyBlock2Level&quot;) == &quot; &quot;), CODE: {[h: Block2Level = &quot;8&quot;] } ; { [h: Block2Level = getProperty(&quot;MyBlock2Level&quot;)]}]
+[h,if(getProperty(&quot;MyParry1Level&quot;) == &quot; &quot;), CODE: {[h: Parry1Level = &quot;8&quot;] } ; { [h: Parry1Level = getProperty(&quot;MyParry1Level&quot;)]}]
+[h,if(getProperty(&quot;MyParry2Level&quot;) == &quot; &quot;), CODE: {[h: Parry2Level = &quot;8&quot;] } ; { [h: Parry2Level = getProperty(&quot;MyParry2Level&quot;)]}]
+[h,if(getProperty(&quot;MyParry3Level&quot;) == &quot; &quot;), CODE: {[h: Parry3Level = &quot;8&quot;] } ; { [h: Parry3Level = getProperty(&quot;MyParry3Level&quot;)]}]
+[h,if(getProperty(&quot;MyParry4Level&quot;) == &quot; &quot;), CODE: {[h: Parry4Level = &quot;8&quot;] } ; { [h: Parry4Level = getProperty(&quot;MyParry4Level&quot;)]}]
+[h,if(HP == &quot; &quot;), CODE: {[h: HP = if(MaxHP != &quot; &quot;,MaxHP,10)] } ]
+[h,if(FP == &quot; &quot;), CODE: {[h: FP = if(MaxFP != &quot; &quot;,MaxFP,10)] } ]
+[h,if(ER == &quot; &quot;), CODE: {[h: ER = if(MaxER != &quot; &quot;,MaxER,0)] } ]
+[h,if(SpellMaint == &quot; &quot;), CODE: {[h: SpellMaint = 0] } ]
+[h,if(CombatReflexes == &quot; &quot;), CODE: {[h: CombatReflexes = 0] } ]
+[h,if(WeaponMaster == &quot; &quot;), CODE: {[h: WeaponMaster = 0] } ]
+[h,if(Encumbrance == &quot; &quot;), CODE: {[h: Encumbrance = 0] } ]
+[h,if(CurrentDB == &quot; &quot;), CODE: {[h: CurrentDB = 0] } ]
+[h: Success=input(	&quot;Block1Name | &quot;+Block1Name+&quot; | First Block |TEXT&quot;,&quot;Block1Level | &quot;+Block1Level+&quot; | Level&quot;,
+		&quot;Block2Name | &quot;+Block2Name+&quot; | Second Block |TEXT&quot;,&quot;Block2Level | &quot;+Block2Level+&quot; | Level&quot;,
+		&quot;Parry1Name | &quot;+Parry1Name+&quot; | First Parry |TEXT&quot;,&quot;Parry1Level | &quot;+Parry1Level+&quot; | Level&quot;,
+		&quot;Parry2Name | &quot;+Parry2Name+&quot; | Second Parry |TEXT&quot;,&quot;Parry2Level | &quot;+Parry2Level+&quot; | Level&quot;,
+		&quot;Parry3Name | &quot;+Parry3Name+&quot; | Third Parry |TEXT&quot;,&quot;Parry3Level | &quot;+Parry3Level+&quot; | Level&quot;,
+		&quot;Parry4Name | &quot;+Parry4Name+&quot; | Fourth Parry |TEXT&quot;,&quot;Parry4Level | &quot;+Parry4Level+&quot; | Level&quot;
+)]
+[h: abort(Success)]
+[h: setProperty(&quot;MyBlock1Name&quot;, Block1Name)]
+[h: setProperty(&quot;MyBlock2Name&quot;, Block2Name)]
+[h: setProperty(&quot;MyParry1Name&quot;, Parry1Name)]
+[h: setProperty(&quot;MyParry2Name&quot;, Parry2Name)]
+[h: setProperty(&quot;MyParry3Name&quot;, Parry3Name)]
+[h: setProperty(&quot;MyParry4Name&quot;, Parry4Name)]
+[h: setProperty(&quot;MyBlock1Level&quot;, Block1Level)]
+[h: setProperty(&quot;MyBlock2Level&quot;, Block2Level)]
+[h: setProperty(&quot;MyParry1Level&quot;, Parry1Level)]
+[h: setProperty(&quot;MyParry2Level&quot;, Parry2Level)]
+[h: setProperty(&quot;MyParry3Level&quot;, Parry3Level)]
+[h: setProperty(&quot;MyParry4Level&quot;, Parry4Level)]
+[h: setProperty(&quot;MyBlock1Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyBlock2Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyParry1Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyParry2Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyParry3Index&quot;, &quot; &quot;)]
+[h: setProperty(&quot;MyParry4Index&quot;, &quot; &quot;)]
+[h: eLevels = &quot;None,Light,Medium,Heavy,Extra Heavy&quot;]
+[h,foreach(macro,getMacros()), code: {
+  [h,foreach(index, getMacroIndexes(macro)), code: {
+    [h: props = getMacroProps(index)]
+    [sortLabel = getStrProp(props, &quot;sortBy&quot;)]
+    [r: &quot;Sort on &quot;+sortLabel]
+    [if(matches(sortLabel,&quot;.*Defense1.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyBlock1Name&quot;)+&quot; (&quot;+Block1+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense2.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyBlock2Name&quot;)+&quot; (&quot;+Block2+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense3.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyParry1Name&quot;)+&quot; (&quot;+Parry1+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense4.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyParry2Name&quot;)+&quot; (&quot;+Parry2+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense5.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyParry3Name&quot;)+&quot; (&quot;+Parry3+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*Defense6.*&quot;)): setMacroProps(index, &quot;label=&quot;+getProperty(&quot;MyParry4Name&quot;)+&quot; (&quot;+Parry4+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*HitPoints.*&quot;)): setMacroProps(index, &quot;label=HP (&quot;+HP+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*FatiguePoints.*&quot;)): setMacroProps(index, &quot;label=FP (&quot;+FP+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*EnergyReserve.*&quot;)): setMacroProps(index, &quot;label=ER (&quot;+ER+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*SpellsOn.*&quot;)): setMacroProps(index, &quot;label=Spells On (&quot;+SpellMaint+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*statsCRWM.*&quot;)): setMacroProps(index, &quot;label=CR: &quot;+listGet(&quot;No,Yes&quot;,CombatReflexes)+&quot; WM: &quot;+listGet(&quot;No,Yes&quot;,WeaponMaster))]
+    [if(matches(sortLabel,&quot;.*statsDB.*&quot;)): setMacroProps(index, &quot;label=DB (&quot;+CurrentDB+&quot;)&quot;)]
+    [if(matches(sortLabel,&quot;.*statsEncumbrance.*&quot;)): setMacroProps(index, &quot;label=Encumbrance (&quot;+listGet(eLevels,Encumbrance)+&quot;)&quot;)]
+  }]
+}]</command>
+        <label>Update &amp; Set Defenses</label>
+        <group></group>
+        <sortby>statsUpdate</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>true</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Current Encumbrance Level. Click to change.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>18</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>18</index>
+        <colorKey>lime</colorKey>
+        <hotKey>None</hotKey>
+        <command>&lt;!-- Change the Block2Level to your parry without DB for this weapon or use the set macro --!&gt;
+[h: Block2Level = 11]
+[h: Block2Name = &quot;Block2&quot;]
+[h,if(getProperty(&quot;MyBlock2Name&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyBlock2Name&quot;, Block2Name)] } ; {[h: Block2Name = getProperty(&quot;MyBlock2Name&quot;)]} ]
+[h,if(getProperty(&quot;MyBlock2Level&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyBlock2Level&quot;, Block2Level)] } ; {[h: Block2Level = getProperty(&quot;MyBlock2Level&quot;)]} ]
+[h: Success=input(&quot;Mods&quot;)]
+[h: abort(Success)]
+[h: curLevel = Block2Level +CurrentDB - round((5*Block2)/(1+WeaponMaster))]
+[r: Block2Name+&quot; (&quot;+(curLevel+Mods)]) [r:skill(curLevel,Mods)]
+[h: Block2 = Block2 + 1]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=&quot;+Block2Name+&quot; (&quot;+Block2+&quot;)&quot;)]
+[h: setProperty(&quot;MyBlock2Name&quot;,Block2Name)]
+[h,foreach(macro,getMacros()), code: {
+  [h,foreach(index, getMacroIndexes(macro)), code: {
+    [h: props = getMacroProps(index)]
+    [sortLabel = getStrProp(props, &quot;sortBy&quot;)]
+    [if(matches(sortLabel,&quot;.*StartTurn.*&quot;)): setMacroProps(index, &quot;label=**Start turn**;color=red;fontColor=yellow&quot;)]
+  }]
+}]</command>
+        <label>none (0)</label>
+        <group>Combat</group>
+        <sortby>Defense2</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Block2</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>19</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>19</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h: Success=input(&quot;curSpell|&quot;+SpellList+&quot;|Spell:|LIST&quot;,&quot;Mods&quot;)]
+[h: abort(Success)]
+[r: listget(SpellList,curSpell)]
+[h: curLevel=listget(SpellLevels,curSpell)-SpellMaint]
+[r: spell(curLevel,Mods,listget(SpellPoints,curSpell))]</command>
+        <label>Pick Spell</label>
+        <group></group>
+        <sortby>s</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>true</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>20</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>20</index>
+        <colorKey>lime</colorKey>
+        <hotKey>None</hotKey>
+        <command>&lt;!-- Change the Parry4Level to your parry without DB for this weapon or use the set macro --!&gt;
+[h: Parry4Level = 11]
+[h: Parry4Name = &quot;Parry4&quot;]
+[h,if(getProperty(&quot;MyParry4Name&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyParry4Name&quot;, Parry4Name)] } ; {[h: Parry4Name = getProperty(&quot;MyParry4Name&quot;)]} ]
+[h,if(getProperty(&quot;MyParry4Level&quot;) == &quot; &quot;), CODE: { [h: setProperty(&quot;MyParry4Level&quot;, Parry4Level)] } ; {[h: Parry4Level = getProperty(&quot;MyParry4Level&quot;)]} ]
+[h: Success=input(&quot;Mods&quot;)]
+[h: abort(Success)]
+[h: curLevel = Parry4Level +CurrentDB - ((4*Parry4)/(1+WeaponMaster))]
+[r: Parry4Name+&quot; (&quot;+(curLevel+Mods)]) [r:skill(curLevel,Mods)]
+[h: Parry4 = Parry4 + 1]
+[h: curIndex = getMacroButtonIndex()]
+[h: setMacroProps(curIndex, &quot;label=&quot;+Parry4Name+&quot; (&quot;+Parry4+&quot;)&quot;)]
+[h: setProperty(&quot;MyParry4Name&quot;,Parry4Name)]
+[h,foreach(macro,getMacros()), code: {
+  [h,foreach(index, getMacroIndexes(macro)), code: {
+    [h: props = getMacroProps(index)]
+    [sortLabel = getStrProp(props, &quot;sortBy&quot;)]
+    [if(matches(sortLabel,&quot;.*StartTurn.*&quot;)): setMacroProps(index, &quot;label=**Start turn**;color=red;fontColor=yellow&quot;)]
+  }]
+}]</command>
+        <label>none (0)</label>
+        <group>Combat</group>
+        <sortby>Defense6</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Parry4</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>21</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>21</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command> /me [H: TimeZone=&quot;EST&quot;]
+[H: curIndex = getMacroButtonIndex()]
+[H: NewTime = json.get(getInfo(&quot;client&quot;),&quot;timeDate&quot;)]
+[H: props=getMacroProps(curIndex,&quot;json&quot;)]
+[H: OldTime = json.get(props, &quot;label&quot;)]
+last used {OldTime} {TimeZone}, and uses LUCK again at {NewTime} {TimeZone}.
+[H: setMacroProps(curIndex, &quot;label=Luck (&quot;+NewTime+&quot;)&quot;)]</command>
+        <label>Luck!</label>
+        <group></group>
+        <sortby></sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>true</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>22</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>22</index>
+        <colorKey>red</colorKey>
+        <hotKey>None</hotKey>
+        <command>&lt;!-- Gets answers from the user asking what the effective skill level is, and for any modifiers --&gt;
+[H: Success = input(&quot;Skill | 10 | Skill Level&quot;, &quot;Mods | 0 | Any modifiers to skill&quot;,&quot;Cap | 0 | Maximum skill cap (leave zero if not applicable)&quot;)]
+&lt;!-- aborts the macro if the user canceled (UNLIKE OPENRPG WHICH JUST KEEPS GOING AAAARG --&gt;
+[H: abort(Success)]
+&lt;!-- calls the GURPS dieroller to find out the results of the skill test --&gt;
+[R,IF(Cap==0),CODE:{
+[T:attack(Skill,Mods)]
+};{
+[T:attack(Skill,Mods,Cap)]
+}]</command>
+        <label>Attack</label>
+        <group>Combat</group>
+        <sortby>A3</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>yellow</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Asks for skill, mods, cap and then makes an attack with auto DA</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>23</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>23</index>
+        <colorKey>red</colorKey>
+        <hotKey>None</hotKey>
+        <command>[H:AccBase=3]
+[H:SkillBase=18]
+[h:FastDraw=15]
+[h:status = input(
+                &quot;FastDrawing|1|Are you Fast Drawing?|CHECK&quot;,
+                &quot;FastDrawMods|0|Fast Draw Modifiers?&quot;,
+                &quot;FastReady|1|Are you Fast Readying?|CHECK&quot;,
+                &quot;junk| &amp;nbsp; | Actual Shooting |LABEL | TEXT=FALSE &quot;,
+                &quot;AccApply|1|Does ACC apply?|CHECK&quot;,
+                &quot;DistancePenalty|2 yd,3 yd,5 yd,7 yd,10 yd,15 yd,20 yd,30 yd,50 yd,70 yd,100 yd|Distance Penalty|RADIO&quot;,
+                &quot;MiscMods|0|Miscelaneous shooting modifiers&quot;,
+                &quot;damType|imp,(2) pi,cut|Damage Type|RADIO|VALUE=STRING&quot;
+                )]
+[h:abort(status)]
+[h:Acc = if(AccApply == 1, if(damType == &quot;cut&quot;,AccBase-1,AccBase), 0)]
+
+[IF(FastDrawing),CODE:{&lt;B&gt;Fast Draw: Arrow ({FastDraw})&lt;/B&gt; [sk(FastDraw,FastDrawMods)]&lt;br /&gt;}]
+[IF(FastReady),CODE:{&lt;B&gt;Fast Ready: Bow ({SkillBase-3})&lt;/B&gt; [sk(SkillBase-3,FastDrawMods)]&lt;br /&gt;}]
+&lt;B&gt;Shoot Bow ({SkillBase})&lt;/B&gt; @ range penalty -{DistancePenalty} - {MiscMods} misc&lt;/B&gt; [t:attk(SkillBase,Acc-DistancePenalty+MiscMods)]&lt;br /&gt;
+Damage is [t:1d6+3] {damType} if successful.</command>
+        <label>Bow</label>
+        <group>Combat</group>
+        <sortby>A1</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>yellow</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Fast Draw, Fire with range penalties.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>24</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>24</index>
+        <colorKey>red</colorKey>
+        <hotKey>None</hotKey>
+        <command>[H:AccBase=4]
+[H:SkillBase=19]
+[h:status = input(
+                &quot;FastDrawMods|0|Fast Draw Modifiers?&quot;,
+                &quot;FastReadyMods|0|Fast Ready Modifiers (beyond -3)&quot;,
+                &quot;junk| &amp;nbsp; | Feint |LABEL | TEXT=FALSE &quot;,
+                &quot;MiscMods1|0|Miscelaneous feinting modifiers&quot;,
+                &quot;junk| &amp;nbsp; | Actual Shooting Attack Two |LABEL | TEXT=FALSE &quot;,
+                &quot;AccApply2|1|Does ACC apply?|CHECK&quot;,
+                &quot;DistancePenalty2|2 yd,3 yd,5 yd,7 yd,10 yd,15 yd,20 yd,30 yd,50 yd,70 yd,100 yd|Distance Penalty|RADIO&quot;,
+                &quot;MiscMods2|0|Miscelaneous shooting modifiers&quot;,
+                &quot;damType2|imp,(2) pi,cut|Damage Type|RADIO|VALUE=STRING&quot;
+                )]
+[h:abort(status)]
+[H:Acc1 = 0]
+[H:Acc2 = if(AccApply2 == 1, if(damType2 == &quot;cut&quot;,AccBase-1,AccBase), 0)]
+
+&lt;B&gt;Fast Draw: 1 Arrow ({SkillBase-2})&lt;/B&gt; [t:sk(SkillBase-2,+FastDrawMods)]&lt;br /&gt;
+&lt;B&gt;Fast Ready ({SkillBase-3})&lt;/B&gt; [t:sk(SkillBase,-3+FastReadyMods)]&lt;br /&gt;
+&lt;B&gt;Feint Bow ({SkillBase})&lt;/B&gt; [t:sk(SkillBase,MiscMods1)] -1 to resist for DWA&lt;br /&gt;
+&lt;B&gt;Fast Shoot Bow ({SkillBase-2})&lt;/B&gt; @ range penalty -{DistancePenalty2}&lt;/B&gt; [t:attk(SkillBase,Acc2-DistancePenalty2+MiscMods2-2)] -1 to defend for DWA&lt;br /&gt;
+Damage is [t:1d6+4] {damType2} if successful.</command>
+        <label>Bow Feint DWA</label>
+        <group>Combat</group>
+        <sortby>A1</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>yellow</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Fast Draw Rapid Load DWA in a nice bundle with range penalties.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>25</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>25</index>
+        <colorKey>silver</colorKey>
+        <hotKey>None</hotKey>
+        <command>/self [H:jsoncount=getProperty(&quot;SpellList&quot;)]
+[H:arrowtypes=json.get(jsoncount,&quot;arrowtypes&quot;)]
+[H:status = input(
+                &quot;TypeOfArrow|&quot;+arrowtypes+&quot;|Type of Arrow|RADIO|VALUE=STRING&quot;,
+                &quot;ArrowsShot|1|Arrows Shot&quot;
+                )]
+[H:abort(status)]
+[H:BaseArrows = &quot;arrows-&quot;+TypeOfArrow]
+[H:LookingFor = &quot;look-for-arrows-&quot;+TypeOfArrow]
+[H:ArrowCount = json.get(jsoncount,BaseArrows)]
+[H:LookFor = json.get(jsoncount,LookingFor)]
+
+You had {ArrowCount} {TypeOfArrow} arrows, and had {LookFor} arrows lying around.&lt;Br /&gt;
+You now have [R:ArrowCount=ArrowCount-ArrowsShot] arrows, and have [R:LookFor=LookFor+ArrowsShot] lying around.
+[H:jsoncount = json.set(jsoncount, &quot;arrows-&quot;+TypeOfArrow,ArrowCount)]
+[H:jsoncount = json.set(jsoncount, &quot;look-for-arrows-&quot;+TypeOfArrow,LookFor)]
+[H:setProperty(&quot;SpellList&quot;,jsoncount)]
+[H: if( isFrameVisible(&quot;Quiver&quot;) ), code: {}; { [resetFrame(&quot;Quiver&quot;)] } ]</command>
+        <label>Spend Arrows</label>
+        <group>99 Arrows</group>
+        <sortby>1</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>26</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>26</index>
+        <colorKey>silver</colorKey>
+        <hotKey>None</hotKey>
+        <command>/gm
+[H:jsoncount=getProperty(&quot;SpellList&quot;)]
+[H:arrowtypes=json.get(jsoncount,&quot;arrowtypes&quot;)]
+[H:status = input(
+                &quot;TypeOfArrow|&quot;+arrowtypes+&quot;|Type of Arrow|RADIO|VALUE=STRING&quot;,
+                &quot;ArrowsShot|1|Arrows Shot&quot;
+                )]
+[H:abort(status)]
+[H:BaseArrows = &quot;arrows-&quot;+TypeOfArrow]
+[H:LookingFor = &quot;look-for-arrows-&quot;+TypeOfArrow]
+[H:ArrowCount = json.get(jsoncount,BaseArrows)]
+[H:LookFor = json.get(jsoncount,LookingFor)]
+
+[h:Loop = json.get(jsoncount,LookingFor)]
+[h:Recovered=0]
+Looking for {Loop} lost {TypeOfArrow} arrows...
+[FOR (x,1,Loop+1,1, &quot;; &quot;), CODE:{[H:Test=3d6]
+[H:Found = IF(Test != 6, 1, 0)]
+[H:Recovered = Recovered + Found]
+[R,T(IF(Found,&quot;Found&quot;,&quot;Lost forever&quot;)):&quot;Rolled: &quot;+Test]}].
+[H:arrowTotal=json.get(jsoncount, BaseArrows)]
+I now have {arrowTotal+Recovered} {TypeOfArrow} arrows.
+[H:jsoncount = json.set(jsoncount, BaseArrows, arrowTotal+Recovered)]
+[H:jsoncount = json.set(jsoncount, LookingFor, 0)]
+[H:setProperty(&quot;SpellList&quot;, jsoncount)]</command>
+        <label>Recover Arrows</label>
+        <group>99 Arrows</group>
+        <sortby>2</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>27</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>27</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>/self
+[H:jsoncount=getProperty(&quot;SpellList&quot;)]
+[H:arrowtypes=json.get(jsoncount,&quot;arrowtypes&quot;)]
+[H:Loop = listCount(arrowtypes)]
+[H:html=&quot;&quot;]
+[H,FOR (x,0,Loop+1,1, &quot;; &quot;), CODE:{
+[BaseArrows = &quot;arrows-&quot;+listGet(arrowtypes,x)]
+[LookingFor = &quot;look-for-arrows-&quot;+listGet(arrowtypes,x)]
+[html = html + &quot;    &lt;tr&gt;&lt;td&gt;&quot; + listGet(arrowtypes,x) + &quot;&lt;/td&gt;&lt;td&gt;&quot;+ json.get(jsoncount,BaseArrows)  + &quot;&lt;/td&gt;&lt;td&gt;&quot;+ json.get(jsoncount,LookingFor) +&quot;&lt;/td&gt;&lt;/tr&gt;&quot;]
+}]
+[frame(&quot;Quiver&quot;, &quot;width=300; height=200; temporary=0;&quot;): { 
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Quiver&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;table border=&quot;1&quot;&gt;
+      &lt;tr&gt;&lt;th&gt;Arrow&lt;/th&gt;&lt;th&gt;Held&lt;/th&gt;&lt;th&gt;Find&lt;/th&gt;&lt;/tr&gt;
+{html}
+    &lt;/table&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;}]
+[ if( isFrameVisible(&quot;Quiver&quot;) ), code: {}; { [resetFrame(&quot;Quiver&quot;)] } ]</command>
+        <label>Quiver</label>
+        <group>99 Arrows</group>
+        <sortby>3</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>28</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>28</index>
+        <colorKey>red</colorKey>
+        <hotKey>None</hotKey>
+        <command>[H:AccBase=4][H:SkillBase=19]
+[h:status = input(
+                &quot;FastDrawMods|0|Fast Draw Modifiers beyond 2x?&quot;,
+                &quot;FastReadyMods|0|Fast Ready Modifiers (beyond -3)&quot;,
+                &quot;junk| &amp;nbsp; | Actual Shooting Attack One |LABEL | TEXT=FALSE &quot;,
+                &quot;AccApply1|1|Does ACC apply?|CHECK&quot;,
+                &quot;DistancePenalty1|2 yd,3 yd,5 yd,7 yd,10 yd,15 yd,20 yd,30 yd,50 yd,70 yd,100 yd|Distance Penalty|RADIO&quot;,
+                &quot;MiscMods1|0|Miscelaneous shooting modifiers&quot;,
+                &quot;damType1|imp,(2) pi,cut|Damage Type|RADIO|VALUE=STRING&quot;,
+                &quot;junk| &amp;nbsp; | Actual Shooting Attack Two |LABEL | TEXT=FALSE &quot;,
+                &quot;AccApply2|1|Does ACC apply?|CHECK&quot;,
+                &quot;DistancePenalty2|2 yd,3 yd,5 yd,7 yd,10 yd,15 yd,20 yd,30 yd,50 yd,70 yd,100 yd|Distance Penalty|RADIO&quot;,
+                &quot;MiscMods2|0|Miscelaneous shooting modifiers&quot;,
+                &quot;damType2|imp,(2) pi,cut|Damage Type|RADIO|VALUE=STRING&quot;
+                )]
+[h:abort(status)]
+[H:Acc1 = if(AccApply1 == 1, if(damType1 == &quot;cut&quot;,AccBase-1,AccBase), 0)]
+[H:Acc2 = if(AccApply2 == 1, if(damType2 == &quot;cut&quot;,AccBase-1,AccBase), 0)]
+
+&lt;B&gt;Fast Draw: 2 Arrows ({SkillBase-2}-2)&lt;/B&gt; [t:sk(SkillBase-2,-2+FastDrawMods)]&lt;br /&gt;
+&lt;B&gt;Fast Ready ({SkillBase-3-2})&lt;/B&gt; [t:sk(SkillBase,-3-2+FastReadyMods)]&lt;br /&gt;
+&lt;B&gt;Fast Shoot Bow ({SkillBase})&lt;/B&gt; @ range penalty -{DistancePenalty1}&lt;/B&gt; [t:a(SkillBase,Acc1-DistancePenalty1+MiscMods1)] -1 to defend&lt;br /&gt;
+&lt;B&gt;Fast Shoot Bow ({SkillBase})&lt;/B&gt; @ range penalty -{DistancePenalty2}&lt;/B&gt; [t:a(SkillBase,Acc2-DistancePenalty2+MiscMods2)] -1 to defend&lt;br /&gt;
+Damage is [t:1d6+4] {damType1} and [t:1d6+4] {damType2} if successful.</command>
+        <label>Bow DWA</label>
+        <group>Combat</group>
+        <sortby>A1</sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>yellow</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip>Fast Draw Rapid Load DWA in a nice bundle with range penalties.</toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>29</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>29</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[frame(&quot;HitLocationsReference&quot;, &quot;width=300; height=200;&quot;):{&lt;html&gt;&lt;head&gt;&lt;title&gt;Grand Unified Hit Locations Table&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h2&gt;Grand Unified Hit Locations Table&lt;/h2&gt;&lt;table background=&apos;white&apos; border=&apos;thin&apos;&gt;&lt;tr background=&apos;white&apos;&gt;&lt;th&gt;Location&lt;/th&gt;&lt;th&gt;Penalty&lt;/th&gt;&lt;th&gt;Restrictions&lt;/th&gt;&lt;th&gt;Effects&lt;/th&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Skull&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-7&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;-5 from behind&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;2 DR; if not tox: x4 inj; if not tox: major wound -10 stun/knockdown; bleed at 30 seconds not 1 minute&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Face&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-5&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;-7 from behind&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Roll on sub-table; Cor x1.5 inj; Major wound -5 stun/knockdown&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Neck&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-5&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Roll on sub-table; Miss by 1 hit chest; Cr, corr: x1.5 inj; cut x2 inj; bleed at 30 seconds not 1 minute; -2 bleed penalty&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Arm&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-2&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;-4 with shield&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Roll on sub-table; pi+, pi++, imp: x1 inj; cripple over 1/2 HP&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Hand&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-4&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;-8 with shield&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Roll on sub-table; pi+, pi++, imp: x1 inj; cripple over 1/3 HP&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Chest&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;0&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Roll on sub-table; Default. Crushing, impaling, or piercing attacks, roll on sub table; injury can�t exceed 2xHP (1xHP if using bleeding); any excess is lost&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Abdomen&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-1&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Roll on sub-table; Crushing, impaling, or piercing attacks, roll on sub table.; Injury can�t exceed 2xHP (1xHP if using bleeding); any excess is lost&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Leg&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-2&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Roll on sub-table; pi+, pi++, imp: x1 inj; cripple over 1/2 HP&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Foot&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-4&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Roll on sub-table; pi+, pi++, imp: x1 inj; cripple over 1/3 HP&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Eye&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-9&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;-10 in helmet; imp, pi-, pi, pi+, pi++, bu (tb) only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;cripple over 1/10 hp; otherwise skull hit w/no DR. Tox has no spec. effect beyond cripple; bleed at 30 seconds not 1 minute&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Ear&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-7&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;cutting or treat as face&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Miss by 1 hit chest; cripple over 1/4 HP, no -5 to stun/knockdown, major wound only on sever; lost ear causes Appearance penalties.&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Nose&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-7&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;front only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Miss by 1 hit chest; cripple over 1/4 HP and causes No Sense of Smell/Taste (non-cutting) or Appearance loss (cutting, x2 crippling threshold), non-cutting major wound -5 to stun/knockdown &lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Jaw&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-6&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;front only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Miss by 1 hit chest; as per face, but crushing is -6 to stun/knockdown&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Spine&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-8&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;behind only, cr, cut, pi-, pi, pi+, pi++, bu (tb) only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Miss by 1 hit chest; 3 DR; as per chest but enough injury for shock penalty (even with HPT) gives stun/knockdown, -5 if a major wound. Cripple over 1xHP&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Neck Vein/Artery&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-8&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;cu, imp, pi-, pi, pi+, pi++, bu (tb) only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Miss by 1 hit neck; Cr, corr: x2 inj; cut x2.5 inj&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Limb Vein/Artery&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-5&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;cu, imp, pi-, pi, pi+, pi++, bu (tb) only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Miss by 1 hit limb; Cr, corr: x2 inj; cut x2.5 inj; no cripple, no inj limit&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Limb Joint&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-5&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;cr, cut, pi-, pi, pi+, pi++, bu (tb) only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Miss by 1 hit limb; as per limb but cripple over 1/3 HP; dismember as per limb, not per joint; recover from cripple at -2&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Extremity Joint&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-7&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;cr, cut, pi-, pi, pi+, pi++, bu (tb) only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Miss by 1 hit extremity; as per extremity but cripple over 1/4 HP; dismember as per extremity, not per joint; recover from cripple at -2&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Vitals (Heart)&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-5&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Imp; pi-, pi, pi+, pi++; bu (tb) only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Imp, pi-, pi, pi+, pi++: x3 inj; bu (tb) x2 inj (as vitals); bleed at 30 seconds not 1 minute; -4 bleed penalty; -5 to stun/knockdown from MW&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Vitals&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-3&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Imp; pi-, pi, pi+, pi++; bu (tb) only&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;Imp, pi-, pi, pi+, pi++: x3 inj; bu (tb) x2 inj; bleed at 30 seconds not 1 minute; -4 bleed penalty; -5 to stun/knockdown from MW&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Digestive Tract&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-3&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;As abdomen; on major wound HT-3 to avoid special infection (p.444)&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Pelvis&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-2&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;As abdomen; on major wound fall down, cannot stand, Lame (Missing Legs) until healed&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Groin&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-3&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;double shock; major wound -5 stun/knockdown&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Weapon Reach C&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-5&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;see weapon breakage p.401&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Weapon Reach 1&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-4&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;see weapon breakage p.401&lt;/td&gt;&lt;/tr&gt;&lt;tr background=&apos;white&apos;&gt;&lt;td background=&apos;white&apos;&gt;Weapon Reach 2&lt;/td&gt;&lt;td background=&apos;white&apos; align=&apos;center&apos;&gt;-3&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;&amp;nbsp&lt;/td&gt;&lt;td background=&apos;white&apos;&gt;see weapon breakage p.401&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;}]</command>
+        <label>HitLocationTable</label>
+        <group>Reference</group>
+        <sortby></sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>30</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>30</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[r:macro.return = &quot;random,chest,abdomen,torso,vitals,arm,leg,foot,hand,face,neck,brain,skull,eye,ear,nose,jaw,spine,neck vein,limb vein,heart,digestive tract,pelvis,groin&quot;]</command>
+        <label>HitLocations</label>
+        <group>ZZ_Support</group>
+        <sortby></sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+    <entry>
+      <int>31</int>
+      <net.rptools.maptool.model.MacroButtonProperties>
+        <saveLocation>Token</saveLocation>
+        <index>31</index>
+        <colorKey>default</colorKey>
+        <hotKey>None</hotKey>
+        <command>[h:HitLocation = getStrProp(macro.args, &quot;HitLocation&quot;)]
+[r,switch(HitLocation), code:
+case &quot;random&quot;:	{[r:macro.return = 0]};
+case &quot;chest&quot;: 	{[r:macro.return = 0]};
+case &quot;abdomen&quot;: 	{[r:macro.return = -1]};
+case &quot;torso&quot;: 	{[r:macro.return = 0]};
+case &quot;vitals&quot;: 	{[r:macro.return = -3]};
+case &quot;arm&quot;:		{[r:macro.return = -2]};
+case &quot;leg&quot;:		{[r:macro.return = -2]};
+case &quot;foot&quot;:   	{[r:macro.return = -4]};
+case &quot;hand&quot;:  	{[r:macro.return = -4]};
+case &quot;face&quot;:  	{[r:macro.return = -5]};
+case &quot;neck&quot;:  	{[r:macro.return = -5]};
+case &quot;brain&quot;:  	{[r:macro.return = -7]};
+case &quot;skull&quot;:  	{[r:macro.return = -7]};
+case &quot;eye&quot;:		{[r:macro.return = -9]};
+case &quot;ear&quot;:		{[r:macro.return = -7]};
+case &quot;nose&quot;:		{[r:macro.return = -7]};
+case &quot;jaw&quot;:		{[r:macro.return = -6]};
+case &quot;spine&quot;:		{[r:macro.return = -8]};
+case &quot;neck vein&quot;:		{[r:macro.return = -8]};
+case &quot;limb vein&quot;:		{[r:macro.return = -5]};
+case &quot;heart&quot;:		{[r:macro.return = -5]};
+case &quot;digestive tract&quot;:		{[r:macro.return = -3]};
+case &quot;pelvis&quot;:		{[r:macro.return = -2]};
+case &quot;groin&quot;:		{[r:macro.return = -3]};
+default:      		{[r:macro.return = &quot;ERROR &quot;+HitLocation+&quot; NOT FOUND&quot;]}
+]</command>
+        <label>HitLocationPenalty</label>
+        <group>ZZ_Support</group>
+        <sortby></sortby>
+        <autoExecute>true</autoExecute>
+        <includeLabel>false</includeLabel>
+        <applyToTokens>false</applyToTokens>
+        <fontColorKey>black</fontColorKey>
+        <fontSize>1.00em</fontSize>
+        <minWidth></minWidth>
+        <maxWidth></maxWidth>
+        <allowPlayerEdits>true</allowPlayerEdits>
+        <toolTip></toolTip>
+        <commonMacro>false</commonMacro>
+        <compareGroup>true</compareGroup>
+        <compareSortPrefix>true</compareSortPrefix>
+        <compareCommand>true</compareCommand>
+        <compareIncludeLabel>true</compareIncludeLabel>
+        <compareAutoExecute>true</compareAutoExecute>
+        <compareApplyToSelectedTokens>true</compareApplyToSelectedTokens>
+      </net.rptools.maptool.model.MacroButtonProperties>
+    </entry>
+  </macroPropertiesMap>
+  <speechMap/>
+</net.rptools.maptool.model.Token>

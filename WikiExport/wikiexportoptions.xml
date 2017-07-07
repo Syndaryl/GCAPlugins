@@ -295,6 +295,29 @@
     </DisplayFormat>
   </SheetOption>
   <SheetOption>
+    <Name>TraitSeparation</Name>
+    <Type>ListNumber</Type>
+    <List>
+      <string>Soft linebreak</string>
+      <string>List format</string>
+      <string>Paragraph</string>
+      <string>Semi-colon separated single-line list</string>
+    </List>
+    <DefaultValue xsi:type="xsd:int">2</DefaultValue>
+    <Value />
+    <UserPrompt>Please select the way you'd like to organize traits.</UserPrompt>
+    <DisplayFormat>
+      <BackColor />
+      <ForeColor />
+      <BorderStyle>None</BorderStyle>
+      <CaptionLeadSpace>0</CaptionLeadSpace>
+      <CaptionFollowSpace>0</CaptionFollowSpace>
+      <CaptionLocalBackColor />
+      <BoxDescriptionBackColor />
+      <BoxDescriptionForeColor />
+    </DisplayFormat>
+  </SheetOption>
+  <SheetOption>
     <Name>PointsLineStyle</Name>
     <Type>ListNumber</Type>
     <List>

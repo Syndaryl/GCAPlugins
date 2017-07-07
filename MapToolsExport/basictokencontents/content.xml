@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<net.rptools.maptool.model.Token xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <id>
+    <baGUID />
+  </id>
+  <beingImpersonated>false</beingImpersonated>
+  <exposedAreaGUID>
+    <baGUID />
+  </exposedAreaGUID>
+  <imageAssetMap>
+  </imageAssetMap>
+  <x>485</x>
+  <y>675</y>
+  <z>338</z>
+  <anchorX>0</anchorX>
+  <anchorY>0</anchorY>
+  <sizeScale>1.0</sizeScale>
+  <lastX>0</lastX>
+  <lastY>0</lastY>
+  <snapToScale>true</snapToScale>
+  <width>0</width>
+  <height>0</height>
+  <scaleX>1.0</scaleX>
+  <scaleY>1.0</scaleY>
+  <sizeMap>
+    <entry>
+      <java-class>net.rptools.maptool.model.HexGridHorizontal</java-class>
+      <net.rptools.maptool.model.GUID>
+        <baGUID>fwABAQllXDgBAAAAOAABAQ==</baGUID>
+      </net.rptools.maptool.model.GUID>
+    </entry>
+    <entry>
+      <java-class>net.rptools.maptool.model.HexGridVertical</java-class>
+      <net.rptools.maptool.model.GUID>
+        <baGUID>fwABAQllXDgBAAAAOAABAQ==</baGUID>
+      </net.rptools.maptool.model.GUID>
+    </entry>
+  </sizeMap>
+  <name>Attivi Valar</name>
+  <ownerType>0</ownerType>
+  <tokenShape>CIRCLE</tokenShape>
+  <tokenType>PC</tokenType>
+  <layer>TOKEN</layer>
+  <propertyType>GURPS-GCA5</propertyType>
+  <facing>0</facing>
+  <sightType>Normal</sightType>
+  <label />
+  <state/>
+  <macroPropertiesMap/>
+  <notes />
+  <gmNotes />
+</net.rptools.maptool.model.Token>

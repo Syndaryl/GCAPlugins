@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GCA5.Interfaces, Version=1.0.0.10, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -41,6 +44,11 @@
       <HintPath>..\..\..\..\..\GCA5\GCA5Engine.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="SautinSoft.RtfToHtml, Version=6.1.12.20, Culture=neutral, PublicKeyToken=c666a5e96a3d5457, processorArchitecture=MSIL">
+      <HintPath>..\packages\sautinsoft.rtftohtml.6.1.12.20\lib\net45\SautinSoft.RtfToHtml.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -54,14 +62,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GCA.WikiExport.cs" />
+    <Compile Include="GCAWriter.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="HTML2Wiki.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="wikiexportoptions.xml" />
+    <Content Include="wikiexportoptions.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "D:\Documents\GURPS Character Assistant 5\plugins\test\" /y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetPath)" "C:\Users\syndaryl\OneDrive\Documents\GURPS Character Assistant 5\plugins\test\" /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -20,7 +20,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-namespace GCA.TextExport
+namespace GCA.WikiExport
 {
     using System;
     using System.Collections.Generic;
@@ -33,6 +33,8 @@ namespace GCA.TextExport
     using GCA5Engine;
     using System.Windows.Forms;
     using System.Text;
+    using GCA.Export;
+    using System.Globalization;
 
     public sealed class WikiExporter : GCA5.Interfaces.IExportSheet
     {
@@ -66,7 +68,12 @@ namespace GCA.TextExport
         #endregion
 
         #region fields
-        static readonly string OwnedItemText = "* = item is owned by another, its point value is included in the other item.";
+
+        // Suppressed "not used" warning as this is something I'm going to be implementing in the future, and by then I'll totally forget the standard wording :P
+        //  Amusingly, not code left over from the past, but code left over from the future.
+#pragma warning disable 0169
+        static readonly string ownedItemText = "* = item is owned by another, its point value is included in the other item.";
+#pragma warning restore 0169
         #endregion fields
 
         #region InterfaceImplementation
@@ -91,12 +98,22 @@ namespace GCA.TextExport
         {
             get
             {
-                return "0.1.0";
+                return "1.2.0";
             }
         }
 
         public SheetOptionsManager MyOptions { get; private set; }
         public List<GCATrait> Traits { get; private set; }
+
+        public static string OwnedItemText
+        {
+            get
+            {
+                return ownedItemText;
+            }
+        }
+
+        public bool Metric { get; private set; }
         #endregion InterfaceProperties
 
         /// <summary>
@@ -114,24 +131,15 @@ namespace GCA.TextExport
                 var domain = AppDomain.CurrentDomain;
                 domain.Load(assemblyName);
                 var listOfAssemblies = new List<Assembly>(domain.GetAssemblies());
-
-#if false
-                string list = "";
-                foreach (var item in listOfAssemblies)
-                {
-                    list += item.FullName + "\n";
-                }
-                System.Windows.Forms.MessageBox.Show(list, assemblyName); 
-#endif
-
+                
                 var optionsPath = Path.GetDirectoryName(listOfAssemblies.FirstOrDefault(x => x.FullName.StartsWith(assemblyName, StringComparison.Ordinal)).Location);
                 optionsPath = optionsPath + Path.DirectorySeparatorChar + settingsFileName;
-                Console.WriteLine(String.Format("Options Path is {0}", optionsPath));
+                Console.WriteLine(string.Format("Options Path is {0}", optionsPath));
                 extractOptionsFromFile(optionsPath, Options);
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show(e.ToString() + "\n" + e.InnerException.ToString(), assemblyName);
+                System.Windows.Forms.MessageBox.Show(e + "\n" + e.InnerException, assemblyName);
             }
         }
 
@@ -141,16 +149,17 @@ namespace GCA.TextExport
 
             try
             {
-                var inFile = new FileStream(optionsPath, FileMode.Open);
-                var optionsArray = new List<SheetOption>((SheetOption[])optionsSerializer.Deserialize(inFile));
+                var optionsArray = new List<SheetOption>();
+                using (var inFile = new FileStream(optionsPath, FileMode.Open))
+                {
+                    optionsArray.AddRange((SheetOption[])optionsSerializer.Deserialize(inFile));
+                }
 
                 var descFormatHeader = new SheetOptionDisplayFormat();
                 descFormatHeader.BackColor = SystemColors.Info;
                 descFormatHeader.CaptionLocalBackColor = SystemColors.Info;
 
                 var descFormatBody = new SheetOptionDisplayFormat();
-                //descFormatBody.BackColor = SystemColors.;
-                //descFormatBody.CaptionLocalBackColor = SystemColors.Info;
 
                 foreach (var opt in optionsArray)
                 {
@@ -161,158 +170,8 @@ namespace GCA.TextExport
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show(e.ToString() + "\n" + e.InnerException.ToString(), assemblyName);
+                System.Windows.Forms.MessageBox.Show(e + "\n" + e.InnerException, assemblyName);
             }
-            #region disabledcode
-            //var inFile = new FileStream(optionsPath, FileMode.Open);
-            //var optionsArray = (SheetOption[])tilesetSerializer.Deserialize(inFile);
-            //* Description block at top *
-            //ok = insertOption(Options, descFormat, "Header_Description", Name + " " + this.Version, GCA5Engine.OptionType.Header);
-            //var outFile = new FileStream(optionsPath + ".updated", FileMode.Create);
-            //optionsSerializer.Serialize(outFile, optionsArray.ToArray());
-
-            //bool ok;
-
-            //var descFormat = new SheetOptionDisplayFormat();
-            //descFormat.BackColor = SystemColors.Info;
-            //descFormat.CaptionLocalBackColor = SystemColors.Info;
-            //var newOption = new GCA5Engine.SheetOption();
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "Header_Description";
-            //newOption.Type = GCA5Engine.OptionType.Header;
-            //newOption.UserPrompt = Name + " " + this.Version;
-            //newOption.DisplayFormat = descFormat;
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            //ok = insertOption(Options, descFormat, "Description", this.Description);
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "Description";
-            //newOption.Type = GCA5Engine.OptionType.Caption;
-            //newOption.UserPrompt = this.Description;
-            //newOption.DisplayFormat = descFormat;
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            ////******************************
-            ////* Characters 
-            ////******************************
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "Header_Characters";
-            //newOption.Type = GCA5Engine.OptionType.Header;
-            //newOption.UserPrompt = "Printing Characters";
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            ////NOTE: Because List is now a 0-based Array, the number of the 
-            ////DefaultValue and the selected Value is 0-based!
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "OutputCharacters";
-            //newOption.Type = GCA5Engine.OptionType.ListNumber;
-            //newOption.UserPrompt = "When exporting, how do you want to handle exporting when multiple characters are loaded?";
-            //newOption.DefaultValue = 0;// 'first item;
-            //newOption.List = new string[] { "Export just the current character", "Export all the characters to the file", "Always ask me what to do" };
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-            ////AlwaysAskMe = 2;
-
-            ////NOTE: Because List is now a 0-based Array, the number of the 
-            ////DefaultValue and the selected Value is 0-based!
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "CharacterSeparator";
-            //newOption.Type = GCA5Engine.OptionType.ListNumber;
-            //newOption.UserPrompt = "Please select how you'd like to mark the break between characters when printing multiple characters to the file.";
-            //newOption.DefaultValue = 1;// 'second item;
-            //newOption.List = new string[] { "Do nothing", "Print a line of *", "Print a line of =", "Print a line of -", "Use HTML to indicate a horizontal rule" };
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-
-            ////******************************
-            ////* Included Sections 
-            ////******************************
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "Header_TextBlocks";
-            //newOption.Type = GCA5Engine.OptionType.Header;
-            //newOption.UserPrompt = "Sections to Include";
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "ShowMovementBlock";
-            //newOption.Type = GCA5Engine.OptionType.YesNo;
-            //newOption.UserPrompt = "Include a block showing all the Environment Move rates?";
-            //newOption.DefaultValue = true;
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "ShowMovementZero";
-            //newOption.Type = GCA5Engine.OptionType.YesNo;
-            //newOption.UserPrompt = "When printing the block above, include movement rates even when they're at zero?";
-            //newOption.DefaultValue = false;
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "ShowAllAdditionalStats";
-            //newOption.Type = GCA5Engine.OptionType.YesNo;
-            //newOption.UserPrompt = "Include a block showing all additional attributes that aren't hidden?";
-            //newOption.DefaultValue = false;
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "ShowAdditionalStatsAtZero";
-            //newOption.Type = GCA5Engine.OptionType.YesNo;
-            //newOption.UserPrompt = "When printing the block above, include attributes even when they're at zero?";
-            //newOption.DefaultValue = false;
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            ////******************************
-            ////* Other Stuff 
-            ////******************************
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "Header_Other";
-            //newOption.Type = GCA5Engine.OptionType.Header;
-            //newOption.UserPrompt = "Other Options";
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            ////NOTE: Because List is now a 0-based Array, the number of the 
-            ////DefaultValue and the selected Value is 0-based!
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "HeadingStyle";
-            //newOption.Type = GCA5Engine.OptionType.ListNumber;
-            //newOption.UserPrompt = "Please select the way you'd like to differentiate section headers from their various items.";
-            //newOption.DefaultValue = 1; //second item;
-            //newOption.List = new string[] { "Do nothing", "Use a row of dashes under the header", "Use BBCode to mark the header as bold", "Use HTML to mark the header as bold" };
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            ////NOTE: Because List is now a 0-based Array, the number of the 
-            ////DefaultValue and the selected Value is 0-based!
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "BonusLineStyle";
-            //newOption.Type = GCA5Engine.OptionType.ListNumber;
-            //newOption.UserPrompt = "Please select the way you'd like to differentiate bonus lines ('Includes: +X from Z') from their related items.";
-            //newOption.DefaultValue = 1;// 'second item;
-            //newOption.List = new string[] { "Do nothing", "Use a tab character preceding them", "Use BBCode to mark them in italic", "Use HTML to mark them in italic", "Tab character and BBCode", "Tab character and HTML" };
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-
-            ////NOTE: Because List is now a 0-based Array, the number of the 
-            ////DefaultValue and the selected Value is 0-based!
-            //newOption = new GCA5Engine.SheetOption();
-            //newOption.Name = "PointsLineStyle";
-            //newOption.Type = GCA5Engine.OptionType.ListNumber;
-            //newOption.UserPrompt = "Please select the way you'd like to differentiate the Point Summary line from the surrounding text.";
-            //newOption.DefaultValue = 1;// 'second item;
-            //newOption.List = new string[] { "Do nothing", "Print it as multiple lines with a header", "Use BBCode to mark them in bold", "Use HTML to mark them in bold", "Use BBCode to mark them in italic", "Use HTML to mark them in italic", "Use BBCode to mark them in bold and italic", "Use HTML to mark them in bold and italic" };
-            //ok = Options.AddOption(newOption);
-            //optionsArray.Add(newOption);
-            #endregion disabledcode
         }
 
         /// <summary>
@@ -350,7 +209,9 @@ namespace GCA.TextExport
             // no op
         }
 
+#pragma warning disable 0169
         public event IExportSheet.RequestRunSpecificOptionsEventHandler RequestRunSpecificOptions;
+#pragma warning restore 0169
 
         string IExportSheet.SupportedFileTypeFilter()
         {
@@ -390,8 +251,7 @@ namespace GCA.TextExport
 
             return true;
         }
-
-
+        
         public int PreferredFilterIndex()
         {
             return 0;
@@ -413,8 +273,12 @@ namespace GCA.TextExport
                 this.Traits.Add(item);
             }
 
+            Metric = pc.IsMetric();
+
+            fw.Write(Encoding.UTF8.GetPreamble());
             ExportBiography(pc, fw);
             ExportAttributes(pc, fw);
+            ExportMovement(pc, fw);
             ExportCultural(pc, fw);
             ExportReaction(pc, fw);
             ExportAdvantages(pc, fw);
@@ -427,25 +291,601 @@ namespace GCA.TextExport
             ExportPointsSummary(pc, fw);
             ExportEquiment(pc, fw);
             ExportCombat(pc, fw);
-            ExportLoadout(pc, fw);
+            ExportLoadouts(pc, fw);
+            ExportLongDescription(pc, fw);
+            ExportNotes(pc, fw);
+            ExportCampaignLog(pc, fw);
         }
 
-        void ExportLoadout(GCACharacter pc, GCAWriter fw)
+        void ExportCampaignLog(GCACharacter pc, GCAWriter fw)
         {
-            LoadOut curLoadout = pc.LoadOuts[pc.CurrentLoadout];
-            fw.WriteHeader(string.Format("Current Loadout: {0}", curLoadout.Name));
-            foreach (GCATrait item in curLoadout.Items)
+            fw.WriteHeader(string.Format("Campaign Log"));
+            fw.WriteCampaign(pc.Campaign);
+            fw.WriteLine();
+        }
+
+        void ExportNotes(GCACharacter pc, GCAWriter fw)
+        {
+            fw.WriteHeader(string.Format("Notes"));
+            fw.WriteRTF(pc.Notes);
+            fw.WriteLine();
+        }
+
+        void ExportLongDescription(GCACharacter pc, GCAWriter fw)
+        {
+            fw.WriteHeader(string.Format("Description"));
+            fw.WriteRTF(pc.Description);
+            fw.WriteLine();
+        }
+
+        void ExportMovement(GCACharacter pc, GCAWriter fw)
+        {
+            var NeededStats = new List<string>();
+            NeededStats.Add("Basic Lift");
+            NeededStats.Add("Super-Effort Basic Lift");
+            NeededStats.Add("Air Move");
+            NeededStats.Add("Brachiation Move");
+            NeededStats.Add("Ground Move");
+            NeededStats.Add("Space Move");
+            NeededStats.Add("TK Move");
+            NeededStats.Add("Tunneling Move");
+            NeededStats.Add("Water Move");
+            NeededStats.Add("Dodge");
+
+            var result = from moveTrait in Traits
+                         where moveTrait.ItemType == TraitTypes.Stats
+                         where NeededStats.Contains(moveTrait.Name)
+                         where string.IsNullOrEmpty(moveTrait.get_TagItem("hide"))
+                         orderby moveTrait.get_TagItem("mainwin")
+                         select moveTrait;
+
+            if (result.Count() > 0)
             {
-                fw.WriteLine(EquipmentFormatter(item, fw));
+                //var sb = new StringBuilder();
+                var gridAttributes = new List<string> {
+                    "Name", "Unenc.", "Light", "Medium", "Heavy", "Xtra Heavy"
+                };
+                fw.WriteLine("{|");
+                fw.WriteLine("|+ Encumbrance");
+                foreach (var label in gridAttributes)
+                {
+                    fw.WriteLine("! {0}", label);
+                }
+
+                foreach (var moveTrait in result)
+                {
+                    fw.WriteLine("|-");
+                    if (moveTrait.LCaseName.Equals("basic lift") || moveTrait.LCaseName.Equals("super-effort basic lift"))
+                    {
+                        var unit = new UsCustomaryUnitScale(moveTrait.Score);
+
+                        gridAttributes = new List<string> {
+                            moveTrait.LCaseName.Equals("basic lift")? "Carry ("+ unit.Units +")" : "Super-Effort Carry ("+unit.Units+")"
+                        };
+                        foreach (var mult in new int[] { 1, 2, 3, 6, 10 })
+                        {
+                            gridAttributes.Add(Math.Round(moveTrait.Score * mult / unit.UnitMultiplier, 2).ToString(unit.FormatString));
+                        }
+                    }
+                    else if (moveTrait.LCaseName.Equals("dodge"))
+                    {
+                        gridAttributes = new List<string> {
+                            moveTrait.Name
+                        };
+                        // , moveTrait.Score.ToString(), (moveTrait.Score-1).ToString(),  (moveTrait.Score-2).ToString(),  (moveTrait.Score-3).ToString(),  (moveTrait.Score-4).ToString()
+                        foreach (var penalty in new int[] { 0, 1, 2, 3, 4 })
+                        {
+                            gridAttributes.Add(Math.Floor(moveTrait.Score - penalty).ToString());
+                        }
+                    }
+                    else
+                    {
+                        gridAttributes = new List<string> {
+                            moveTrait.Name
+                        };
+                        // Math.Floor(Math.Max( moveTrait.Score, 1)).ToString(), Math.Floor(Math.Max( moveTrait.Score*0.8, 1)).ToString(),  Math.Floor(Math.Max( moveTrait.Score*0.6, 1)).ToString(),  Math.Floor(Math.Max( moveTrait.Score*0.4, 1)).ToString(),  Math.Floor(Math.Max( moveTrait.Score*0.2, 1)).ToString()
+
+                        foreach (var mult in new double[] { 1, 0.8, 0.6, 0.4, 0.2 })
+                        {
+                            gridAttributes.Add(Math.Floor(Math.Max(moveTrait.Score * mult, 1)).ToString("#,##0"));
+                        }
+                    }
+
+                    fw.WriteLine("| {0}", gridAttributes.First());
+                    gridAttributes.RemoveAt(0);
+
+                    foreach (var content in gridAttributes)
+                    {
+                        fw.WriteLine("| style=\"width:6em; text-align:center;\" | {0}", content);
+                    }
+
+                }
+                fw.WriteLine("|}");
             }
             fw.WriteLine();
-            fw.WriteLine("Total Weight: {0} lbs.", GetLoadoutWeight(curLoadout.Items));
-            fw.WriteLine();
+        }
+
+        public class UsCustomaryUnitScale
+        {
+            double value;
+            string units;
+            double unitMultiplier;
+            string formatString;
+            string unitsLong;
+
+            public string Units
+            {
+                get
+                {
+                    return units;
+                }
+
+                set
+                {
+                    units = value;
+                }
+            }
+
+            public double UnitMultiplier
+            {
+                get
+                {
+                    return unitMultiplier;
+                }
+
+                set
+                {
+                    unitMultiplier = value;
+                }
+            }
+
+            public string FormatString
+            {
+                get
+                {
+                    return formatString;
+                }
+
+                set
+                {
+                    formatString = value;
+                }
+            }
+
+            public string UnitsLong
+            {
+                get
+                {
+                    return unitsLong;
+                }
+
+                set
+                {
+                    unitsLong = value;
+                }
+            }
+
+            public double Value
+            {
+                get
+                {
+                    return value;
+                }
+
+                set
+                {
+                    this.value = value;
+                }
+            }
+
+            public UsCustomaryUnitScale (double Value)
+            {
+                this.Value = Value;
+                FindWeightScale(Value, out units, out unitsLong, out unitMultiplier, out formatString);
+            }
+            private static void FindWeightScale(Double Value, out string unitsShort, out string unitsLong, out double unitScale, out string formatString)
+            {
+                const double dram = 0.00390626; // pounds
+
+                if (Value > 1000000) // kilotons - I know this isn't American Customary, but come on - these are big numbers.
+                {
+                    unitsShort = "1000 tons";
+                    unitsLong = unitsShort;
+                    unitScale = 2000000;
+                    formatString = "#,##0.00";
+
+                }
+                else if (Value > 1000) // start using tons at the half-ton mark.
+                {
+                    unitsShort = "tons";
+                    unitsLong = "short tons";
+                    unitScale = 2000;
+                    formatString = "#,##0.00";
+                }
+                else if (Value < (dram * 12)) // 16 drams in an ounce - use ounces if there's 12 or more drams because we'll rapidly exit "Dram country".
+                {
+                    unitsShort = "dr";
+                    unitsLong = "drams";
+                    unitScale = 1 / 256;
+                    formatString = "#,##0";
+                }
+                else if (Value < 0.75) // start using ounces at the point of less than 12 ounces.
+                {
+                    unitsShort = "oz";
+                    unitsLong = "ounces";
+                    unitScale = 1 / 16;
+                    formatString = "#,##0";
+                }
+                else // pounds
+                {
+                    unitsShort = "lbs";
+                    unitsLong = "pounds";
+                    unitScale = 1;
+                    formatString = "#,##0";
+                }
+            }
+
+        }
+        
+        void ExportLoadouts(GCACharacter pc, GCAWriter fw)
+        {
+            //var loadout = pc.CurrentLoadout;
+            //if (loadout == null)
+            //{
+            //    loadout = "";
+            //}
+            string loadout = "";
+            try
+            {
+                //MessageBox.Show("Primary Loadout");
+                ExportLoadout(pc, fw, loadout);
+                //MessageBox.Show("Secondary Loadouts");
+                loadout = pc.CurrentLoadout;
+                ExportLoadout(pc, fw, loadout);
+                foreach (LoadOut npLoadout in pc.LoadOuts)
+                {
+                    if ((!string.Empty.Equals(loadout)) && (!npLoadout.Name.Equals(loadout)))
+                    {
+                        //MessageBox.Show("ExportLoadouts(" + npLoadout.Name + ")");
+                        fw.WriteLine();
+                        ExportLoadout(pc, fw, npLoadout.Name);
+                    }
+                }
+                fw.WriteLine();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        void ExportLoadout(GCACharacter pc, GCAWriter fw, string loadout)
+        {
+            // MessageBox.Show("ExportLoadout(" + loadout + ") entry");
+            if (pc.LoadOuts.Contains(loadout))
+            {
+                // MessageBox.Show("ExportLoadout(" +loadout+") passed test");
+                LoadOut curLoadout = pc.LoadOuts[loadout];
+                fw.WriteLine();
+                fw.WriteHeader(string.Format("Loadout: {0}", curLoadout.Name));
+                foreach (GCATrait item in curLoadout.Items)
+                {
+                    fw.WriteLine(EquipmentFormatter(item, fw));
+                }
+                
+                ExportDR(pc, fw, curLoadout.Body);
+                fw.WriteLine();
+                fw.WriteLine("Total Weight: {0} lbs.", GetLoadoutWeight(curLoadout.Items));
+            }
         }
 
         void ExportCombat(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteLine();
+            fw.WriteHeader(string.Format("Combat"));
+            ExportMeleeAttacks(pc, fw);
+            ExportRangedAttacks(pc, fw);
+        }
+
+        void ExportDR(GCACharacter pc, GCAWriter fw, GCA5Engine.Body HitLocations)
+        {
+            var HitLoc = new List<BodyItem>();
+            try
+            {
+                //fw.WriteLine(string.Format("Adding {0} BodyItems", pc.Body.Count()));
+                for (int x = 1; x < HitLocations.Count(); x++)
+                {
+                    //fw.WriteLine(string.Format("  {0}", pc.Body.Item(x).Name));
+                    if (HitLocations.Item(x).Display)
+                        HitLoc.Add(HitLocations.Item(x));
+                }
+                fw.WriteLine();
+                fw.WriteHeader("Hit Locations");
+                if (null != HitLoc && HitLoc.Count > 0)
+                {
+                    fw.WriteLine("{|");
+                    fw.WriteLine("! Location");
+                    fw.WriteLine("! DR");
+                    try
+                    {
+                        var builder = new StringBuilder();
+                        foreach (BodyItem item in HitLoc)
+                        {
+                            builder.AppendLine("|-");
+                            builder.AppendFormat("| {0}{1}", item.Name, Environment.NewLine);
+                            builder.AppendFormat("| {0}", item.DR);
+                            fw.WriteLine(builder.ToString());
+                            builder.Clear();
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        fw.WriteLine(e);
+                    }
+                    fw.WriteLine("|}");
+
+                }
+                else
+                {
+                    fw.WriteLine("HitLoc is trash?");
+                }
+            }
+            catch (Exception e)
+            {
+                fw.WriteLine(e);
+            }
+        }
+
+        void ExportRangedAttacks(GCACharacter pc, GCAWriter fw)
+        {
+            fw.WriteSubHeader(string.Format("Ranged Attacks"));
+            fw.WriteLine("{|");
+            fw.WriteLine("! Name");
+            fw.WriteLine("! Damage");
+            fw.WriteLine("! Acc");
+            fw.WriteLine("! ½ Dam");
+            fw.WriteLine("! Max");
+            fw.WriteLine("! ROF");
+            fw.WriteLine("! Shots");
+            //fw.WriteLine("! Skill");
+            fw.WriteLine("! Skillscore");
+            fw.WriteLine("! MinST");
+            fw.WriteLine("! Bulk");
+            fw.WriteLine("! Rcl");
+            fw.WriteLine("! LC");
+            foreach (var curItem in Traits
+                .Where(trait => ((string.IsNullOrEmpty(trait.get_TagItem("hide"))) || (trait.get_TagItem("owned").Equals("yes"))))
+                .Where(trait => trait.DamageModeTagItemCount("charrangemax") > 0)
+                )
+            {
+                var DamageText = new StringBuilder();
+                var currentModeIndex = curItem.DamageModeTagItemAt("charrangemax");
+                var modesCount = curItem.DamageModeTagItemCount("charrangemax");
+                DamageText.AppendLine("|-");
+                if (modesCount > 1 | curItem.DisplayName.Length > 50)
+                    DamageText.Append("| colspan=12 | ");
+                else
+                    DamageText.Append("| ");
+                DamageText.AppendFormat("'''{0}'''{1}", curItem.DisplayName, Environment.NewLine);
+
+                do // Iterate over damage modes
+                {
+                    //this mode is hand!
+                    if (modesCount > 1 | curItem.DisplayName.Length > 50)
+                    {
+                        //we're doing separate lines for each mode
+                        DamageText.AppendLine("|-");
+                        //print the mode name
+                        DamageText.Append("| ");
+                        DamageText.AppendLine(curItem.DamageModeName(currentModeIndex));
+                    }
+
+                    DamageText.Append("| ");
+                    DamageText.AppendFormat(" {0}", curItem.DamageModeTagItem(currentModeIndex, "chardamage"));
+                    if (!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "chararmordivisor")))
+                    {
+                        DamageText.AppendFormat(" ({0})", FormatArmorDivisor(curItem, currentModeIndex));
+                    }
+                    DamageText.AppendFormat(" {0}", curItem.DamageModeTagItem(currentModeIndex, "chardamtype"));
+
+                    if (!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charradius")))
+                    {
+                        DamageText.AppendFormat(" ({0})", curItem.DamageModeTagItem(currentModeIndex, "charradius"));
+                    }
+                    DamageText.AppendLine();
+
+                    DamageText.Append("| ");
+                    //print the level
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "characc"));
+
+                    DamageText.Append("| ");
+                    //print the reach
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charrangehalfdam"));
+                    DamageText.Append("| ");
+                    //print the reach
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charrangemax"));
+
+                    DamageText.Append("| ");
+                    //print the reach
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charrof"));
+                    DamageText.Append("| ");
+                    //print the reach
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charshots"));
+
+                    DamageText.Append("| ");
+                    //print the level
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charskillscore"));
+
+                    
+                    DamageText.Append("| ");
+                    //print the ST
+                    DamageText.AppendLine(!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charminst")) ?
+                            curItem.DamageModeTagItem(currentModeIndex, "charminst")
+                            : "N/A"
+                            );
+
+                    DamageText.Append("| ");
+                    //print the lc
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charbulk"));
+
+                    DamageText.Append("| ");
+                    //print the lc
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charrcl"));
+
+                    DamageText.Append("| ");
+                    //print the lc
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "lc"));
+
+                    //print the notes
+                    var NotesText = curItem.DamageModeTagItem(currentModeIndex, "notes");
+                    if (!string.IsNullOrEmpty(NotesText))
+                    {
+                        DamageText.AppendLine("|- ");
+                        DamageText.AppendLine("| ");
+                        DamageText.Append("| colspan=11 | ");
+                        DamageText.AppendLine(NotesText);
+                    }
+
+                    if (!string.IsNullOrEmpty(curItem.Modes.Mode(currentModeIndex).ItemNotesText()))
+                    {
+                        DamageText.AppendLine("|- ");
+                        DamageText.AppendLine("| ");
+                        DamageText.Append("| colspan=11 | ");
+                        DamageText.AppendLine(curItem.Modes.Mode(currentModeIndex).ItemNotesText());
+                    }
+
+                    currentModeIndex = curItem.DamageModeTagItemAt("charreach", currentModeIndex + 1);
+                } while (currentModeIndex > 0);
+
+                fw.WriteLine(DamageText);
+                DamageText.Clear();
+            }
+
+            fw.WriteLine();
+            fw.WriteLine("|}");
+
+            fw.WriteLine();
+        }
+        void ExportMeleeAttacks(GCACharacter pc, GCAWriter fw)
+        {
+            fw.WriteSubHeader(string.Format("Melee Attacks"));
+            fw.WriteLine("{|");
+            fw.WriteLine("! Name");
+            fw.WriteLine("! Damage");
+            fw.WriteLine("! Reach");
+            //fw.WriteLine("! Skill");
+            fw.WriteLine("! Skillscore");
+            fw.WriteLine("! Parry");
+            fw.WriteLine("! MinST");
+            fw.WriteLine("! LC");
+            foreach (var curItem in Traits
+                .Where( trait => ((string.IsNullOrEmpty(trait.get_TagItem("hide"))) || ( trait.get_TagItem("owned").Equals("yes") )) )
+                .Where( trait => trait.DamageModeTagItemCount("charreach") > 0 ) 
+                )
+            {
+                var DamageText = new StringBuilder();
+                var currentModeIndex = curItem.DamageModeTagItemAt("charreach");
+                var modesCount = curItem.DamageModeTagItemCount("charreach");
+                DamageText.AppendLine("|-");
+                if (modesCount > 1)
+                    DamageText.Append("| colspan=7 | ");
+                else
+                    DamageText.Append("| ");
+                DamageText.AppendFormat("'''{0}'''{1}", curItem.DisplayName, Environment.NewLine);
+
+                do // Iterate over damage modes
+                {
+                    //this mode is hand!
+                    if (modesCount > 1)
+                    {
+                        //we're doing separate lines for each mode
+                        DamageText.AppendLine("|-");
+                        //print the mode name
+                        DamageText.Append("| ");
+                        DamageText.AppendLine(curItem.DamageModeName(currentModeIndex));
+                    }
+
+                    DamageText.Append("| ");
+                    DamageText.AppendFormat(" {0}",curItem.DamageModeTagItem(currentModeIndex, "chardamage"));
+                    if (!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "chararmordivisor")))
+                    {
+                        DamageText.AppendFormat(" ({0})", FormatArmorDivisor(curItem, currentModeIndex));
+                    }
+                    DamageText.AppendFormat(" {0}", curItem.DamageModeTagItem(currentModeIndex, "chardamtype"));
+
+                    if (!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charradius")))
+                    {
+                        DamageText.AppendFormat(" ({0})", curItem.DamageModeTagItem(currentModeIndex, "charradius"));
+                    }
+                    DamageText.AppendLine();
+
+                    DamageText.Append("| ");
+                    //print the reach
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charreach"));
+
+                    //DamageText.Append("| ");
+                    //print the skill
+                    //DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charskillused"));
+
+                    DamageText.Append("| ");
+                    //print the level
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charskillscore"));
+
+                    DamageText.Append("| ");
+                    //print the parry
+                    DamageText.AppendLine(
+                        !string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charparryscore"))?
+                        curItem.DamageModeTagItem(currentModeIndex, "charparryscore")
+                        : "N/A"
+                        );
+
+                    DamageText.Append("| ");
+                    //print the ST
+                    DamageText.AppendLine(!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charminst"))?
+                            curItem.DamageModeTagItem(currentModeIndex, "charminst")
+                            : "N/A"
+                            );
+
+                    DamageText.Append("| ");
+                    //print the lc
+                    DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "lc"));
+
+                    //print the notes
+                    var NotesText = curItem.DamageModeTagItem(currentModeIndex, "notes");
+                    if (!string.IsNullOrEmpty(NotesText))
+                    {
+                        DamageText.AppendLine("|- ");
+                        DamageText.AppendLine("| ");
+                        DamageText.Append("| colspan=6 | ");
+                        DamageText.AppendLine( NotesText);
+                    }
+
+                    if (!string.IsNullOrEmpty(curItem.Modes.Mode(currentModeIndex).ItemNotesText()))
+                    {
+                        DamageText.AppendLine("|- ");
+                        DamageText.AppendLine("| ");
+                        DamageText.Append("| colspan=6 | ");
+                        DamageText.AppendLine( curItem.Modes.Mode(currentModeIndex).ItemNotesText());
+                    }
+
+                    currentModeIndex = curItem.DamageModeTagItemAt("charreach", currentModeIndex + 1);
+                } while (currentModeIndex > 0);
+
+                fw.WriteLine(DamageText);
+                DamageText.Clear();
+            }
+            fw.WriteLine();
+            fw.WriteLine("|}");
+            fw.WriteLine();
+        }
+
+        private static string FormatArmorDivisor(GCATrait curItem, int currentModeIndex)
+        {
+            var armorDivisor = curItem.DamageModeTagItem(currentModeIndex, "chararmordivisor");
+            if (armorDivisor == "!")
+                armorDivisor = Convert.ToChar(8734).ToString();
+            return armorDivisor;
         }
 
         void ExportEquiment(GCACharacter pc, GCAWriter fw)
@@ -477,22 +917,38 @@ namespace GCA.TextExport
 
         void ExportSpells(GCACharacter pc, GCAWriter fw)
         {
-            fw.WriteHeader("Spells [" + pc.get_Cost(modConstants.Spells) + "]");
-            foreach (var item in ComplexListTrait(TraitTypes.Spells, fw).Where(x => string.IsNullOrEmpty(x) != true))
+            var spells = ComplexListTrait(TraitTypes.Spells, fw).Where(x => string.IsNullOrEmpty(x) != true);
+            if (spells.Count() > 0)
             {
-                fw.Write(item);
+                fw.WriteHeader("Spells [" + pc.get_Cost(modConstants.Spells) + "]");
+                fw.WriteLine("{|");
+                fw.WriteLine("! Name");
+                fw.WriteLine("! Type");
+                fw.WriteLine("! Relative");
+                fw.WriteLine("! Level");
+                fw.WriteLine("! Points");
+                foreach (var item in spells)
+                {
+                    fw.Write(item);
+                }
+                fw.WriteLine("}");
             }
-            fw.WriteLine();
         }
 
         void ExportSkills(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Skills [" + pc.get_Cost(modConstants.Skills) + "]");
+            fw.WriteLine("{|");
+            fw.WriteLine("! Name");
+            fw.WriteLine("! Type");
+            fw.WriteLine("! Relative");
+            fw.WriteLine("! Level");
+            fw.WriteLine("! Points");
             foreach (var item in ComplexListTrait(TraitTypes.Skills, fw).Where(x => string.IsNullOrEmpty(x) != true))
             {
                 fw.Write(item);
             }
-            fw.WriteLine();
+            fw.WriteLine("|}");
         }
 
         void ExportQuirks(GCACharacter pc, GCAWriter fw)
@@ -538,6 +994,33 @@ namespace GCA.TextExport
         void ExportReaction(GCACharacter pc, GCAWriter fw)
         {
             fw.WriteHeader("Reaction Modifiers");
+            fw.WriteLine(
+                string.Format("Reaction: {0}/{1}", 
+                    Traits.Find(x=> x.Name.Equals("Appealing")).Score, 
+                    Traits.Find(x => x.Name.Equals("Unappealing")).Score
+                )
+            );
+            try
+            {
+                var reaction = Traits.Find(x => x.Name.Equals("Reaction"));
+                fw.WriteLine("{0}{1}.", "Conditionals: ", reaction.get_TagItem("conditionallist"));
+            }
+            catch (ArgumentNullException e)
+            {
+                modHelperFunctions.Notify(e.ToString());
+            }
+            
+
+            //var StatNames = new List<string> {
+            //    "Reaction",
+            //    "Appealing",
+            //    "Unappealing"};
+            //foreach (var item in ComplexListAttributes(StatNames, fw))
+            //{
+            //    fw.Write(item);
+            //}
+            //fw.WriteLine(fw.FormatTrait("thr", pc.BaseTH));
+            //fw.WriteLine(fw.FormatTrait("sw", pc.BaseSW));
             fw.WriteLine();
         }
 
@@ -576,24 +1059,83 @@ namespace GCA.TextExport
         {
             fw.WriteHeader("Attributes [" + pc.get_Cost(modConstants.Stats) + "]");
 
-            var StatNames = new List<string> {
+            var table = new List<List<string>>();
+
+            //ExportAttributesListed(fw, new List<string> {
+            //    "ST",
+            //    "DX",
+            //    "IQ",
+            //    "HT"});
+            
+            table.Add( ComplexListAttributes(new List<string> {
                 "ST",
                 "DX",
                 "IQ",
-                "HT"};
-            foreach (var item in ComplexListAttributes(StatNames, fw))
-            {
-                fw.Write(item);
-            }
-            fw.WriteLine();
-            StatNames.Clear();
+                "HT"}, fw).ToList());
 
-            StatNames.AddRange(new string[] { 
+            //foreach (var item in ComplexListAttributes(new List<string> {
+            //    "Hit Points",
+            //    "Will",
+            //    "Perception",
+            //    "Fatigue Points"}, fw))
+            //{
+            //    //fw.Write(item);
+            //}
+            //fw.WriteLine();
+
+            table.Add(ComplexListAttributes(new List<string> {
                 "Hit Points",
                 "Will",
                 "Perception",
-                "Fatigue Points"}
-            );
+                "Fatigue Points"}, fw).ToList());
+
+            fw.Write(WikiFormatTable(table, true));
+
+            table.Clear();
+
+            table.Add(ComplexListAttributes(new List<string> {
+                "Basic Speed",
+                "Basic Move" }, fw).ToList());
+
+            table.Add(new List<string> {
+                fw.FormatTrait("thr", pc.BaseTH),
+                fw.FormatTrait("sw", pc.BaseSW)
+            });
+
+            var SuperST = from attribute in Traits
+                          where attribute.ItemType == TraitTypes.Attributes
+                          where attribute.Name.Equals("Super-Effort Striking ST")
+                          where string.IsNullOrEmpty(attribute.get_TagItem("hide"))
+                          select attribute;
+
+            if (SuperST.Count() > 0)
+            {
+                table.Add(new List<string> {
+                    fw.FormatTrait("Super thr", pc.ReturnThrFromScore(SuperST.First().Score)),
+                    fw.FormatTrait("Super sw", pc.ReturnSwFromScore(SuperST.First().Score))
+                });
+            }
+
+            table.Add(ComplexListAttributes(new List<string> {
+                "Freakishness",
+                "RP",
+                "Knockback Value"}, fw).ToList());
+
+            table.Add(ComplexListAttributes(new List<string> {
+                "Consciousness Check",
+                "Death Check"}, fw).ToList());
+
+            table.Add(ComplexListAttributes(new List<string> {
+                "High Jump",
+                "Broad Jump"}, fw).ToList());
+
+            fw.Write(WikiFormatTable(table));
+
+            table.Clear();
+        }
+
+        private void ExportAttributesListed(GCAWriter fw, List<string> StatNames)
+        {
             foreach (var item in ComplexListAttributes(StatNames, fw))
             {
                 fw.Write(item);
@@ -637,6 +1179,7 @@ namespace GCA.TextExport
             var result = from trait in Traits
                          where trait.ItemType == TraitTypes.Equipment
                          where string.IsNullOrEmpty(trait.get_TagItem("hide"))
+                         where string.IsNullOrEmpty(trait.ParentKey)
                          select Convert.ToDouble( trait.get_TagItem("weight"));
             return result.Sum();
         }
@@ -664,7 +1207,7 @@ namespace GCA.TextExport
             }
             if (!Equals(separator, " ") && !Equals(separator, "<hr/>"))
             {
-                fw.WriteLine(new String(separator.ToCharArray()[0], 60));
+                fw.WriteLine(new string(separator[0], 60));
             }
             else if (Equals(separator, "<hr/>"))
             {
@@ -684,9 +1227,9 @@ namespace GCA.TextExport
             var result = from trait in Traits
                          where trait.ItemType == traitType
                          where string.IsNullOrEmpty(trait.get_TagItem("hide"))
-                         select trait.Points != 0 ? String.Format("{0} [{1}]", trait.Name, trait.Points) : trait.Name;
+                         select trait.Points != 0 ? string.Format("{0} [{1}]", trait.Name, trait.Points) : trait.Name;
 
-            return String.Join(", ", result) + ".";
+            return string.Join(", ", result) + ".";
         }
 
         /// <summary>
@@ -702,7 +1245,7 @@ namespace GCA.TextExport
                          where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          select trait;
 
-            return String.Join("; ", result.Select(x => AdvantageFormatter(x, fw))) + ".";
+            return string.Join("; ", result.Select(x => AdvantageFormatter(x, fw))) + ".";
         }
 
         IEnumerable<string> ComplexListTrait(TraitTypes traitType, GCAWriter fw)
@@ -770,16 +1313,20 @@ namespace GCA.TextExport
                     break;
             }
             var builder = new StringBuilder();
+
+            // Handle nested traits recursively
             if ( string.IsNullOrEmpty(trait.get_TagItem("parentkey")) || childDepth > 0)
             {
                 for (int i = 0; i < childDepth; i++)
                 {
                     builder.Append(":");
                 }
-                builder.Append(formatter != null ? formatter(trait, fw) : string.Empty);
-                builder.Append(Environment.NewLine);
+                var traitStr = formatter != null ? formatter(trait, fw) : string.Empty;
                 if (!string.IsNullOrEmpty(trait.get_ChildKeyList()))
                 {
+                    traitStr = traitStr.Replace("<br/>","");
+                    builder.Append(traitStr);
+                    builder.Append(Environment.NewLine);
                     var keys = trait.get_ChildKeyList().Split(',');
                     //fw.WriteLine("DEBUG TRAIT '{0}' CHILDREN '{1}'", trait.Name, string.Join(",", keys));
                     foreach (var key in keys)
@@ -790,9 +1337,18 @@ namespace GCA.TextExport
                         if (child != null)
                         {
                             //fw.WriteLine("DEBUG FORMATTING CHILD '{2}'", trait.Name, cleanKey, child);
-                            builder.Append(FormatTrait(child, fw, childDepth + 1));
+                            builder.Append(FormatTrait(child, fw, childDepth + 1).Replace("<br/>", ""));
                         }
                     }
+                }
+                else
+                {
+                    if (! string.IsNullOrEmpty(trait.get_TagItem("parentkey")))
+                    {
+                        traitStr = traitStr.Replace("<br/>", "");
+                    }
+                    builder.Append(traitStr);
+                    builder.Append(Environment.NewLine);
                 }
             }
             return builder.ToString();
@@ -824,7 +1380,7 @@ namespace GCA.TextExport
                 {
                     mods.Add(item);
                 }
-                builder.Append(String.Join("; ", mods.Select(x => ModifierFormatter(x, fw))));
+                builder.Append(string.Join("; ", mods.Select(x => ModifierFormatter(x, fw))));
             }
             if (!string.IsNullOrEmpty(trait.NameExt) || trait.Mods.Count() > 0)
                 builder.Append(")");
@@ -855,8 +1411,22 @@ namespace GCA.TextExport
 
             builder.Clear();
             builder.Append(trait.DisplayScore);
-
+            if (string.Compare(trait.get_TagItem("units"), "", StringComparison.Ordinal) != 0)
+            {
+                var units = trait.get_TagItem("units").Split('|');
+                var unit =  (Metric && units.Length < 1) ? units[1] : units[0];
+                builder.Append( unit );
+            }
+          
             builder.AppendFormat(" [{0}]", trait.Points);
+            if (!string.Empty.Equals(trait.get_TagItem("bonuslist")))
+            {
+                builder.AppendFormat(" {0}{1};", "Bonuses: ", trait.get_TagItem("bonuslist"));
+            }
+            if (!string.Empty.Equals(trait.get_TagItem("conditionallist")))
+            {
+                builder.AppendFormat(" {0}{1}.", "Conditionals: ", trait.get_TagItem("conditionallist"));
+            }
             return fw.FormatTrait(label, builder.ToString());
         }
 
@@ -872,27 +1442,56 @@ namespace GCA.TextExport
             var label = builder.ToString();
 
             builder.Clear();
-            if (!string.IsNullOrEmpty(trait.NameExt) || trait.Mods.Count() > 0)
-                builder.Append(" (");
-            if (!string.IsNullOrEmpty(trait.NameExt))
-                builder.Append(trait.NameExt);
-            if (!string.IsNullOrEmpty(trait.NameExt) && trait.Mods.Count() > 0)
-                builder.Append("; ");
-            if (trait.Mods.Count() > 0)
-            {
-                var mods = new List<GCAModifier>();
-                foreach (GCAModifier item in trait.Mods)
-                {
-                    mods.Add(item);
-                }
-                builder.Append(String.Join("; ", mods.Select(x => ModifierFormatter(x, fw))));
-            }
-            if (!string.IsNullOrEmpty(trait.NameExt) || trait.Mods.Count() > 0)
-                builder.Append(")");
+
+            BuildAdvantageNameExtension(trait, fw, builder);
 
             builder.AppendFormat(" [{0}]", trait.Points);
+            if (!string.Empty.Equals(trait.get_TagItem("bonuslist")))
+            {
+                builder.AppendFormat(" {0}{1};", "Bonuses: ", trait.get_TagItem("bonuslist"));
+            }
+            if (!string.Empty.Equals(trait.get_TagItem("conditionallist")))
+            {
+                builder.AppendFormat(" {0}{1}.", "Conditionals: ", trait.get_TagItem("conditionallist"));
+            }
 
             return fw.FormatTrait(label, builder.ToString());
+        }
+
+        void BuildAdvantageNameExtension(GCATrait trait, GCAWriter fw, StringBuilder builder)
+        {
+            var hasNameExt = !string.IsNullOrEmpty(trait.NameExt);
+            var hasMods = trait.Mods.Count() > 0;
+            //if (!trait.get_TagItem("level").Equals("1") || !string.IsNullOrEmpty(trait.get_TagItem("upto")) || !string.IsNullOrEmpty(trait.LevelName)) // has more than one level
+            var hasLevel = !string.IsNullOrEmpty(trait.LevelName);
+
+            if (hasNameExt || hasMods || hasLevel)
+            {
+                builder.Append(" (");
+                if (hasNameExt)
+                {
+                    builder.Append(trait.NameExt);
+                    if (hasMods || hasLevel)
+                        builder.Append("; ");
+                }
+                if (hasLevel)
+                {
+                    builder.AppendFormat("{0}", string.IsNullOrEmpty(trait.LevelName) ? trait.get_TagItem("level") : trait.LevelName);
+                    if (hasMods)
+                        builder.Append("; ");
+                }
+                if (hasMods)
+                {
+                    var mods = new List<GCAModifier>();
+                    foreach (GCAModifier item in trait.Mods)
+                    {
+                        mods.Add(item);
+                    }
+                    builder.Append(string.Join("; ", mods.Select(x => ModifierFormatter(x, fw))));
+                }
+
+                builder.Append(")");
+            }
         }
 
         string ModifierFormatter(GCAModifier trait, GCAWriter fw)
@@ -920,130 +1519,150 @@ namespace GCA.TextExport
                          where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          select trait;
 
-            return String.Join(", ", result) + ".";
+            return string.Join(", ", result) + ".";
+        }
+        
+        private string MeleeAttackFormatter(GCATrait trait, GCAWriter fw, int mode)
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine("|-");
+            builder.AppendFormat("| {0}{1}", trait.DisplayName, Environment.NewLine);
+            return builder.ToString();
         }
 
         string SkillFormatter(GCATrait trait, GCAWriter fw)
         {
             var builder = new StringBuilder();
-            builder.AppendFormat("{0} {1}:", trait.DisplayName, trait.get_TagItem("type"));
-            var label = builder.ToString();
+            builder.AppendLine("|-");
+            builder.AppendFormat("| {0}{1}", trait.DisplayName, Environment.NewLine);
+            builder.AppendFormat("| {0}{1}", trait.get_TagItem("type"), Environment.NewLine);
+            //var label = builder.ToString();
 
-            builder.Clear();
-            switch ((SkillType)int.Parse(trait.get_TagItem("sd")))
+            var skillTypeRaw = (int)SkillType.Skill;
+            var skillTypeParseSuccess = int.TryParse(trait.get_TagItem("sd"), out skillTypeRaw);
+            //builder.Clear();
+            switch (skillTypeParseSuccess? (SkillType)skillTypeRaw : SkillType.Skill)
             {
-                case SkillType.Skill:
-                    string stepOff = trait.get_TagItem("stepoff");
-                    if (!stepOff.Equals(string.Empty))
-                    {
-                        builder.Append(stepOff);
-                        string step = trait.get_TagItem("step");
-                        if (!step.Equals(string.Empty))
-                            builder.Append(step);
-                        else
-                            builder.Append("?");
-                    }
-                    else
-                    {
-                        builder.Append("?+?");
-                    }
-                    builder.AppendFormat(" - {0}", trait.get_TagItem("level"));
-                    break;
-                case SkillType.Technique:
-                    builder.AppendFormat(" - {0}", trait.get_TagItem("level"));
-                    break;
                 case SkillType.Combo:
-                    builder.AppendFormat(" - {0}", trait.get_TagItem("combolevel"));
+                    insertStepoff(trait, builder);
+                    builder.AppendFormat("| {0}{1}", trait.get_TagItem("combolevel"), Environment.NewLine);
+                    //builder.AppendFormat(" - {0}", trait.get_TagItem("combolevel"));
                     break;
-                default:
+                default: // SkillType.Skill, SkillType.Technique
+                    insertStepoff(trait, builder);
+                    builder.AppendFormat("| {0}{1}", trait.get_TagItem("level"), Environment.NewLine);
+                    //builder.AppendFormat(" - {0}", trait.get_TagItem("level"));
                     break;
             }
-            builder.AppendFormat(" [{0}]", trait.Points);
+            builder.AppendFormat("| {0}", trait.Points);
+            //builder.AppendFormat(" [{0}]", trait.Points);
+            if (!string.Empty.Equals(trait.get_TagItem("bonuslist")))
+            {
+                builder.AppendLine();
+                builder.AppendLine("|-");
+                builder.AppendFormat("| colspan=\"5\" | {0}{1}", "Bonuses: ", trait.get_TagItem("bonuslist"));
+            }
+            if (!string.Empty.Equals(trait.get_TagItem("conditionallist")))
+            {
+                builder.AppendLine();
+                builder.AppendLine("|-");
+                builder.AppendFormat("| colspan=\"5\" | {0}{1}", "Conditionals: ", trait.get_TagItem("conditionallist"));
+            }
+            //return fw.FormatTrait(label, builder.ToString());
+            return builder.ToString();
+        }
 
-            return fw.FormatTrait(label, builder.ToString());
+        static void insertStepoff(GCATrait trait, StringBuilder builder)
+        {
+            var stepOff = trait.get_TagItem("stepoff");
+            if (!stepOff.Equals(string.Empty))
+            {
+                builder.AppendFormat("| {0}", stepOff);
+                var step = trait.get_TagItem("step");
+                if (!step.Equals(string.Empty))
+                    builder.AppendFormat("{0}", step);
+                else
+                    builder.AppendFormat("?");
+            }
+            else
+            {
+                builder.AppendFormat("| ?+?");
+            }
+            builder.AppendLine();
+        }
+
+        string WikiFormatTable(List<List<string>> table, bool transpose = false)
+        {
+            if (transpose)
+            {
+                table = PivotNestedLists(table);
+            }
+
+            var result = new StringBuilder("{|");
+
+            foreach (var row in table)
+            {
+                result.AppendLine("|-");
+                foreach (var cell in row)
+                {
+                    result.Append("| ");
+                    result.AppendLine(cell);
+                }
+            }
+
+            result.AppendLine("|}");
+            return result.ToString();
+        }
+        static List<List<T>> PivotNestedLists<T>(List<List<T>> source)
+        {
+            var numRows = source.Max(a => a.Count);
+
+            //Will be adjusting multiple "rows" at the same time so need to use a more flexible collection
+            var items = new List<List<T>>();
+            for (int row = 0; row < source.Count; ++row)
+            {
+                for (int col = 0; col < source[row].Count; ++col)
+                {
+                    //Get the current "row" for this column, if any
+                    if (items.Count <= col)
+                        items.Add(new List<T>());
+
+                    var current = items[col];
+
+                    //Insert the value into the row
+                    current.Add(source[row][col]);
+                }
+            }
+            return items;
+        }
+
+        static T[][] PivotArrayToJagged<T>(T[][] source)
+        {
+            var numRows = source.Max(a => a.Length);
+
+            //Will be adjusting multiple "rows" at the same time so need to use a more flexible collection
+            var items = new List<List<T>>();
+            for (int row = 0; row < source.Length; ++row)
+            {
+                for (int col = 0; col < source[row].Length; ++col)
+                {
+                    //Get the current "row" for this column, if any
+                    if (items.Count <= col)
+                        items.Add(new List<T>());
+
+                    var current = items[col];
+
+                    //Insert the value into the row
+                    current.Add(source[row][col]);
+                }
+            }
+
+            //Convert the nested lists back into a jagged array
+            return (from i in items
+                    select i.ToArray()
+                    ).ToArray();
         }
         #endregion Formatters
     }
 
-    class GCAWriter : StreamWriter
-    {
-
-        enum GeneralStyles
-        {
-            DoNothing,
-            MakeBold,
-            MakeItalic,
-            MakeBoldItalic
-        }
-
-        enum HeaderStyles
-        {
-            DoNothing,
-            MinorWikiHeader,
-            Bold
-        }
-
-        public GCAWriter(string path, bool append, SheetOptionsManager options) : base(path, append)
-        {
-            MyOptions = options;
-        }
-
-        public SheetOptionsManager MyOptions { get; private set; }
-
-        public void WriteTrait(string label, string value)
-        {
-            WriteLine(FormatTrait(label, value));
-        }
-        public void WriteHeader(string Header)
-        {
-            WriteLine(FormatHeader(Header));
-        }
-
-        internal string FormatHeader(string Header)
-        {
-            try
-            {
-                switch ((HeaderStyles)MyOptions.get_Value("HeadingStyle"))
-                {
-                    case HeaderStyles.DoNothing:
-                        return string.Format("{0}<br/>", Header);
-                    case HeaderStyles.MinorWikiHeader:
-                        return string.Format("==={0}===", Header);
-                    case HeaderStyles.Bold:
-                        return string.Format("'''{0}'''<br/>", Header);
-                    default:
-                        return string.Format("{0}<br/>", Header);
-                }
-            }
-            catch (Exception)
-            {
-                return string.Format("{0}<br/>", Header);
-            }
-        }
-
-        internal string FormatTrait(string label, string value)
-        {
-            try
-            {
-                switch ((GeneralStyles)MyOptions.get_Value("TraitNameStyle"))
-                {
-                    case GeneralStyles.DoNothing:
-                        return String.Format("{0} {1}<br/>", label, value);
-                    case GeneralStyles.MakeBold:
-                        return String.Format("'''{0}''' {1}<br/>", label, value);
-                    case GeneralStyles.MakeItalic:
-                        return String.Format("''{0}'' {1}<br/>", label, value);
-                    case GeneralStyles.MakeBoldItalic:
-                        return String.Format("'''''{0}''''' {1}<br/>", label, value);
-                    default:
-                        return String.Format("{0} {1}<br/>", label, value);
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(String.Format("FormatTrait({0}, {1})\nMessage: {2}\nStacktrace: {3}\nInner: {4}", label, value, e.Message, e.StackTrace, e.InnerException), "Error in FormatTrait()");
-                return String.Format("FormatTrait({0}, {1}) error", label, value);
-            }
-        }
-    }
 }

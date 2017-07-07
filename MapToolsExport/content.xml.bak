@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<net.rptools.maptool.model.Token xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <beingImpersonated>false</beingImpersonated>
+  <x>485</x>
+  <y>675</y>
+  <z>338</z>
+  <anchorX>0</anchorX>
+  <anchorY>0</anchorY>
+  <lastX>0</lastX>
+  <lastY>0</lastY>
+  <width>0</width>
+  <height>0</height>
+  <name>Attivi Valar</name>
+  <ownerType>0</ownerType>
+  <tokenShape>CIRCLE</tokenShape>
+  <tokenType>PC</tokenType>
+  <layer>TOKEN</layer>
+  <propertyType>GURPS-GCA5</propertyType>
+  <facing>0</facing>
+  <sightType>Normal</sightType>
+  <label />
+  <notes />
+  <gmNotes />
+  <id>
+    <baGUID />
+  </id>
+  <exposedAreaGUID>
+    <baGUID />
+  </exposedAreaGUID>
+  <sizeMap>
+    <entry>
+      <java-class>net.rptools.maptool.model.HexGridHorizontal</java-class>
+      <net.rptools.maptool.model.GUID>
+        <baGUID>fwABAQllXDgBAAAAOAABAQ=</baGUID>
+      </net.rptools.maptool.model.GUID>
+    </entry>
+    <entry>
+      <java-class>net.rptools.maptool.model.HexGridVertical</java-class>
+      <net.rptools.maptool.model.GUID>
+        <baGUID>fwABAQllXDgBAAAAOAABAQ=</baGUID>
+      </net.rptools.maptool.model.GUID>
+    </entry>
+  </sizeMap>
+</net.rptools.maptool.model.Token>

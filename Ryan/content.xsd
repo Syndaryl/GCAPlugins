@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="entry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="null" type="xs:string" minOccurs="0" />
+        <xs:element name="java-class" type="xs:string" minOccurs="0" />
+        <xs:element name="string" type="xs:string" minOccurs="0" />
+        <xs:element name="boolean" type="xs:string" minOccurs="0" />
+        <xs:element name="int" type="xs:string" minOccurs="0" />
+        <xs:element name="net.rptools.lib.MD5Key" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="net.rptools.maptool.model.GUID" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="baGUID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="net.rptools.CaseInsensitiveHashMap_-KeyValue" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="key" type="xs:string" minOccurs="0" />
+              <xs:element name="value" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent msdata:ColumnName="value_Text" msdata:Ordinal="1">
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="class" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="outer-class" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="reference" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="net.rptools.maptool.model.MacroButtonProperties" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="saveLocation" type="xs:string" minOccurs="0" />
+              <xs:element name="index" type="xs:string" minOccurs="0" />
+              <xs:element name="colorKey" type="xs:string" minOccurs="0" />
+              <xs:element name="hotKey" type="xs:string" minOccurs="0" />
+              <xs:element name="command" type="xs:string" minOccurs="0" />
+              <xs:element name="label" type="xs:string" minOccurs="0" />
+              <xs:element name="group" type="xs:string" minOccurs="0" />
+              <xs:element name="sortby" type="xs:string" minOccurs="0" />
+              <xs:element name="autoExecute" type="xs:string" minOccurs="0" />
+              <xs:element name="includeLabel" type="xs:string" minOccurs="0" />
+              <xs:element name="applyToTokens" type="xs:string" minOccurs="0" />
+              <xs:element name="fontColorKey" type="xs:string" minOccurs="0" />
+              <xs:element name="fontSize" type="xs:string" minOccurs="0" />
+              <xs:element name="minWidth" type="xs:string" minOccurs="0" />
+              <xs:element name="maxWidth" type="xs:string" minOccurs="0" />
+              <xs:element name="allowPlayerEdits" type="xs:string" minOccurs="0" />
+              <xs:element name="toolTip" type="xs:string" minOccurs="0" />
+              <xs:element name="commonMacro" type="xs:string" minOccurs="0" />
+              <xs:element name="compareGroup" type="xs:string" minOccurs="0" />
+              <xs:element name="compareSortPrefix" type="xs:string" minOccurs="0" />
+              <xs:element name="compareCommand" type="xs:string" minOccurs="0" />
+              <xs:element name="compareIncludeLabel" type="xs:string" minOccurs="0" />
+              <xs:element name="compareAutoExecute" type="xs:string" minOccurs="0" />
+              <xs:element name="compareApplyToSelectedTokens" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="net.rptools.maptool.model.Token">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="beingImpersonated" type="xs:string" minOccurs="0" />
+        <xs:element name="x" type="xs:string" minOccurs="0" />
+        <xs:element name="y" type="xs:string" minOccurs="0" />
+        <xs:element name="z" type="xs:string" minOccurs="0" />
+        <xs:element name="anchorX" type="xs:string" minOccurs="0" />
+        <xs:element name="anchorY" type="xs:string" minOccurs="0" />
+        <xs:element name="sizeScale" type="xs:string" minOccurs="0" />
+        <xs:element name="lastX" type="xs:string" minOccurs="0" />
+        <xs:element name="lastY" type="xs:string" minOccurs="0" />
+        <xs:element name="snapToScale" type="xs:string" minOccurs="0" />
+        <xs:element name="width" type="xs:string" minOccurs="0" />
+        <xs:element name="height" type="xs:string" minOccurs="0" />
+        <xs:element name="scaleX" type="xs:string" minOccurs="0" />
+        <xs:element name="scaleY" type="xs:string" minOccurs="0" />
+        <xs:element name="snapToGrid" type="xs:string" minOccurs="0" />
+        <xs:element name="isVisible" type="xs:string" minOccurs="0" />
+        <xs:element name="visibleOnlyToOwner" type="xs:string" minOccurs="0" />
+        <xs:element name="name" type="xs:string" minOccurs="0" />
+        <xs:element name="ownerType" type="xs:string" minOccurs="0" />
+        <xs:element name="tokenShape" type="xs:string" minOccurs="0" />
+        <xs:element name="tokenType" type="xs:string" minOccurs="0" />
+        <xs:element name="layer" type="xs:string" minOccurs="0" />
+        <xs:element name="propertyType" type="xs:string" minOccurs="0" />
+        <xs:element name="facing" type="xs:string" minOccurs="0" />
+        <xs:element name="isFlippedX" type="xs:string" minOccurs="0" />
+        <xs:element name="isFlippedY" type="xs:string" minOccurs="0" />
+        <xs:element name="sightType" type="xs:string" minOccurs="0" />
+        <xs:element name="hasSight" type="xs:string" minOccurs="0" />
+        <xs:element name="label" type="xs:string" minOccurs="0" />
+        <xs:element name="notes" type="xs:string" minOccurs="0" />
+        <xs:element name="gmNotes" type="xs:string" minOccurs="0" />
+        <xs:element name="speechMap" type="xs:string" minOccurs="0" />
+        <xs:element name="id" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="baGUID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="exposedAreaGUID" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="baGUID" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="imageAssetMap" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="entry" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sizeMap" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="entry" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ownerList" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="string" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="portraitImage" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="state" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="entry" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="propertyMapCI" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="store" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="entry" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="macroPropertiesMap" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="entry" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="entry" />
+        <xs:element ref="net.rptools.maptool.model.Token" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
