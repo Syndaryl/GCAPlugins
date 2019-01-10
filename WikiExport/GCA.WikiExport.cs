@@ -35,6 +35,7 @@ namespace GCA.WikiExport
     using System.Text;
     using GCA.Export;
     using System.Globalization;
+    using System.Diagnostics.Contracts;
 
     public sealed class WikiExporter : GCA5.Interfaces.IExportSheet
     {
@@ -131,7 +132,7 @@ namespace GCA.WikiExport
                 var domain = AppDomain.CurrentDomain;
                 domain.Load(assemblyName);
                 var listOfAssemblies = new List<Assembly>(domain.GetAssemblies());
-                
+
                 var optionsPath = Path.GetDirectoryName(listOfAssemblies.FirstOrDefault(x => x.FullName.StartsWith(assemblyName, StringComparison.Ordinal)).Location);
                 optionsPath = optionsPath + Path.DirectorySeparatorChar + settingsFileName;
                 Console.WriteLine(string.Format("Options Path is {0}", optionsPath));
@@ -251,7 +252,7 @@ namespace GCA.WikiExport
 
             return true;
         }
-        
+
         public int PreferredFilterIndex()
         {
             return 0;
@@ -478,7 +479,7 @@ namespace GCA.WikiExport
                 }
             }
 
-            public UsCustomaryUnitScale (double Value)
+            public UsCustomaryUnitScale(double Value)
             {
                 this.Value = Value;
                 FindWeightScale(Value, out units, out unitsLong, out unitMultiplier, out formatString);
@@ -526,7 +527,7 @@ namespace GCA.WikiExport
             }
 
         }
-        
+
         void ExportLoadouts(GCACharacter pc, GCAWriter fw)
         {
             //var loadout = pc.CurrentLoadout;
@@ -572,7 +573,7 @@ namespace GCA.WikiExport
                 {
                     fw.WriteLine(EquipmentFormatter(item, fw));
                 }
-                
+
                 ExportDR(pc, fw, curLoadout.Body);
                 fw.WriteLine();
                 fw.WriteLine("Total Weight: {0} lbs.", GetLoadoutWeight(curLoadout.Items));
@@ -717,7 +718,7 @@ namespace GCA.WikiExport
                     //print the level
                     DamageText.AppendLine(curItem.DamageModeTagItem(currentModeIndex, "charskillscore"));
 
-                    
+
                     DamageText.Append("| ");
                     //print the ST
                     DamageText.AppendLine(!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charminst")) ?
@@ -780,8 +781,8 @@ namespace GCA.WikiExport
             fw.WriteLine("! MinST");
             fw.WriteLine("! LC");
             foreach (var curItem in Traits
-                .Where( trait => ((string.IsNullOrEmpty(trait.get_TagItem("hide"))) || ( trait.get_TagItem("owned").Equals("yes") )) )
-                .Where( trait => trait.DamageModeTagItemCount("charreach") > 0 ) 
+                .Where(trait => ((string.IsNullOrEmpty(trait.get_TagItem("hide"))) || (trait.get_TagItem("owned").Equals("yes"))))
+                .Where(trait => trait.DamageModeTagItemCount("charreach") > 0)
                 )
             {
                 var DamageText = new StringBuilder();
@@ -807,7 +808,7 @@ namespace GCA.WikiExport
                     }
 
                     DamageText.Append("| ");
-                    DamageText.AppendFormat(" {0}",curItem.DamageModeTagItem(currentModeIndex, "chardamage"));
+                    DamageText.AppendFormat(" {0}", curItem.DamageModeTagItem(currentModeIndex, "chardamage"));
                     if (!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "chararmordivisor")))
                     {
                         DamageText.AppendFormat(" ({0})", FormatArmorDivisor(curItem, currentModeIndex));
@@ -835,14 +836,14 @@ namespace GCA.WikiExport
                     DamageText.Append("| ");
                     //print the parry
                     DamageText.AppendLine(
-                        !string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charparryscore"))?
+                        !string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charparryscore")) ?
                         curItem.DamageModeTagItem(currentModeIndex, "charparryscore")
                         : "N/A"
                         );
 
                     DamageText.Append("| ");
                     //print the ST
-                    DamageText.AppendLine(!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charminst"))?
+                    DamageText.AppendLine(!string.IsNullOrEmpty(curItem.DamageModeTagItem(currentModeIndex, "charminst")) ?
                             curItem.DamageModeTagItem(currentModeIndex, "charminst")
                             : "N/A"
                             );
@@ -858,7 +859,7 @@ namespace GCA.WikiExport
                         DamageText.AppendLine("|- ");
                         DamageText.AppendLine("| ");
                         DamageText.Append("| colspan=6 | ");
-                        DamageText.AppendLine( NotesText);
+                        DamageText.AppendLine(NotesText);
                     }
 
                     if (!string.IsNullOrEmpty(curItem.Modes.Mode(currentModeIndex).ItemNotesText()))
@@ -866,7 +867,7 @@ namespace GCA.WikiExport
                         DamageText.AppendLine("|- ");
                         DamageText.AppendLine("| ");
                         DamageText.Append("| colspan=6 | ");
-                        DamageText.AppendLine( curItem.Modes.Mode(currentModeIndex).ItemNotesText());
+                        DamageText.AppendLine(curItem.Modes.Mode(currentModeIndex).ItemNotesText());
                     }
 
                     currentModeIndex = curItem.DamageModeTagItemAt("charreach", currentModeIndex + 1);
@@ -995,8 +996,8 @@ namespace GCA.WikiExport
         {
             fw.WriteHeader("Reaction Modifiers");
             fw.WriteLine(
-                string.Format("Reaction: {0}/{1}", 
-                    Traits.Find(x=> x.Name.Equals("Appealing")).Score, 
+                string.Format("Reaction: {0}/{1}",
+                    Traits.Find(x => x.Name.Equals("Appealing")).Score,
                     Traits.Find(x => x.Name.Equals("Unappealing")).Score
                 )
             );
@@ -1009,7 +1010,7 @@ namespace GCA.WikiExport
             {
                 modHelperFunctions.Notify(e.ToString());
             }
-            
+
 
             //var StatNames = new List<string> {
             //    "Reaction",
@@ -1059,15 +1060,64 @@ namespace GCA.WikiExport
         {
             fw.WriteHeader("Attributes [" + pc.get_Cost(modConstants.Stats) + "]");
 
-            var table = new List<List<string>>();
+            fw.WriteLine("{|");
+            var coreStats = new List<string> {
+                    "ST",
+                    "DX",
+                    "IQ",
+                    "HT"
+                 };
+            var seconaryStats = new List<string> {
+                    "Hit Points",
+                    "Will",
+                    "Perception",
+                    "Fatigue Points"
+                };
+            Table tableData = new Table {
+                coreStats,
+                new List<string>(),
+                seconaryStats,
+                new List<string>()
+            };
+            int insertRow = 1;
+            insertStatsRow(coreStats, tableData, insertRow);
+
+            fw.WriteLine("|}");
+        }
+
+        private void insertStatsRow(List<string> statsNames, Table targetTable, int destinationRow)
+        {
+            IOrderedEnumerable<GCATrait> filteredVisibleAttributes = null;
+
+            filteredVisibleAttributes = getAttributeObjects(statsNames);
+            List<string> values = new List<string>();
+
+            foreach (var trait in filteredVisibleAttributes)
+            {
+                values.Add(trait.DisplayName);
+
+                values.Add(formatAttributeLevel(trait));
+
+                values.Add(string.Format(" [{0}]", trait.Points));
+                values.Add(formatBonuses(trait));
+                values.Add(formatConditionals(trait));
+            }
+            targetTable[destinationRow] = new List<string>(values);
+        }
+
+        void ExportAttributesText(GCACharacter pc, GCAWriter fw)
+        {
+            fw.WriteHeader("Attributes [" + pc.get_Cost(modConstants.Stats) + "]");
+
+            var table = new Table();
 
             //ExportAttributesListed(fw, new List<string> {
             //    "ST",
             //    "DX",
             //    "IQ",
             //    "HT"});
-            
-            table.Add( ComplexListAttributes(new List<string> {
+
+            table.Add(ComplexListAttributes(new List<string> {
                 "ST",
                 "DX",
                 "IQ",
@@ -1148,7 +1198,7 @@ namespace GCA.WikiExport
             fw.WriteTrait("Name:", CurChar.Name);
             fw.WriteTrait("Player:", CurChar.Player);
             fw.WriteTrait("Race:", CurChar.Race);
-            if (! string.IsNullOrEmpty( CurChar.Appearance))
+            if (!string.IsNullOrEmpty(CurChar.Appearance))
                 fw.WriteTrait("Appearance: ", CurChar.Appearance);
 
             if (!string.IsNullOrEmpty(CurChar.Height))
@@ -1180,7 +1230,7 @@ namespace GCA.WikiExport
                          where trait.ItemType == TraitTypes.Equipment
                          where string.IsNullOrEmpty(trait.get_TagItem("hide"))
                          where string.IsNullOrEmpty(trait.ParentKey)
-                         select Convert.ToDouble( trait.get_TagItem("weight"));
+                         select Convert.ToDouble(trait.get_TagItem("weight"));
             return result.Sum();
         }
 
@@ -1260,16 +1310,47 @@ namespace GCA.WikiExport
 
         IEnumerable<string> ComplexListAttributes(List<string> attributeList, GCAWriter fw)
         {
-            var result = from trait in Traits
-                         where trait.ItemType == TraitTypes.Attributes
-                         where attributeList.Contains( trait.Name )
-                         //where !string.IsNullOrEmpty(trait.get_TagItem("mainwin"))
-                         //where !string.IsNullOrEmpty(trait.get_TagItem("display"))
-                         //where string.IsNullOrEmpty(trait.get_TagItem("hide"))
-                         orderby trait.get_TagItem("mainwin")
+            var result = from trait in getAttributeObjects(attributeList)
                          select FormatTrait(trait, fw);
             return result;
+
         }
+
+        private IOrderedEnumerable<GCATrait> getAttributeObjects(List<string> attributeList)
+        {
+            var filteredVisibleAttributes = from trait in Traits
+                                            where trait.ItemType == TraitTypes.Attributes
+                                            where attributeList.Contains(trait.Name)
+                                            //where !string.IsNullOrEmpty(trait.get_TagItem("mainwin"))
+                                            //where !string.IsNullOrEmpty(trait.get_TagItem("display"))
+                                            //where string.IsNullOrEmpty(trait.get_TagItem("hide"))
+                                            orderby trait.get_TagItem("mainwin")
+                                            select trait;
+            return filteredVisibleAttributes;
+        }
+
+        private Table AttributeRowInTableFormatter(GCATrait trait, GCAWriter fw)
+        {
+            var row = new Table {
+                new List<string>{
+                    trait.DisplayName,
+                    formatAttributeLevel(trait),
+                    string.Format(" [{0}]", trait.Points)
+                },
+                new List<string> {
+                    formatConditionals(trait)
+
+                },
+                new List<string> {
+                    formatConditionals(trait)
+                }
+            };
+            //var builder = new StringBuilder();
+            //WikiFormatRows(row, builder);
+
+            return row;
+        }
+
         delegate string TraitFormatter(GCATrait trait, GCAWriter fw);
 
         string FormatTrait(GCATrait trait, GCAWriter fw, int childDepth = 0)
@@ -1315,7 +1396,7 @@ namespace GCA.WikiExport
             var builder = new StringBuilder();
 
             // Handle nested traits recursively
-            if ( string.IsNullOrEmpty(trait.get_TagItem("parentkey")) || childDepth > 0)
+            if (string.IsNullOrEmpty(trait.get_TagItem("parentkey")) || childDepth > 0)
             {
                 for (int i = 0; i < childDepth; i++)
                 {
@@ -1324,7 +1405,7 @@ namespace GCA.WikiExport
                 var traitStr = formatter != null ? formatter(trait, fw) : string.Empty;
                 if (!string.IsNullOrEmpty(trait.get_ChildKeyList()))
                 {
-                    traitStr = traitStr.Replace("<br/>","");
+                    traitStr = traitStr.Replace("<br/>", "");
                     builder.Append(traitStr);
                     builder.Append(Environment.NewLine);
                     var keys = trait.get_ChildKeyList().Split(',');
@@ -1332,7 +1413,7 @@ namespace GCA.WikiExport
                     foreach (var key in keys)
                     {
                         var cleanKey = key.Trim().Substring(1);
-                        var child = Traits.FirstOrDefault(x => x.IDKey.Equals(Convert.ToInt32( cleanKey)));
+                        var child = Traits.FirstOrDefault(x => x.IDKey.Equals(Convert.ToInt32(cleanKey)));
                         //fw.WriteLine("DEBUG TRAIT '{0}' KEY '{1}' CHILD '{2}'", trait.Name, cleanKey, child);
                         if (child != null)
                         {
@@ -1343,7 +1424,7 @@ namespace GCA.WikiExport
                 }
                 else
                 {
-                    if (! string.IsNullOrEmpty(trait.get_TagItem("parentkey")))
+                    if (!string.IsNullOrEmpty(trait.get_TagItem("parentkey")))
                     {
                         traitStr = traitStr.Replace("<br/>", "");
                     }
@@ -1385,13 +1466,13 @@ namespace GCA.WikiExport
             if (!string.IsNullOrEmpty(trait.NameExt) || trait.Mods.Count() > 0)
                 builder.Append(")");
 
-            if ( Convert.ToInt32( trait.get_TagItem("count")) > 1 )
+            if (Convert.ToInt32(trait.get_TagItem("count")) > 1)
             {
-                builder.AppendFormat(" {0} lbs, {1:C} ×{2} = {3} lbs {4:C}", 
-                    Convert.ToDouble( trait.get_TagItem("precountweight")), 
-                    Convert.ToDouble(trait.get_TagItem("precountcost")), 
-                    Convert.ToDouble(trait.get_TagItem("count")), 
-                    Convert.ToDouble(trait.get_TagItem("weight")), 
+                builder.AppendFormat(" {0} lbs, {1:C} ×{2} = {3} lbs {4:C}",
+                    Convert.ToDouble(trait.get_TagItem("precountweight")),
+                    Convert.ToDouble(trait.get_TagItem("precountcost")),
+                    Convert.ToDouble(trait.get_TagItem("count")),
+                    Convert.ToDouble(trait.get_TagItem("weight")),
                     Convert.ToDouble(trait.get_TagItem("cost"))
                     );
             }
@@ -1410,24 +1491,54 @@ namespace GCA.WikiExport
             var label = builder.ToString();
 
             builder.Clear();
-            builder.Append(trait.DisplayScore);
-            if (string.Compare(trait.get_TagItem("units"), "", StringComparison.Ordinal) != 0)
-            {
-                var units = trait.get_TagItem("units").Split('|');
-                var unit =  (Metric && units.Length < 1) ? units[1] : units[0];
-                builder.Append( unit );
-            }
-          
+            formatAttributeLevel(trait, builder);
+
             builder.AppendFormat(" [{0}]", trait.Points);
-            if (!string.Empty.Equals(trait.get_TagItem("bonuslist")))
+            formatBonuses(trait, builder);
+            formatConditionals(trait, builder);
+            return fw.FormatTrait(label, builder.ToString());
+        }
+
+        private string formatConditionals(GCATrait trait, StringBuilder builder = null)
+        {
+            if (builder == null)
             {
-                builder.AppendFormat(" {0}{1};", "Bonuses: ", trait.get_TagItem("bonuslist"));
+                builder = new StringBuilder();
             }
             if (!string.Empty.Equals(trait.get_TagItem("conditionallist")))
             {
                 builder.AppendFormat(" {0}{1}.", "Conditionals: ", trait.get_TagItem("conditionallist"));
             }
-            return fw.FormatTrait(label, builder.ToString());
+            return builder.ToString();
+        }
+
+        private string formatBonuses(GCATrait trait, StringBuilder builder = null)
+        {
+            if (builder == null)
+            {
+                builder = new StringBuilder();
+            }
+            if (!string.Empty.Equals(trait.get_TagItem("bonuslist")))
+            {
+                builder.AppendFormat(" {0}{1};", "Bonuses: ", trait.get_TagItem("bonuslist"));
+            }
+            return builder.ToString();
+        }
+
+        private string formatAttributeLevel(GCATrait trait, StringBuilder builder = null)
+        {
+            if (builder == null)
+            {
+                builder = new StringBuilder();
+            }
+            builder.Append(trait.DisplayScore);
+            if (string.Compare(trait.get_TagItem("units"), "", StringComparison.Ordinal) != 0)
+            {
+                var units = trait.get_TagItem("units").Split('|');
+                var unit = (Metric && units.Length < 1) ? units[1] : units[0];
+                builder.Append(unit);
+            }
+            return builder.ToString();
         }
 
         string AdvantageFormatter(GCATrait trait, GCAWriter fw)
@@ -1521,7 +1632,7 @@ namespace GCA.WikiExport
 
             return string.Join(", ", result) + ".";
         }
-        
+
         private string MeleeAttackFormatter(GCATrait trait, GCAWriter fw, int mode)
         {
             var builder = new StringBuilder();
@@ -1541,7 +1652,7 @@ namespace GCA.WikiExport
             var skillTypeRaw = (int)SkillType.Skill;
             var skillTypeParseSuccess = int.TryParse(trait.get_TagItem("sd"), out skillTypeRaw);
             //builder.Clear();
-            switch (skillTypeParseSuccess? (SkillType)skillTypeRaw : SkillType.Skill)
+            switch (skillTypeParseSuccess ? (SkillType)skillTypeRaw : SkillType.Skill)
             {
                 case SkillType.Combo:
                     insertStepoff(trait, builder);
@@ -1591,33 +1702,48 @@ namespace GCA.WikiExport
             builder.AppendLine();
         }
 
-        string WikiFormatTable(List<List<string>> table, bool transpose = false)
+        string WikiFormatTable(Table table, bool transpose = false)
         {
             if (transpose)
             {
-                table = PivotNestedLists(table);
+                table = table.Pivot();
             }
 
             var result = new StringBuilder("{|");
 
-            foreach (var row in table)
-            {
-                result.AppendLine("|-");
-                foreach (var cell in row)
-                {
-                    result.Append("| ");
-                    result.AppendLine(cell);
-                }
-            }
+            WikiFormatRows(table, result);
 
             result.AppendLine("|}");
             return result.ToString();
         }
-        static List<List<T>> PivotNestedLists<T>(List<List<T>> source)
+
+        private static void WikiFormatRows(Table table, StringBuilder result)
+        {
+            foreach (var row in table)
+            {
+                result.AppendLine("|-");
+                WikiFormatCells(row, result);
+            }
+        }
+
+        private static void WikiFormatCells(List<string> cellList, StringBuilder result)
+        {
+            foreach (var cell in cellList)
+            {
+                result.Append("| ");
+                result.AppendLine(cell);
+            }
+        }
+
+        internal static Table PivotTable(Table source)
+        {
+            return (Table)PivotNestedLists(source);
+        }
+
+        internal static List<List<T>> PivotNestedLists<T>(List<List<T>> source)
         {
             var numRows = source.Max(a => a.Count);
 
-            //Will be adjusting multiple "rows" at the same time so need to use a more flexible collection
             var items = new List<List<T>>();
             for (int row = 0; row < source.Count; ++row)
             {
@@ -1665,4 +1791,13 @@ namespace GCA.WikiExport
         #endregion Formatters
     }
 
+
+    public class Table : List<List<string>>
+    {
+        internal Table Pivot()
+        {
+            Contract.Ensures(Contract.Result<Table>() != null);
+            return (Table) WikiExporter.PivotNestedLists(this);
+        }
+    }
 }

@@ -360,10 +360,10 @@ namespace GCA.Export
             return formattedDate;
         }
 
-        internal string Pandoc(string source)
+        internal string Pandoc(string source, string from = "html", string to = "mediawiki")
         {
             string processName = (string) MyOptions.get_Value("PandocLocation");
-            string args = String.Format(@"-r html -t mediawiki");
+            string args = $"-s -f {from} -t {to}";
 
             var psi = new System.Diagnostics.ProcessStartInfo(processName, args);
 
